@@ -62,7 +62,14 @@ $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';
 			<?php endif; ?>
 		</div>
 
-		<div class="bt-enquiry__card">
+		<?php
+		/*
+		 * Template for the message a trip card prefills. It lives here rather
+		 * than in the script so it stays translatable; %s is the trip name.
+		 */
+		$trip_template = __( 'I would like to enquire about: %s', 'broedertrouw' );
+		?>
+		<div class="bt-enquiry__card" data-bt-trip-template="<?php echo esc_attr( $trip_template ); ?>">
 			<?php if ( $form_id && shortcode_exists( 'fluentform' ) ) : ?>
 				<?php echo do_shortcode( sprintf( '[fluentform id="%d"]', $form_id ) ); ?>
 			<?php else : ?>

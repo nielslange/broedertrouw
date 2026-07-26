@@ -17,5 +17,6 @@
 		"anchor": true,
 		"jsx": false
 	},
-	"style": [ "file:./style.css" ]
+	"style": [ "file:./style.css" ],
+	"viewScript": [ "file:./script.js" ]
 }

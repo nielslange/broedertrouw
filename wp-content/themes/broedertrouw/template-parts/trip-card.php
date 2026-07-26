@@ -51,7 +51,19 @@ if ( 'card' === $variant ) {
 			<p class="bt-trip-card__cabin"><?php echo esc_html( bt_trip_cabin_note( $trip_id ) ); ?></p>
 		</div>
 
-		<a class="bt-button bt-button--outline-navy bt-trip-card__cta" href="<?php echo esc_url( $permalink ); ?>">
+		<?php
+		/*
+		 * The button says "request this trip", so it goes to the enquiry form
+		 * on the same page and carries the trip with it. bt/enquiry reads
+		 * these data attributes and fills the form in, so the visitor does not
+		 * retype what they just clicked on.
+		 */
+		?>
+		<a
+			class="bt-button bt-button--outline-navy bt-trip-card__cta"
+			href="#enquiry"
+			data-bt-trip="<?php echo esc_attr( get_the_title( $trip_id ) ); ?>"
+			data-bt-period="<?php echo esc_attr( $date_range ); ?>">
 			<?php echo esc_html( $cta_label ); ?>
 		</a>
 	</article>

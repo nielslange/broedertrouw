@@ -27,7 +27,7 @@ msgid "Calendar: add at least one row."
 msgstr "Kalender: mindestens eine Zeile hinzufügen."
 
 #: blocks/calendar/render.php:21
-#: includes/trips.php:204
+#: includes/trips.php:216
 msgid "On request"
 msgstr "Auf Anfrage"
 
@@ -59,7 +59,11 @@ msgstr ""
 msgid "Enquiry: add a heading."
 msgstr "Anfrage: eine Überschrift hinzufügen."
 
-#: blocks/enquiry/render.php:69
+#: blocks/enquiry/render.php:70
+msgid "I would like to enquire about: %s"
+msgstr "Ich interessiere mich für: %s"
+
+#: blocks/enquiry/render.php:76
 msgid "The enquiry form is not available yet."
 msgstr "Das Anfrageformular ist noch nicht verfügbar."
 
@@ -141,7 +145,7 @@ msgstr ""
 msgid "Testimonials: add at least one quote."
 msgstr ""
 
-#: blocks/upcoming-trips/render.php:30
+#: blocks/upcoming-trips/render.php:33
 msgid "Upcoming trips: no published trips with a future end date yet."
 msgstr ""
 
@@ -155,7 +159,7 @@ msgstr ""
 msgid "Footer Menu 3"
 msgstr ""
 
-#: functions.php:73
+#: functions.php:164
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
@@ -232,6 +236,32 @@ msgstr "Alle Törns"
 msgid "Trip Archives"
 msgstr "Törn-Archiv"
 
+#: includes/post-types.php:62
+msgctxt "taxonomy general name"
+msgid "Trip types"
+msgstr ""
+
+#: includes/post-types.php:63
+msgctxt "taxonomy singular name"
+msgid "Trip type"
+msgstr ""
+
+#: includes/post-types.php:64
+msgid "All trip types"
+msgstr ""
+
+#: includes/post-types.php:65
+msgid "Edit trip type"
+msgstr ""
+
+#: includes/post-types.php:66
+msgid "View trip type"
+msgstr ""
+
+#: includes/post-types.php:67
+msgid "Trip types"
+msgstr ""
+
 #: includes/trip-templates.php:47
 msgid "Disembarkation"
 msgstr "Ausstiegshafen"
@@ -264,59 +294,59 @@ msgstr "Derzeit sind keine Törns geplant."
 msgid "Past trips"
 msgstr "Vergangene Törns"
 
-#: includes/trips.php:145
+#: includes/trips.php:157
 msgctxt "trip date format"
 msgid "d-m-Y"
 msgstr "d.m.Y"
 
-#: includes/trips.php:157
+#: includes/trips.php:169
 msgctxt "trip date range, same month"
 msgid "%1$s t/m %2$s"
 msgstr "%1$s bis %2$s"
 
-#: includes/trips.php:158
+#: includes/trips.php:170
 msgctxt "trip start day format"
 msgid "d"
 msgstr "d."
 
-#: includes/trips.php:165
+#: includes/trips.php:177
 msgctxt "trip date range"
 msgid "%1$s t/m %2$s"
 msgstr "%1$s bis %2$s"
 
-#: includes/trips.php:179
+#: includes/trips.php:191
 msgid "Hoorn"
 msgstr "Hoorn"
 
-#: includes/trips.php:180
+#: includes/trips.php:192
 msgid "Enkhuizen"
 msgstr "Enkhuizen"
 
-#: includes/trips.php:181
+#: includes/trips.php:193
 msgid "Amsterdam"
 msgstr "Amsterdam"
 
-#: includes/trips.php:182
+#: includes/trips.php:194
 msgid "Other port"
 msgstr "Anderer Hafen"
 
-#: includes/trips.php:224
+#: includes/trips.php:236
 msgid "from € %s for the whole ship"
 msgstr "ab € %s für das ganze Schiff"
 
-#: includes/trips.php:228
+#: includes/trips.php:240
 msgid "from € %s per person"
 msgstr "ab € %s p. P."
 
-#: includes/trips.php:248
+#: includes/trips.php:260
 msgid "from € %s"
 msgstr "ab € %s"
 
-#: includes/trips.php:265
+#: includes/trips.php:277
 msgid "€ %s per person"
 msgstr "€ %s p. P."
 
-#: includes/trips.php:281
+#: includes/trips.php:293
 msgid "With a private cabin: %s"
 msgstr "Mit privater Kajüte: %s"
 

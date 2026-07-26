@@ -45,8 +45,19 @@
 	text-align: right;
 }
 
+/*
+ * Rows carry their own surface so the table always reads against the section
+ * behind it. Without this a tinted section shows straight through the rows and
+ * the table loses its edges.
+ */
 .bt-price-row {
 	border-top: 1px solid var(--bt-border);
+	background: var(--bt-card);
+}
+
+/* :not() keeps the featured and expanded rows painting their own state. */
+.bt-section-alt .bt-price-row:not(.bt-price-row--featured):not([open]) {
+	background: #fff;
 }
 
 .bt-price-row:first-of-type {
