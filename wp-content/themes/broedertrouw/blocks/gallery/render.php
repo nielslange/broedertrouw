@@ -63,15 +63,29 @@ foreach ( $categories as $index => $category ) {
 
 				foreach ( $category['images'] as $image ) :
 					$alt = $image['alt'] ? $image['alt'] : $category['label'];
+
+					/*
+					 * The grid shows a medium thumbnail; the full size is only
+					 * fetched when the lightbox opens, so four columns of
+					 * photos stay cheap to load.
+					 */
+					$thumb = $image['sizes']['medium_large'] ?? $image['sizes']['large'] ?? $image['url'];
+					$full  = $image['sizes']['large'] ?? $image['url'];
 					?>
 					<figure class="bt-gallery__figure" data-bt-cat="cat-<?php echo esc_attr( $index ); ?>">
-						<img
-							src="<?php echo esc_url( $image['sizes']['large'] ?? $image['url'] ); ?>"
-							alt="<?php echo esc_attr( $alt ); ?>"
-							width="<?php echo esc_attr( $image['sizes']['large-width'] ?? $image['width'] ); ?>"
-							height="<?php echo esc_attr( $image['sizes']['large-height'] ?? $image['height'] ); ?>"
-							loading="lazy"
-							decoding="async">
+						<button
+							class="bt-gallery__open"
+							type="button"
+							data-bt-full="<?php echo esc_url( $full ); ?>"
+							data-bt-alt="<?php echo esc_attr( $alt ); ?>">
+							<img
+								src="<?php echo esc_url( $thumb ); ?>"
+								alt="<?php echo esc_attr( $alt ); ?>"
+								width="<?php echo esc_attr( $image['sizes']['medium_large-width'] ?? $image['width'] ); ?>"
+								height="<?php echo esc_attr( $image['sizes']['medium_large-height'] ?? $image['height'] ); ?>"
+								loading="lazy"
+								decoding="async">
+						</button>
 					</figure>
 					<?php
 				endforeach;
@@ -79,4 +93,31 @@ foreach ( $categories as $index => $category ) {
 			?>
 		</div>
 	</div>
+
+	<?php
+	/*
+	 * A native <dialog> gives the modal behaviour, focus trapping and Escape
+	 * handling for free, so the script only has to swap the image and step
+	 * through the visible figures.
+	 */
+	?>
+	<dialog class="bt-lightbox" data-bt-lightbox aria-label="<?php esc_attr_e( 'Photo viewer', 'broedertrouw' ); ?>">
+		<button class="bt-lightbox__close" type="button" data-bt-close aria-label="<?php esc_attr_e( 'Close', 'broedertrouw' ); ?>">
+			<?php echo bt_icon( 'close', array( 'size' => 22 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</button>
+
+		<button class="bt-lightbox__nav bt-lightbox__nav--prev" type="button" data-bt-prev aria-label="<?php esc_attr_e( 'Previous photo', 'broedertrouw' ); ?>">
+			<?php echo bt_icon( 'chevron-left', array( 'size' => 26 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</button>
+
+		<figure class="bt-lightbox__figure">
+			<img class="bt-lightbox__image" src="" alt="" decoding="async">
+		</figure>
+
+		<button class="bt-lightbox__nav bt-lightbox__nav--next" type="button" data-bt-next aria-label="<?php esc_attr_e( 'Next photo', 'broedertrouw' ); ?>">
+			<?php echo bt_icon( 'chevron-right', array( 'size' => 26 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</button>
+
+		<p class="bt-lightbox__count" data-bt-count aria-live="polite"></p>
+	</dialog>
 </section>

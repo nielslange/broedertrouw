@@ -44,6 +44,38 @@ function bt_register_blocks() {
 		register_block_type( dirname( $block_json ) );
 	}
 }
+
+/**
+ * Versions block assets by their file time so edits reach the browser.
+ *
+ * Block scripts and styles otherwise inherit one static version, so a changed
+ * file keeps its old query string and visitors are served the cached copy.
+ *
+ * @param string $src    Asset URL.
+ * @param string $handle Asset handle.
+ * @return string
+ */
+function bt_version_block_assets( $src, $handle ) {
+	if ( 0 !== strpos( $handle, 'bt-' ) ) {
+		return $src;
+	}
+
+	$theme = get_stylesheet_directory_uri();
+
+	if ( 0 !== strpos( $src, $theme ) ) {
+		return $src;
+	}
+
+	$path = get_stylesheet_directory() . substr( wp_parse_url( $src, PHP_URL_PATH ), strlen( wp_parse_url( $theme, PHP_URL_PATH ) ) );
+
+	if ( ! file_exists( $path ) ) {
+		return $src;
+	}
+
+	return add_query_arg( 'ver', filemtime( $path ), remove_query_arg( 'ver', $src ) );
+}
+add_filter( 'script_loader_src', 'bt_version_block_assets', 10, 2 );
+add_filter( 'style_loader_src', 'bt_version_block_assets', 10, 2 );
 add_action( 'init', 'bt_register_blocks', 5 );
 
 /**

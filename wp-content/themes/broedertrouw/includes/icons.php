@@ -29,6 +29,12 @@ function bt_icon_path( $name ) {
 		'users' => '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>',
 		// lucide: user — a single guest joining an open trip
 		'user'  => '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+		// lucide: x
+		'close' => '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+		// lucide: chevron-left
+		'chevron-left'  => '<path d="m15 18-6-6 6-6"/>',
+		// lucide: chevron-right
+		'chevron-right' => '<path d="m9 18 6-6-6-6"/>',
 	);
 
 	return isset( $icons[ $name ] ) ? $icons[ $name ] : '';

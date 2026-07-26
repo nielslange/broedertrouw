@@ -83,6 +83,22 @@ msgstr "Alle"
 msgid "Filter photos by category"
 msgstr "Bilder nach Kategorie filtern"
 
+#: blocks/gallery/render.php:104
+msgid "Photo viewer"
+msgstr "Bildansicht"
+
+#: blocks/gallery/render.php:105
+msgid "Close"
+msgstr "Schließen"
+
+#: blocks/gallery/render.php:109
+msgid "Previous photo"
+msgstr "Vorheriges Bild"
+
+#: blocks/gallery/render.php:117
+msgid "Next photo"
+msgstr "Nächstes Bild"
+
 #: blocks/hero/render.php:19
 msgid "Hero: choose an image and add a heading."
 msgstr ""
@@ -173,11 +189,11 @@ msgstr "Termine"
 msgid "Embarkation"
 msgstr "Einstiegshafen"
 
-#: includes/blocks.php:57
+#: includes/blocks.php:89
 msgid "Notice box"
 msgstr "Hinweisbox"
 
-#: includes/blocks.php:73
+#: includes/blocks.php:105
 msgctxt "enquiry form URL anchor"
 msgid "enquiry"
 msgstr "anfrage"
