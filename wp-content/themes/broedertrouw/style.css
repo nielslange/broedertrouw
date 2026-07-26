@@ -348,35 +348,13 @@
 	border-bottom: 1px solid var(--bt-border);
 }
 
-.ct-header .site-title {
-	font-family: var(--bt-font-heading);
-	font-weight: 800;
-	font-size: 21px;
-	letter-spacing: .03em;
-	color: var(--bt-heading);
-	text-transform: uppercase;
-}
-
-.ct-header .site-description {
-	font-size: 10.5px;
-	color: var(--bt-text-3);
-	letter-spacing: .16em;
-	text-transform: uppercase;
-}
-
-/* Typography only: the menu font color comes from the Customizer
-   (Header > Menu > Font Color), so no color is set here. */
-.ct-header [data-id="menu"] .menu > li > a {
-	font-size: 15px;
-	font-weight: 600;
-	text-transform: none;
-	letter-spacing: 0;
-}
-
+/*
+ * The site title, tagline, menu and button are styled entirely through the
+ * Customizer (Header > Logo / Menu / Button): font, color, transform and
+ * spacing all have real options there. Only geometry Blocksy does not expose
+ * stays here.
+ */
 .ct-header [data-id="button"] .ct-button {
-	background: var(--bt-navy);
-	font-weight: 700;
-	font-size: 14.5px;
 	border-radius: 6px;
 	min-height: 36px;
 	padding: 0 18px;
@@ -463,12 +441,8 @@
 	text-align: left;
 }
 
-/* Link colors come from the Customizer (Footer > menu > Font Color). */
+/* Font and color come from the Customizer (Footer > menu > Font / Font Color). */
 .ct-footer [data-id^="menu"] .menu > li > a {
-	font-size: 14.5px;
-	font-weight: 400;
-	text-transform: none;
-	letter-spacing: 0;
 	text-decoration: none;
 }
 
