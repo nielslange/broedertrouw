@@ -1,0 +1,672 @@
+/**
+ * Theme Name: Broedertrouw
+ * Description: Custom child theme for Broedertrouw.
+ * Author: Niels Lange
+ * Template: blocksy
+ * Text Domain: broedertrouw
+ */
+
+:root {
+	--bt-navy: #0F3A5C;
+	--bt-blue: #2273A6;
+	--bt-link: #14567F;
+	--bt-tint: #EBF3F8;
+	--bt-text: #16242F;
+	--bt-text-2: #3a4650;
+	--bt-text-3: #5B6B77;
+	--bt-border: #DCE5EC;
+	--bt-footer: #0B2C47;
+	--bt-footer-link: #BFD7E8;
+}
+
+/* ------------------------------------------------------------
+   Layout primitives
+   ------------------------------------------------------------ */
+
+.bt-container {
+	max-width: calc(1060px + 64px);
+	margin-inline: auto;
+	padding-inline: 32px;
+}
+
+.bt-section {
+	padding: 56px 0;
+}
+
+.bt-band-tint {
+	background: var(--bt-tint);
+	padding: 64px 0;
+}
+
+.bt-stats-band {
+	background: var(--bt-navy);
+	padding: 34px 0;
+}
+
+.bt-anfrage-band {
+	background: var(--bt-navy);
+	padding: 64px 0;
+	scroll-margin-top: 90px;
+}
+
+/* ------------------------------------------------------------
+   Shared elements
+   ------------------------------------------------------------ */
+
+.bt-kicker {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--bt-blue);
+	margin: 0 0 10px;
+}
+
+.bt-arrow-link {
+	margin: 6px 0 0;
+}
+
+.bt-arrow-link a {
+	font-weight: 700;
+	font-size: 15px;
+	color: var(--bt-link);
+	text-decoration: none;
+}
+
+.bt-arrow-link a:hover {
+	color: var(--bt-navy);
+}
+
+.bt-arrow-link--sm a {
+	font-size: 14px;
+}
+
+.bt-section__title {
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--bt-text);
+	margin: 0 0 22px;
+}
+
+/* Buttons */
+
+.wp-block-button .wp-block-button__link {
+	border-radius: 6px;
+	font-weight: 700;
+	transition: opacity .15s ease;
+}
+
+.wp-block-button .wp-block-button__link:hover {
+	opacity: .9;
+}
+
+.bt-btn-white .wp-block-button__link {
+	background: #fff;
+	color: var(--bt-navy);
+	font-size: 16px;
+	padding: 13px 24px;
+}
+
+.bt-btn-outline-white .wp-block-button__link {
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .85);
+	color: #fff;
+	font-size: 16px;
+	padding: 11px 24px;
+}
+
+.bt-btn-navy .wp-block-button__link {
+	background: var(--bt-navy);
+	color: #fff;
+	font-size: 15.5px;
+	padding: 13px 24px;
+}
+
+.bt-btn-outline-navy .wp-block-button__link {
+	background: transparent;
+	border: 1.5px solid var(--bt-navy);
+	color: var(--bt-navy);
+	font-size: 14px;
+	padding: 9px 18px;
+}
+
+/* ------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------ */
+
+.bt-hero {
+	min-height: 400px;
+	max-height: 400px;
+	padding: 0;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-top: 28px;
+}
+
+.wp-block-cover.bt-hero.has-custom-content-position.has-custom-content-position .wp-block-cover__inner-container {
+	width: 100%;
+	margin: 0;
+}
+
+.bt-hero__content {
+	padding-bottom: 40px;
+}
+
+.bt-hero .bt-container {
+	max-width: none;
+}
+
+.bt-hero h1 {
+	color: #fff;
+	font-size: 46px;
+	font-weight: 800;
+	line-height: 1.1;
+	max-width: 640px;
+	margin: 0 0 12px;
+	text-wrap: pretty;
+}
+
+.bt-hero__sub {
+	font-size: 19px;
+	color: rgba(255, 255, 255, .92);
+	max-width: 560px;
+	margin: 0 0 24px;
+}
+
+.bt-hero__actions {
+	gap: 14px;
+}
+
+/* ------------------------------------------------------------
+   Charter / open tours cards
+   ------------------------------------------------------------ */
+
+.bt-cards {
+	gap: 28px;
+}
+
+.bt-card {
+	border: 1px solid var(--bt-border);
+	border-radius: 10px;
+	padding: 32px;
+	height: 100%;
+}
+
+.bt-card--tint {
+	background: var(--bt-tint);
+}
+
+.bt-card__title {
+	font-size: 26px;
+	font-weight: 700;
+	color: var(--bt-text);
+	margin: 0 0 10px;
+}
+
+.bt-card__text {
+	font-size: 15.5px;
+	line-height: 1.55;
+	color: var(--bt-text-2);
+	margin: 0 0 10px;
+}
+
+/* ------------------------------------------------------------
+   Klassenfahrt split section
+   ------------------------------------------------------------ */
+
+.bt-split {
+	gap: 48px;
+}
+
+.bt-img-r10,
+.bt-img-r10 img {
+	margin: 0;
+}
+
+.bt-img-r10 img {
+	border-radius: 10px;
+	width: 480px;
+	height: 360px;
+	object-fit: cover;
+}
+
+.bt-split__title {
+	font-size: 34px;
+	font-weight: 800;
+	line-height: 1.15;
+	color: var(--bt-text);
+	margin: 0 0 14px;
+	text-wrap: pretty;
+}
+
+.bt-split__text {
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--bt-text-2);
+	margin: 0 0 18px;
+}
+
+.bt-checks {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 22px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	font-size: 15.5px;
+	color: var(--bt-text);
+}
+
+.bt-checks li {
+	position: relative;
+	padding-left: 26px;
+	margin: 0;
+}
+
+.bt-checks li::before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	color: var(--bt-blue);
+	font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   Mini cards (Betriebsausflug / Familienfeier)
+   ------------------------------------------------------------ */
+
+.bt-minis {
+	gap: 28px;
+}
+
+.bt-mini {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	border: 1px solid var(--bt-border);
+	border-radius: 10px;
+	padding: 22px;
+	height: 100%;
+}
+
+.bt-mini__img {
+	flex: none;
+	margin: 0;
+}
+
+.bt-mini__img img {
+	width: 150px;
+	height: 110px;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.bt-mini__body h4 {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--bt-text);
+	margin: 0 0 6px;
+}
+
+.bt-mini__body p {
+	font-size: 14.5px;
+	line-height: 1.5;
+	color: var(--bt-text-2);
+	margin: 0 0 6px;
+}
+
+.bt-mini__body .bt-arrow-link {
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Stats band
+   ------------------------------------------------------------ */
+
+.bt-stats {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.bt-stat {
+	text-align: center;
+}
+
+.bt-stat__num {
+	font-family: 'Archivo', sans-serif;
+	font-weight: 800;
+	font-size: 30px;
+	color: #fff;
+	margin: 0;
+}
+
+.bt-stat__label {
+	font-size: 13px;
+	color: var(--bt-footer-link);
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Upcoming tours
+   ------------------------------------------------------------ */
+
+.bt-row-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 20px;
+}
+
+.bt-row-head .bt-section__title {
+	margin: 0;
+}
+
+.bt-row-head .bt-arrow-link {
+	margin: 0;
+}
+
+.bt-row-head .bt-arrow-link a {
+	font-size: 14.5px;
+}
+
+.bt-tour {
+	display: grid;
+	grid-template-columns: 150px 1fr auto;
+	gap: 20px;
+	align-items: center;
+	padding: 18px 0;
+	border-top: 1px solid var(--bt-border);
+}
+
+.bt-tour--last {
+	border-bottom: 1px solid var(--bt-border);
+}
+
+.bt-tour__date {
+	font-family: 'Archivo', sans-serif;
+	font-weight: 700;
+	font-size: 17px;
+	color: var(--bt-navy);
+	margin: 0;
+}
+
+.bt-tour__title {
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--bt-text);
+	margin: 0;
+}
+
+.bt-tour__sub {
+	font-size: 14px;
+	color: var(--bt-text-3);
+	margin: 0;
+}
+
+.bt-tour p,
+.bt-tour .wp-block-buttons,
+.bt-tour .bt-tour__body {
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Anfrage band (placeholder until the FluentForm block lands)
+   ------------------------------------------------------------ */
+
+.bt-anfrage-band .bt-container {
+	text-align: center;
+}
+
+.bt-anfrage-band__title {
+	color: #fff;
+	font-size: 30px;
+	font-weight: 800;
+	margin: 0 0 10px;
+}
+
+.bt-anfrage-band__text {
+	color: var(--bt-footer-link);
+	font-size: 16px;
+	max-width: 560px;
+	margin: 0 auto 22px;
+}
+
+.bt-anfrage-band .wp-block-buttons {
+	justify-content: center;
+}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+
+.ct-header [data-row*="middle"] > div {
+	border-bottom: 1px solid var(--bt-border);
+}
+
+.ct-header .site-title {
+	font-family: 'Archivo', sans-serif;
+	font-weight: 800;
+	font-size: 21px;
+	letter-spacing: .03em;
+	color: var(--bt-navy);
+	text-transform: uppercase;
+}
+
+.ct-header .site-description {
+	font-size: 10.5px;
+	color: var(--bt-text-3);
+	letter-spacing: .16em;
+	text-transform: uppercase;
+}
+
+.ct-header [data-id="menu"] .menu > li > a {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--bt-text);
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.ct-header [data-id="button"] .ct-button {
+	background: var(--bt-navy);
+	font-weight: 700;
+	font-size: 14.5px;
+	border-radius: 6px;
+	min-height: 36px;
+	padding: 0 18px;
+}
+
+.ct-header .ct-language-switcher a {
+	border: 1px solid var(--bt-border);
+	border-radius: 6px;
+	padding: 0 10px;
+	min-height: 36px;
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 12.5px;
+	font-weight: 700;
+	color: var(--bt-text);
+}
+
+/* ------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------ */
+
+.ct-footer {
+	font-size: 14.5px;
+}
+
+.ct-footer .widget-title {
+	font-size: 14.5px;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom: 14px;
+}
+
+.ct-footer .ct-widget {
+	color: var(--bt-footer-link);
+}
+
+.ct-footer .ct-widget a {
+	color: var(--bt-footer-link);
+	text-decoration: none;
+}
+
+.ct-footer .ct-widget a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.ct-footer .widget_nav_menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ct-footer .widget_nav_menu li {
+	margin: 0 0 11px;
+}
+
+.ct-footer [data-row*="bottom"] {
+	font-size: 14px;
+}
+
+.ct-footer [data-row*="bottom"] .ct-container {
+	align-items: center;
+}
+
+.ct-footer [data-column="copyright"] {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.ct-footer .ct-footer-copyright {
+	color: var(--bt-footer-link);
+}
+
+.ct-footer .ct-footer-copyright p {
+	margin: 0;
+}
+
+.ct-footer [data-id="menu"] .menu {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ct-footer [data-id="menu"] .menu > li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0;
+}
+
+.ct-footer [data-id="menu"] .menu > li::before {
+	content: "·";
+	color: #4A6A85;
+}
+
+.ct-footer [data-id="menu"] .menu > li > a {
+	color: var(--bt-footer-link);
+	font-weight: 600;
+	font-size: 14px;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.ct-footer [data-id="menu"] .menu > li > a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.ct-footer [data-column="widget-area-4"] {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 22px;
+}
+
+.ct-footer [data-column="widget-area-4"] .ct-widget {
+	margin: 0;
+}
+
+.ct-footer .widget_text .textwidget p {
+	line-height: 1.9;
+	margin: 0;
+}
+
+.ct-footer .widget_polylang ul {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+	padding: 0;
+	margin: 0;
+}
+
+.ct-footer .widget_polylang li {
+	margin: 0;
+}
+
+.ct-footer .widget_polylang a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	color: #fff;
+	font-weight: 600;
+}
+
+.ct-footer .widget_polylang img {
+	border-radius: 2px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+}
+
+.bt-vzr {
+	font-weight: 600;
+	color: var(--bt-footer-link);
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 999px) {
+	.bt-hero h1 {
+		font-size: 36px;
+	}
+
+	.bt-img-r10 img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+	}
+}
+
+@media (max-width: 781px) {
+	.bt-tour {
+		grid-template-columns: 1fr;
+		gap: 8px;
+	}
+
+	.bt-stats {
+		justify-content: center;
+		gap: 24px 40px;
+	}
+
+	.bt-row-head {
+		flex-direction: column;
+		gap: 6px;
+	}
+}
