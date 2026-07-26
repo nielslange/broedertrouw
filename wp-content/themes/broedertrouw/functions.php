@@ -16,6 +16,7 @@ require_once BT_THEME_DIR . '/includes/trips.php';
 require_once BT_THEME_DIR . '/includes/post-types.php';
 require_once BT_THEME_DIR . '/includes/polylang.php';
 require_once BT_THEME_DIR . '/includes/admin-columns.php';
+require_once BT_THEME_DIR . '/includes/footer.php';
 require_once BT_THEME_DIR . '/includes/blocks.php';
 require_once BT_THEME_DIR . '/includes/acf-labels.php';
 require_once BT_THEME_DIR . '/includes/trip-templates.php';

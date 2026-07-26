@@ -17,7 +17,9 @@ $date_range = bt_trip_date_range( $trip_id );
 $highlight  = bt_field( 'highlight', $trip_id );
 $price      = bt_trip_price( $trip_id );
 $port       = bt_port_label( bt_field( 'port_embark', $trip_id ) );
-$meta_parts = array_filter( array( $port, $price ) );
+// The highlight is authored as a sentence; drop the full stop so it reads as
+// the first item of the dot-separated meta line.
+$meta_parts = array_filter( array( rtrim( (string) $highlight, '.' ), $port, $price ) );
 ?>
 <article class="bt-trip-card bt-trip-card--<?php echo esc_attr( $variant ); ?>">
 	<?php if ( 'tile' === $variant && has_post_thumbnail( $trip_id ) ) : ?>
@@ -36,10 +38,6 @@ $meta_parts = array_filter( array( $port, $price ) );
 				<?php echo esc_html( get_the_title( $trip_id ) ); ?>
 			</a>
 		</h3>
-
-		<?php if ( $highlight ) : ?>
-			<p class="bt-trip-card__highlight"><?php echo esc_html( $highlight ); ?></p>
-		<?php endif; ?>
 
 		<?php if ( $meta_parts ) : ?>
 			<p class="bt-trip-card__meta"><?php echo esc_html( implode( ' · ', $meta_parts ) ); ?></p>

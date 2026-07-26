@@ -15,15 +15,28 @@
 	object-fit: cover;
 }
 
+/**
+ * The heading and subheading are white over a photograph, so the overlay has
+ * to guarantee the contrast rather than rely on whatever image is uploaded.
+ * The horizontal scrim darkens the text side; the vertical one keeps the
+ * original mood of the design.
+ */
 .bt-hero__overlay {
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(
-		180deg,
-		rgba(9, 32, 52, .15) 0%,
-		rgba(9, 32, 52, .55) 78%,
-		rgba(9, 32, 52, .15) 100%
-	);
+	background:
+		linear-gradient(
+			90deg,
+			rgba(9, 32, 52, .78) 0%,
+			rgba(9, 32, 52, .58) 45%,
+			rgba(9, 32, 52, .25) 100%
+		),
+		linear-gradient(
+			180deg,
+			rgba(9, 32, 52, .15) 0%,
+			rgba(9, 32, 52, .45) 78%,
+			rgba(9, 32, 52, .2) 100%
+		);
 }
 
 .bt-hero__inner {
@@ -50,6 +63,7 @@
 	max-width: 560px;
 	color: rgba(255, 255, 255, .92);
 	font-size: clamp(16px, 1.6vw, 19px);
+	text-wrap: balance;
 }
 
 .bt-hero__actions {

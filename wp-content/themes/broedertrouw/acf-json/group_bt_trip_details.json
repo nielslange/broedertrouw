@@ -63,7 +63,7 @@
                 "amsterdam": "Amsterdam",
                 "other": "Other port"
             },
-            "default_value": "hoorn",
+            "default_value": "enkhuizen",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -72,7 +72,7 @@
             "placeholder": "",
             "create_options": 0,
             "save_options": 0,
-            "pll_default_value": "hoorn"
+            "pll_default_value": "enkhuizen"
         },
         {
             "key": "field_bt_trip_port_disembark",
@@ -335,9 +335,9 @@
         ]
     ],
     "menu_order": 0,
-    "position": "acf_after_title",
-    "style": "seamless",
-    "label_placement": "top",
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
     "instruction_placement": "field",
     "hide_on_screen": [],
     "active": true,
@@ -346,5 +346,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785071079
+    "modified": 1785073028
 }

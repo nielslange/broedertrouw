@@ -92,21 +92,35 @@
 	transition: opacity .15s ease;
 }
 
-.bt-button:hover {
-	opacity: .9;
-}
-
+/**
+ * Every variant states both background and text color on hover, so the pair
+ * always keeps a WCAG AA contrast ratio. Never fade a button with opacity:
+ * that drags the label toward the backdrop and makes it unreadable.
+ */
 .bt-button--white {
 	background: #fff;
 	color: var(--bt-navy);
 	padding: 13px 24px;
 }
 
+.bt-button--white:hover,
+.bt-button--white:focus-visible {
+	background: var(--bt-tint);
+	color: var(--bt-navy);
+}
+
 .bt-button--outline-white {
-	background: transparent;
-	border: 2px solid rgba(255, 255, 255, .85);
+	background: rgba(9, 32, 52, .72);
+	border: 2px solid #fff;
 	color: #fff;
 	padding: 11px 24px;
+}
+
+.bt-button--outline-white:hover,
+.bt-button--outline-white:focus-visible {
+	background: #fff;
+	border-color: #fff;
+	color: var(--bt-navy);
 }
 
 .bt-button--navy {
@@ -115,12 +129,25 @@
 	padding: 13px 24px;
 }
 
+.bt-button--navy:hover,
+.bt-button--navy:focus-visible {
+	background: var(--bt-footer);
+	color: #fff;
+}
+
 .bt-button--outline-navy {
 	background: transparent;
 	border: 1.5px solid var(--bt-navy);
 	color: var(--bt-navy);
 	font-size: 14px;
 	padding: 9px 18px;
+}
+
+.bt-button--outline-navy:hover,
+.bt-button--outline-navy:focus-visible {
+	background: var(--bt-navy);
+	border-color: var(--bt-navy);
+	color: #fff;
 }
 
 .bt-checklist {
@@ -353,6 +380,12 @@
 	color: var(--bt-text);
 }
 
+.ct-header .ct-language-switcher a:hover,
+.ct-header .ct-language-switcher a:focus-visible {
+	border-color: var(--bt-navy);
+	color: var(--bt-navy);
+}
+
 /* ------------------------------------------------------------
    Footer
    ------------------------------------------------------------ */
@@ -382,14 +415,95 @@
 	text-decoration: underline;
 }
 
-.ct-footer .widget_nav_menu ul {
+/**
+ * Footer menu elements (locations footer, footer_2, footer_3). Blocksy renders
+ * these centered and inheriting the row's own link color, so the columns are
+ * re-aligned and recolored to match the contact column beside them.
+ */
+.ct-footer [data-column^="menu"] {
+	text-align: left;
+	align-items: flex-start;
+}
+
+.ct-footer .footer-menu-inline {
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.ct-footer [data-id^="menu"] .menu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 11px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
-.ct-footer .widget_nav_menu li {
-	margin: 0 0 11px;
+.ct-footer [data-id^="menu"] .menu > li {
+	margin: 0;
+	align-self: flex-start;
+	text-align: left;
+	width: auto;
+}
+
+.ct-footer [data-id^="menu"] .menu > li > a {
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.ct-footer [data-id^="menu"] .menu > li > a {
+	color: var(--bt-footer-link);
+	font-size: 14.5px;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+	text-decoration: none;
+}
+
+.ct-footer [data-id^="menu"] .menu > li > a:hover,
+.ct-footer [data-id^="menu"] .menu > li > a:focus-visible {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/**
+ * Column headings for the footer menus.
+ *
+ * Blocksy's footer menu element has no title field, so the heading is generated
+ * from the nav's aria-label, which Blocksy fills with the assigned menu name.
+ * Keep these selectors in sync with the menu names in Appearance > Menus.
+ */
+.ct-footer .footer-menu-inline::before {
+	display: block;
+	margin-bottom: 14px;
+	color: #fff;
+	font-size: 14.5px;
+	font-weight: 700;
+}
+
+.ct-footer nav[aria-label="Footer Menu Trips NL"]::before {
+	content: "Zeiltochten";
+}
+
+.ct-footer nav[aria-label="Footer Menu Info NL"]::before {
+	content: "Informatie";
+}
+
+.ct-footer nav[aria-label="Footer Menu Legals NL"]::before {
+	content: "Juridisch";
+}
+
+.ct-footer nav[aria-label="Footer Menu Trips DE"]::before {
+	content: "Segeltörns";
+}
+
+.ct-footer nav[aria-label="Footer Menu Info DE"]::before {
+	content: "Informationen";
+}
+
+.ct-footer nav[aria-label="Footer Menu Legals DE"]::before {
+	content: "Rechtliches";
 }
 
 .ct-footer [data-row*="bottom"] {
@@ -400,14 +514,6 @@
 	align-items: center;
 }
 
-.ct-footer [data-column="copyright"] {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 10px;
-}
-
 .ct-footer .ct-footer-copyright {
 	color: var(--bt-footer-link);
 }
@@ -416,41 +522,7 @@
 	margin: 0;
 }
 
-.ct-footer [data-id="menu"] .menu {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.ct-footer [data-id="menu"] .menu > li {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin: 0;
-}
-
-.ct-footer [data-id="menu"] .menu > li::before {
-	content: "\00B7";
-	color: #4A6A85;
-}
-
-.ct-footer [data-id="menu"] .menu > li > a {
-	color: var(--bt-footer-link);
-	font-weight: 600;
-	font-size: 14px;
-	text-transform: none;
-	letter-spacing: 0;
-}
-
-.ct-footer [data-id="menu"] .menu > li > a:hover {
-	color: #fff;
-	text-decoration: underline;
-}
-
-.ct-footer [data-column="widget-area-4"] {
+.ct-footer [data-column="widget-area-5"] {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -458,15 +530,20 @@
 	gap: 22px;
 }
 
-.ct-footer [data-column="widget-area-4"] .ct-widget {
+.ct-footer [data-column="widget-area-5"] .ct-widget {
 	margin: 0;
 }
 
 .ct-footer .widget_text .textwidget p {
-	line-height: 1.9;
-	margin: 0;
+	line-height: 1.6;
+	margin: 0 0 11px;
 }
 
+.ct-footer .widget_text .textwidget p:last-child {
+	margin-bottom: 0;
+}
+
+/* Mirrors the header language switcher, inverted for the dark footer. */
 .ct-footer .widget_polylang ul {
 	list-style: none;
 	display: flex;
@@ -483,13 +560,33 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 7px;
+	box-sizing: border-box;
+	min-height: 36px;
+	padding: 0 10px;
+	border: 1px solid rgba(255, 255, 255, .35);
+	border-radius: 6px;
 	color: #fff;
-	font-weight: 600;
+	font-size: 12.5px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.ct-footer .widget_polylang a:hover,
+.ct-footer .widget_polylang a:focus-visible {
+	border-color: #fff;
+	background: rgba(255, 255, 255, .1);
+	color: #fff;
+	text-decoration: none;
 }
 
 .ct-footer .widget_polylang img {
 	border-radius: 2px;
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+}
+
+.ct-footer .widget_polylang a span {
+	margin: 0 !important;
 }
 
 .bt-vzr {
