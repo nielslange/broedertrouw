@@ -196,6 +196,43 @@
 	background: transparent;
 }
 
+/**
+ * Inline SVG icons (Lucide paths, see includes/icons.php).
+ *
+ * Every icon shares a 24x24 viewBox and is rendered at a fixed pixel size, so
+ * icons always line up and never inherit a font's glyph metrics.
+ */
+.bt-icon {
+	display: inline-block;
+	flex: none;
+	vertical-align: middle;
+}
+
+/**
+ * Card surface.
+ *
+ * A hair darker than white so cards read as raised panels against the page
+ * without competing with the tint bands. Cards that land on a tinted section
+ * flip back to white, keeping the same one-step contrast either way.
+ */
+:root {
+	--bt-card: #FAFCFD;
+}
+
+.bt-trip-card--card,
+.bt-contact-card,
+.bt-price-grid--cards .bt-price-grid__item,
+.bt-price-grid--boxed .bt-price-grid__box {
+	background: var(--bt-card);
+}
+
+.bt-section-alt .bt-trip-card--card,
+.bt-section-alt .bt-contact-card,
+.bt-section-alt .bt-price-grid--cards .bt-price-grid__item,
+.bt-section-alt .bt-price-grid--boxed .bt-price-grid__box {
+	background: #fff;
+}
+
 /* Notice box: a core paragraph with the "bt-notice" block style. */
 .is-style-bt-notice {
 	background: var(--bt-tint);
@@ -457,13 +494,16 @@
 	width: auto;
 }
 
+/*
+ * Font and color come from the Customizer (Footer > menu > Font / Font Color).
+ * Blocksy gives the link its own inline padding, which pushes it right of the
+ * column heading rendered by nav::before. Zeroing it lines the links up with
+ * the heading and with the contact column beside them.
+ */
 .ct-footer [data-id^="menu"] .menu > li > a {
 	justify-content: flex-start;
+	padding-inline: 0;
 	text-align: left;
-}
-
-/* Font and color come from the Customizer (Footer > menu > Font / Font Color). */
-.ct-footer [data-id^="menu"] .menu > li > a {
 	text-decoration: none;
 }
 

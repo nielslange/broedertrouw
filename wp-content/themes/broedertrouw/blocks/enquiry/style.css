@@ -53,9 +53,10 @@
 	gap: 10px;
 }
 
-.bt-enquiry__glyph {
+/* Fixed box so every icon occupies the same space regardless of its path. */
+.bt-enquiry__icon {
+	flex: none;
 	color: var(--bt-blue);
-	font-weight: 700;
 }
 
 .bt-enquiry__contact a {
@@ -102,15 +103,66 @@
 	font-weight: 700;
 }
 
+/* A select's intrinsic line box differs from a text input's, so height is
+   pinned rather than left to the content. */
 .bt-enquiry .fluentform .ff-el-form-control {
 	width: 100%;
-	padding: 10px;
+	height: 40px;
+	padding: 9px 10px;
 	border: 1px solid #C6D4DE;
 	border-radius: 6px;
 	color: var(--bt-heading);
 	font-family: inherit;
 	font-size: 14.5px;
+	line-height: 1.35;
 	background: #fff;
+}
+
+.bt-enquiry .fluentform select.ff-el-form-control {
+	/* Room for the native arrow, which would otherwise sit on the text. */
+	padding-right: 32px;
+	/* Matches the text inputs exactly; a select otherwise rounds a fraction
+	   short and the paired fields look misaligned. */
+	line-height: normal;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235B6B77' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+}
+
+/* The message is optional, so it stays compact: about three lines, with the
+   visitor free to drag it taller. */
+.bt-enquiry .fluentform textarea.ff-el-form-control {
+	height: 84px;
+	min-height: 84px;
+	max-height: 200px;
+	resize: vertical;
+}
+
+/* GDPR consent: the box keeps its own size and the wrapped label lines up
+   beside it instead of under it. */
+.bt-enquiry .fluentform .ff-el-group.ff-el-form-check,
+.bt-enquiry .fluentform .ff_list_inline .ff-el-form-check {
+	margin-bottom: 4px;
+}
+
+.bt-enquiry .fluentform .ff-el-form-check label {
+	display: flex;
+	align-items: flex-start;
+	gap: 9px;
+	color: var(--bt-text-2);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.45;
+}
+
+.bt-enquiry .fluentform .ff-el-form-check input[type="checkbox"] {
+	flex: none;
+	width: 16px;
+	height: 16px;
+	min-height: 0;
+	margin-top: 2px;
+	accent-color: var(--bt-navy);
 }
 
 .bt-enquiry .fluentform .ff-el-form-control:focus {

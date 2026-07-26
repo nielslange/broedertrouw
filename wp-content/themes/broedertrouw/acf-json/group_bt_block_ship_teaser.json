@@ -104,7 +104,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
+            "layout": "block",
             "button_label": "Add item",
             "min": 0,
             "max": 0,
@@ -173,5 +173,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785093730
+    "modified": 1785095053
 }

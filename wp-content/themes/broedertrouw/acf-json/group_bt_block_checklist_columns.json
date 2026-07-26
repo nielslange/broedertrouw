@@ -33,7 +33,7 @@
                     "required": false,
                     "conditional_logic": false,
                     "wrapper": {
-                        "width": "60",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
@@ -55,7 +55,7 @@
                     "required": false,
                     "conditional_logic": false,
                     "wrapper": {
-                        "width": "40",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
@@ -84,7 +84,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
+                    "layout": "block",
                     "button_label": "Add item",
                     "min": 0,
                     "max": 0,
@@ -140,5 +140,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785093731
+    "modified": 1785095053
 }

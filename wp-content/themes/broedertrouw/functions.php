@@ -12,6 +12,7 @@ define( 'BT_THEME_DIR', get_stylesheet_directory() );
 define( 'BT_THEME_URI', get_stylesheet_directory_uri() );
 
 require_once BT_THEME_DIR . '/includes/colors.php';
+require_once BT_THEME_DIR . '/includes/icons.php';
 require_once BT_THEME_DIR . '/includes/trips.php';
 require_once BT_THEME_DIR . '/includes/post-types.php';
 require_once BT_THEME_DIR . '/includes/polylang.php';

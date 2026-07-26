@@ -11,15 +11,15 @@
 	grid-template-columns: 1fr;
 }
 
+/*
+ * Cards stay on one row while every column is wide enough to hold a phone
+ * number or email address unbroken. Below that the track minimum forces a
+ * wrap, so three cards become 2 + 1 only when the viewport actually demands
+ * it, never by default.
+ */
 @media (min-width: 600px) {
 	.bt-contact-cards__inner {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media (min-width: 900px) {
-	.bt-contact-cards__inner {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
 	}
 }
 
@@ -36,14 +36,29 @@
 	margin: 0;
 }
 
+/*
+ * A phone number or email address must never break: a wrapped one reads as
+ * two different values. The size steps down on narrow cards so the whole
+ * value still fits on one line instead of overflowing.
+ */
 .bt-contact-card__value {
 	margin: 0;
 	color: var(--bt-navy);
 	font-family: var(--bt-font-heading);
-	font-size: 22px;
+	font-size: clamp(17px, 2.1vw, 22px);
 	font-weight: 800;
+	line-height: 1.25;
 	text-decoration: none;
-	overflow-wrap: anywhere;
+	white-space: nowrap;
+	overflow-wrap: normal;
+}
+
+/* Below the two-column breakpoint the card is full width, so the value has
+   room for its full size again. */
+@media (max-width: 599px) {
+	.bt-contact-card__value {
+		font-size: 20px;
+	}
 }
 
 a.bt-contact-card__value:hover,

@@ -47,14 +47,14 @@ $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';
 				<ul class="bt-enquiry__contact">
 					<?php if ( $phone ) : ?>
 						<li>
-							<span class="bt-enquiry__glyph" aria-hidden="true">&#9742;</span>
+							<?php echo bt_icon( 'phone', array( 'class' => 'bt-enquiry__icon' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<a href="tel:<?php echo esc_attr( $tel ); ?>"><?php echo esc_html( $phone ); ?></a>
 						</li>
 					<?php endif; ?>
 
 					<?php if ( $email ) : ?>
 						<li>
-							<span class="bt-enquiry__glyph" aria-hidden="true">&#9993;</span>
+							<?php echo bt_icon( 'mail', array( 'class' => 'bt-enquiry__icon' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
 						</li>
 					<?php endif; ?>

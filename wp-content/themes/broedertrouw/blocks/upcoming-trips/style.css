@@ -39,6 +39,7 @@
 	}
 }
 
+/* Background comes from the shared card surface in style.css. */
 .bt-trip-card--card {
 	display: flex;
 	flex-direction: column;
@@ -46,7 +47,6 @@
 	padding: 26px;
 	border: 1px solid var(--bt-border);
 	border-radius: 12px;
-	background: #fff;
 }
 
 .bt-trip-card--card .bt-trip-card__date {

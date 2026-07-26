@@ -35,13 +35,19 @@
 	text-wrap: pretty;
 }
 
+/*
+ * Measure is capped in ch rather than px so it tracks the font size: ~68
+ * characters per line sits inside the 60 to 75 that reads most comfortably.
+ * text-wrap: pretty only tidies the last lines, where balance would even out
+ * every line and can leave a multi-line lead looking short.
+ */
 .bt-page-header__lead {
 	margin: 0;
-	max-width: 680px;
+	max-width: 68ch;
 	color: var(--bt-text-2);
 	font-size: 17px;
 	line-height: 1.6;
-	text-wrap: balance;
+	text-wrap: pretty;
 }
 
 .bt-page-header__people {

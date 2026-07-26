@@ -62,7 +62,7 @@
                 "id": ""
             },
             "min": 1,
-            "layout": "table",
+            "layout": "block",
             "button_label": "Add item",
             "max": 0,
             "rows_per_page": 20,
@@ -158,5 +158,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785093731
+    "modified": 1785095053
 }
