@@ -34,6 +34,13 @@ foreach ( $categories as $index => $category ) {
 	data-bt-gallery>
 
 	<div class="bt-gallery__inner">
+		<?php
+		/*
+		 * With a single category there is nothing to filter, so the chip bar
+		 * would only offer "All" and that same category.
+		 */
+		if ( count( $chips ) > 2 ) :
+			?>
 		<div class="bt-gallery__chips" role="group" aria-label="<?php esc_attr_e( 'Filter photos by category', 'broedertrouw' ); ?>">
 			<?php foreach ( $chips as $slug => $label ) : ?>
 				<button
@@ -45,6 +52,7 @@ foreach ( $categories as $index => $category ) {
 				</button>
 			<?php endforeach; ?>
 		</div>
+		<?php endif; ?>
 
 		<div class="bt-gallery__grid">
 			<?php
