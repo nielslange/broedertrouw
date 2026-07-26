@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/cta",
+	"title": "CTA band",
+	"description": "Full-width call to action with heading, text and a button.",
+	"category": "broedertrouw",
+	"icon": "megaphone",
+	"keywords": [ "cta", "call to action", "banner" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

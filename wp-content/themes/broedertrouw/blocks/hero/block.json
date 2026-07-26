@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/hero",
+	"title": "Hero",
+	"description": "Full-width image band with heading, subheading and up to two buttons.",
+	"category": "broedertrouw",
+	"icon": "cover-image",
+	"keywords": [ "hero", "banner", "header" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

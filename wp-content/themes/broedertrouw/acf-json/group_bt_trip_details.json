@@ -1,0 +1,385 @@
+{
+    "key": "group_bt_trip_details",
+    "title": "Trip Details",
+    "fields": [
+        {
+            "key": "field_bt_trip_date_start",
+            "label": "Start date",
+            "name": "date_start",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_bt_trip_date_end",
+            "label": "End date",
+            "name": "date_end",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_bt_trip_port_embark",
+            "label": "Embarkation port",
+            "name": "port_embark",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hoorn": "Hoorn",
+                "enkhuizen": "Enkhuizen",
+                "amsterdam": "Amsterdam",
+                "other": "Other port"
+            },
+            "default_value": "hoorn",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": "hoorn"
+        },
+        {
+            "key": "field_bt_trip_port_disembark",
+            "label": "Disembarkation port",
+            "name": "port_disembark",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Leave empty when it matches the embarkation port.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hoorn": "Hoorn",
+                "enkhuizen": "Enkhuizen",
+                "amsterdam": "Amsterdam",
+                "other": "Other port"
+            },
+            "allow_null": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "default_value": false,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": false
+        },
+        {
+            "key": "field_bt_trip_booking_mode",
+            "label": "Booking mode",
+            "name": "booking_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "per_berth": "Per berth",
+                "whole_boat": "Whole ship"
+            },
+            "default_value": "per_berth",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "per_berth"
+        },
+        {
+            "key": "field_bt_trip_price_pp",
+            "label": "Price",
+            "name": "price_pp",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Price per person, or for the whole ship when booking mode is \"Whole ship\".",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "step": 10,
+            "prepend": "€",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_cabin_surcharge",
+            "label": "Cabin surcharge",
+            "name": "cabin_surcharge",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "step": 10,
+            "prepend": "€",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_berth_status",
+            "label": "Berth status",
+            "name": "berth_status",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "open": "Berths available",
+                "few": "Few berths left",
+                "full": "Fully booked"
+            },
+            "default_value": "open",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "open"
+        },
+        {
+            "key": "field_bt_trip_berths_total",
+            "label": "Berths total",
+            "name": "berths_total",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "default_value": "",
+            "max": "",
+            "step": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_highlight",
+            "label": "Highlight",
+            "name": "highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "One-liner for cards and lists.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": 120,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_includes",
+            "label": "Included",
+            "name": "includes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add item",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_trip_includes_item",
+                    "label": "Item",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_trip_includes"
+                }
+            ]
+        },
+        {
+            "key": "field_bt_trip_excludes",
+            "label": "Not included",
+            "name": "excludes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add item",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_trip_excludes_item",
+                    "label": "Item",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_trip_excludes"
+                }
+            ]
+        },
+        {
+            "key": "field_bt_trip_gallery",
+            "label": "Gallery",
+            "name": "gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "insert": "append",
+            "min": 0,
+            "max": 0,
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "trip"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Dates, ports, pricing and availability for a sailing trip.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785068844
+}

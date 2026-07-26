@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/testimonials",
+	"title": "Testimonials",
+	"description": "Quote cards from guests and groups.",
+	"category": "broedertrouw",
+	"icon": "format-quote",
+	"keywords": [ "testimonials", "quotes", "reviews" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

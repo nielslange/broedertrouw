@@ -6,19 +6,27 @@ Project-level context for Claude Code. Keep this short.
 
 - **Project:** broedertrouw — bilingual (NL default / DE) marketing site for the stevenklipper Broedertrouw, a historic sailing charter ship in Hoorn (NL). School classes are the primary audience.
 - **Workspace root:** the WordPress install root. Custom code lives in [wp-content/themes/broedertrouw/](wp-content/themes/broedertrouw/) (Blocksy child theme). This repo tracks the child theme and root config only — WordPress core and all plugins (premium: Blocksy Companion Pro, Polylang Pro, FluentForm) are gitignored and managed separately.
-- **Local site:** https://broedertrouw.test (Valet-style, http redirects to https). WP-CLI works from the repo root.
+- **Local site:** <https://broedertrouw.test> (Valet-style, http redirects to https). WP-CLI works from the repo root.
 
 ## Architecture rules
 
+- **All code-level strings are English** — post type and field keys, block names, PHP labels, and i18n source strings. Content is NL (primary) / DE (secondary); translations live in [wp-content/themes/broedertrouw/languages/](wp-content/themes/broedertrouw/languages/). After changing a translatable string run `wp i18n make-pot wp-content/themes/broedertrouw wp-content/themes/broedertrouw/languages/broedertrouw.pot --domain=broedertrouw --exclude=acf-json,bin`, update the `.po` files, then `wp i18n make-mo`.
 - **Never place a header or footer directly into the theme.** Use the Blocksy header/footer builder (customizer `theme_mods_broedertrouw`: `header_placements` / `footer_placements`) and WordPress menus.
+- **Page content is built with ACF PRO blocks**, not core Gutenberg blocks. One folder per block under [blocks/](wp-content/themes/broedertrouw/blocks/) with `block.json` + `render.php` + `style.css`; [includes/blocks.php](wp-content/themes/broedertrouw/includes/blocks.php) auto-discovers them. No build step. Blocks are namespaced `bt/` and grouped under the "Broedertrouw" inserter category. Field definitions are ACF Local JSON in [acf-json/](wp-content/themes/broedertrouw/acf-json/) — ACF's default save point for a child theme, so no filter is needed.
+  - A block's field-group location rule must match the **registered** block name (`bt/hero`), not `acf/bt-hero`. Serialized block comments in post content must likewise read `<!-- wp:bt/hero ... -->`.
+  - Never hand-edit `acf-json/*.json` with a generic JSON rewriter — re-serializing can drop the `fields` array. Edit fields in the ACF UI (it writes the JSON back) or re-import via `acf_import_field_group()`.
+  - Keep exactly one copy of each field group: duplicate DB copies alongside the JSON ones break the block inspector.
+- **Sailing trips are a CPT** (`trip`, archive `/trips/`) with fields from the "Trip Details" group. "Past" is derived from `date_end` at query time, never stored. Query trips through `bt_get_trips()` in [includes/trips.php](wp-content/themes/broedertrouw/includes/trips.php) so blocks, archives and related lists stay consistent; it deliberately passes no language argument because Polylang filters the query. Seed dev data with `wp eval-file wp-content/themes/broedertrouw/bin/seed-trips.php` (idempotent).
+- **Trip front-end output hangs off Blocksy hooks** (`blocksy:single:container:top` / `:bottom`, `blocksy:posts-listing:canvas:custom-output`) rather than template overrides, so Blocksy keeps owning the page shell. Verify hook names against the parent theme before adding new ones.
 - **Languages:** Polylang Pro. NL is the default language (hidden from URLs), DE is secondary under `/de/`. Menus are assigned per language via Polylang's menu-location handling; widget blocks carry a `pll_lang` attribute so each sidebar widget renders only in its language.
 - **Language switcher:** show ONLY the inactive language, as flag + code (Blocksy header language-switcher element with `hide_current_language`).
 - **Design source:** Claude Design project "Broedertrouw website redesign" (`240887f9-6f33-462f-96a0-7eb07837b09d`) — one `*.dc.html` per page plus a CLAUDE.md with binding design rules (maritime blues, navy `#0F3A5C`, Archivo + Source Sans 3, informal Du/je tone, never em dashes in copy).
-- Page content is built with Gutenberg blocks styled by the child theme's `style.css`; keep sections buildable/editable in the editor rather than hardcoded in PHP.
 
 ## Verifying UI changes
 
-Verify rendered output on https://broedertrouw.test via the Playwright MCP ([.mcp.json](.mcp.json)) — navigate, screenshot, snapshot. The cert is self-signed; ignore HTTPS errors.
+Verify rendered output on <https://broedertrouw.test> via the Playwright MCP ([.mcp.json](.mcp.json)) — navigate, screenshot, snapshot. The cert is self-signed; ignore HTTPS errors.
+
+Front-end checks need no credentials. To inspect **wp-admin** (block editor, ACF field groups, trip list), copy [.env.local.example](.env.local.example) to `.env.local` and fill in `WP_ADMIN_USER` / `WP_ADMIN_PASS`; `.env.local` is gitignored. Prefer a throwaway admin account over personal credentials, and delete it when done. Note that opening a page in the editor takes a post lock — a second session gets the "already being edited" dialog and must take over.
 
 ## Commit conventions
 

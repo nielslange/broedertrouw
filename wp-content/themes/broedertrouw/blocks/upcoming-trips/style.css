@@ -1,0 +1,97 @@
+.bt-upcoming {
+	padding-block: 56px;
+}
+
+.bt-upcoming__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+.bt-upcoming__list {
+	display: flex;
+	flex-direction: column;
+}
+
+.bt-trip-card--row {
+	display: grid;
+	gap: 8px 20px;
+	align-items: center;
+	padding-block: 18px;
+	border-top: 1px solid var(--bt-border);
+}
+
+.bt-trip-card--row:last-child {
+	border-bottom: 1px solid var(--bt-border);
+}
+
+@media (min-width: 782px) {
+	.bt-trip-card--row {
+		grid-template-columns: 150px 1fr auto;
+	}
+}
+
+.bt-trip-card__date {
+	margin: 0;
+	color: var(--bt-navy);
+	font-family: var(--bt-font-heading);
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.bt-trip-card__title {
+	margin: 0;
+	font-family: var(--bt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.bt-trip-card__title a {
+	color: var(--bt-text);
+	text-decoration: none;
+}
+
+.bt-trip-card__title a:hover {
+	color: var(--bt-navy);
+	text-decoration: underline;
+}
+
+.bt-trip-card__highlight,
+.bt-trip-card__meta {
+	margin: 2px 0 0;
+	color: var(--bt-text-3);
+	font-size: 14px;
+}
+
+.bt-trip-card__aside {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.bt-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	border-radius: 100px;
+	font-size: 12px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.bt-badge--open {
+	background: #E6F4EC;
+	color: #1E7A44;
+}
+
+.bt-badge--few {
+	background: #FDF1DC;
+	color: #8A5A08;
+}
+
+.bt-badge--full {
+	background: #F0F1F3;
+	color: var(--bt-text-3);
+}
