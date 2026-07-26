@@ -61,6 +61,29 @@ function bt_register_block_styles() {
 add_action( 'init', 'bt_register_block_styles' );
 
 /**
+ * Returns the alternating band class for a neutral section, then advances.
+ *
+ * Blocks that paint their own background (page header, enquiry, CTA) call this
+ * with $counts = false so they keep their own look without disturbing the
+ * alternation of the sections around them.
+ *
+ * @param bool $counts Whether this block participates in the alternation.
+ * @return string Class name to add to the section, or ''.
+ */
+function bt_band_class( $counts = true ) {
+	static $index = 0;
+
+	if ( ! $counts ) {
+		return '';
+	}
+
+	$class = ( 1 === $index % 2 ) ? 'bt-section-alt' : '';
+	++$index;
+
+	return $class;
+}
+
+/**
  * Renders an editor-only placeholder for a block whose required fields are empty.
  *
  * @param array  $block   Block settings.
@@ -96,6 +119,17 @@ function bt_block_classes( $block, $base ) {
 
 	if ( ! empty( $block['align'] ) ) {
 		$classes[] = 'align' . $block['align'];
+	}
+
+	/*
+	 * Sections that paint their own background sit outside the alternation,
+	 * so consecutive neutral sections keep alternating around them.
+	 */
+	$self_colored = array( 'bt-hero', 'bt-page-header', 'bt-enquiry', 'bt-cta', 'bt-charter' );
+	$band         = bt_band_class( ! in_array( $base, $self_colored, true ) );
+
+	if ( $band && empty( $block['className'] ) ) {
+		$classes[] = $band;
 	}
 
 	return implode( ' ', array_map( 'sanitize_html_class', $classes ) );

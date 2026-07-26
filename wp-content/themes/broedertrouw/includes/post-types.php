@@ -46,6 +46,84 @@ function bt_register_trip_post_type() {
 add_action( 'init', 'bt_register_trip_post_type' );
 
 /**
+ * Registers the trip type taxonomy.
+ *
+ * Exactly two terms exist, "Sailing trip" and "Regatta", seeded by
+ * bt_seed_trip_types(). The taxonomy is hierarchical so the editor shows
+ * radio-style checkboxes rather than a free-text tag field, and editors
+ * cannot invent further types.
+ */
+function bt_register_trip_type_taxonomy() {
+	register_taxonomy(
+		'trip_type',
+		'trip',
+		array(
+			'labels'            => array(
+				'name'          => _x( 'Trip types', 'taxonomy general name', 'broedertrouw' ),
+				'singular_name' => _x( 'Trip type', 'taxonomy singular name', 'broedertrouw' ),
+				'all_items'     => __( 'All trip types', 'broedertrouw' ),
+				'edit_item'     => __( 'Edit trip type', 'broedertrouw' ),
+				'view_item'     => __( 'View trip type', 'broedertrouw' ),
+				'menu_name'     => __( 'Trip types', 'broedertrouw' ),
+			),
+			'public'            => true,
+			'hierarchical'      => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'capabilities'      => array(
+				// Editors assign the two seeded terms but never create more.
+				'manage_terms' => 'manage_options',
+				'edit_terms'   => 'manage_options',
+				'delete_terms' => 'manage_options',
+				'assign_terms' => 'edit_posts',
+			),
+			'rewrite'           => array(
+				'slug'       => 'trip-type',
+				'with_front' => false,
+			),
+		)
+	);
+}
+add_action( 'init', 'bt_register_trip_type_taxonomy', 6 );
+
+/**
+ * Creates the two trip type terms and registers them with Polylang.
+ *
+ * Slugs are English so code and queries stay language independent; the NL and
+ * DE names are the translated term names.
+ */
+function bt_seed_trip_types() {
+	$types = array(
+		'sailing-trip' => array(
+			'nl' => 'Zeiltocht',
+			'de' => 'Segeltörn',
+		),
+		'regatta'      => array(
+			'nl' => 'Regatta',
+			'de' => 'Regatta',
+		),
+	);
+
+	foreach ( $types as $slug => $names ) {
+		$term = get_term_by( 'slug', $slug, 'trip_type' );
+
+		if ( ! $term ) {
+			$created = wp_insert_term( $names['nl'], 'trip_type', array( 'slug' => $slug ) );
+
+			if ( is_wp_error( $created ) ) {
+				continue;
+			}
+
+			$term = get_term( $created['term_id'], 'trip_type' );
+		}
+
+		if ( $term && function_exists( 'pll_set_term_language' ) && ! pll_get_term_language( $term->term_id ) ) {
+			pll_set_term_language( $term->term_id, 'nl' );
+		}
+	}
+}
+
+/**
  * Uses the classic editor for trips.
  *
  * A trip is entered entirely through the Trip Details fields, so the block

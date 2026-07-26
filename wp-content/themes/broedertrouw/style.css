@@ -175,6 +175,27 @@
 	font-weight: 700;
 }
 
+/**
+ * Alternating section bands.
+ *
+ * Consecutive sections on a white background run together visually, so every
+ * second neutral section takes the tint. Blocks that already own a background
+ * (page header, enquiry, CTA, and anything explicitly banded) are excluded
+ * from the count, so the alternation is not thrown off by them.
+ */
+.bt-section-alt {
+	background: var(--bt-tint);
+}
+
+/* An explicit band wins over the automatic alternation. */
+.bt-band-tint {
+	background: var(--bt-tint);
+}
+
+.bt-band-plain {
+	background: transparent;
+}
+
 /* Notice box: a core paragraph with the "bt-notice" block style. */
 .is-style-bt-notice {
 	background: var(--bt-tint);

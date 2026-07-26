@@ -62,6 +62,7 @@ function bt_today() {
  *     @type int    $count    Number of trips. Default 3.
  *     @type int[]  $include  Explicit post IDs, returned in the given order.
  *     @type int[]  $exclude  Post IDs to exclude.
+ *     @type int    $type     trip_type term ID to filter by.
  * }
  * @return WP_Post[]
  */
@@ -73,6 +74,7 @@ function bt_get_trips( $args = array() ) {
 			'count'   => 3,
 			'include' => array(),
 			'exclude' => array(),
+			'type'    => 0,
 		)
 	);
 
@@ -109,6 +111,16 @@ function bt_get_trips( $args = array() ) {
 
 	if ( ! empty( $args['exclude'] ) ) {
 		$query_args['post__not_in'] = array_map( 'absint', $args['exclude'] );
+	}
+
+	if ( ! empty( $args['type'] ) ) {
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'trip_type',
+				'field'    => 'term_id',
+				'terms'    => absint( $args['type'] ),
+			),
+		);
 	}
 
 	return get_posts( $query_args );

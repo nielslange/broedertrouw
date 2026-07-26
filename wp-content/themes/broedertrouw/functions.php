@@ -61,6 +61,96 @@ function bt_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'bt_enqueue_styles' );
 
 /**
+ * Preloads the self-hosted latin webfonts.
+ *
+ * Blocksy's Local Google Fonts extension serves every face with
+ * font-display: swap, so text paints in a fallback and re-renders once the
+ * font arrives, which is the visible jump on load. Preloading starts the
+ * download with the document instead of after the CSS is parsed.
+ *
+ * Archivo and Source Sans 3 are both variable fonts, so a single latin file
+ * per family covers every weight in use. The URLs are read from Blocksy's
+ * generated CSS rather than hardcoded, because the hashed filenames change
+ * whenever the font cache is refreshed.
+ *
+ * @return string[] Absolute URLs of the font files to preload.
+ */
+function bt_preload_font_urls() {
+	$cached = get_transient( 'bt_preload_fonts' );
+
+	if ( is_array( $cached ) ) {
+		return $cached;
+	}
+
+	$css_file = WP_CONTENT_DIR . '/uploads/blocksy/css/global.css';
+
+	if ( ! file_exists( $css_file ) ) {
+		return array();
+	}
+
+	$css = file_get_contents( $css_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+
+	if ( ! $css ) {
+		return array();
+	}
+
+	$urls = array();
+
+	preg_match_all( '/@font-face\s*\{[^}]*\}/', $css, $faces );
+
+	foreach ( $faces[0] as $face ) {
+		// Upright latin subset only: italics and other subsets are not needed
+		// for the first paint.
+		if ( preg_match( '/font-style:\s*(\w+)/', $face, $style ) && 'normal' !== $style[1] ) {
+			continue;
+		}
+
+		if ( ! preg_match( '/unicode-range:[^;]*U\+0000-00FF/', $face ) ) {
+			continue;
+		}
+
+		if ( ! preg_match( "/font-family:\s*'([^']+)'/", $face, $family ) ) {
+			continue;
+		}
+
+		if ( ! preg_match( '/url\((https:\/\/[^)]+\.woff2)\)/', $face, $url ) ) {
+			continue;
+		}
+
+		// One file per family is enough: both faces are variable fonts.
+		$urls[ $family[1] ] = $url[1];
+	}
+
+	$urls = array_values( $urls );
+
+	set_transient( 'bt_preload_fonts', $urls, DAY_IN_SECONDS );
+
+	return $urls;
+}
+
+/**
+ * Prints the font preload tags.
+ */
+function bt_preload_fonts() {
+	foreach ( bt_preload_font_urls() as $url ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+			esc_url( $url )
+		);
+	}
+}
+add_action( 'wp_head', 'bt_preload_fonts', 1 );
+
+/**
+ * Drops the cached preload URLs when Blocksy regenerates its CSS.
+ */
+function bt_flush_preload_fonts() {
+	delete_transient( 'bt_preload_fonts' );
+}
+add_action( 'blocksy:dynamic-css:refresh-caches', 'bt_flush_preload_fonts' );
+
+
+/**
  * Shows an admin notice when ACF PRO is missing.
  */
 function bt_acf_notice() {

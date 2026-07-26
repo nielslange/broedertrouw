@@ -98,15 +98,14 @@
 	font-size: 13px;
 }
 
+/* Sits flush in the card's padding box, with a little breathing room above
+   so it never crowds the price block. */
 .bt-trip-card__cta {
 	justify-content: center;
 	width: 100%;
+	margin-top: 6px;
 	padding-block: 10px;
-}
-
-.bt-upcoming__more {
-	margin: 28px 0 0;
-	text-align: center;
+	box-sizing: border-box;
 }
 
 .bt-trip-card--row {

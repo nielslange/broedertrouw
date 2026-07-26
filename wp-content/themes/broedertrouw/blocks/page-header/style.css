@@ -41,6 +41,7 @@
 	color: var(--bt-text-2);
 	font-size: 17px;
 	line-height: 1.6;
+	text-wrap: balance;
 }
 
 .bt-page-header__people {
