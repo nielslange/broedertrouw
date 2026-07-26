@@ -61,6 +61,30 @@
             "return_format": "array"
         },
         {
+            "key": "field_bt_cta_layout",
+            "label": "Layout",
+            "name": "layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "center": "Centered",
+                "split": "Text left, button right"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "center"
+        },
+        {
             "key": "field_bt_cta_style",
             "label": "Style",
             "name": "style",
@@ -106,5 +130,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785071079
+    "modified": 1785084529
 }

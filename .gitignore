@@ -42,3 +42,6 @@ wp-content/themes/*
 !wp-content/themes/broedertrouw/**
 
 # Premium plugins, uploads, languages etc. stay untracked
+
+# Session build scripts (untracked, see PLAN.md step 0b)
+/scripts/

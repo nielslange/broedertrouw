@@ -1,0 +1,144 @@
+{
+    "key": "group_bt_block_checklist_columns",
+    "title": "Block: Checklist columns",
+    "fields": [
+        {
+            "key": "field_bt_cc_columns",
+            "label": "Columns",
+            "name": "columns",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": 3,
+            "layout": "block",
+            "button_label": "Add column",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_cc_col_heading",
+                    "label": "Heading",
+                    "name": "heading",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_cc_columns"
+                },
+                {
+                    "key": "field_bt_cc_col_marker",
+                    "label": "Marker",
+                    "name": "marker",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "check": "✓",
+                        "plus": "+"
+                    },
+                    "default_value": "check",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "pll_default_value": "check",
+                    "parent_repeater": "field_bt_cc_columns"
+                },
+                {
+                    "key": "field_bt_cc_col_items",
+                    "label": "Items",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "button_label": "Add item",
+                    "min": 0,
+                    "max": 0,
+                    "rows_per_page": 20,
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_bt_cc_col_item_text",
+                            "label": "Item",
+                            "name": "item",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "pll_default_value": "",
+                            "parent_repeater": "field_bt_cc_col_items"
+                        }
+                    ],
+                    "parent_repeater": "field_bt_cc_columns"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "bt\/checklist-columns"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785084529
+}

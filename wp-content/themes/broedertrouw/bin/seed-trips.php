@@ -142,18 +142,64 @@ $trips = array(
 		'mode'    => 'whole_boat',
 		'price'   => 4200,
 		'nl'      => array(
-			'title'     => 'Zeilweekend',
-			'highlight' => 'Het hele schip voor jouw groep.',
+			'title'      => 'Zeilweekend',
+			'date_label' => 'Meerdere data · op aanvraag',
+			'highlight'  => 'Het hele schip voor jouw groep.',
 			'excerpt'   => 'Een weekend het hele schip charteren, met eigen programma en koers.',
 			'includes'  => array( 'Schipper en vaste crew', 'Beddengoed en handdoeken', 'Havengelden', 'Brandstof' ),
 			'excludes'  => array( 'Maaltijden en dranken', 'Reis naar Enkhuizen' ),
 		),
 		'de'      => array(
-			'title'     => 'Segelwochenende',
-			'highlight' => 'Das ganze Schiff für deine Gruppe.',
+			'title'      => 'Segelwochenende',
+			'date_label' => 'Mehrere Termine · auf Anfrage',
+			'highlight'  => 'Das ganze Schiff für deine Gruppe.',
 			'excerpt'   => 'Ein Wochenende das ganze Schiff chartern, mit eigenem Programm und Kurs.',
 			'includes'  => array( 'Skipper und Stammcrew', 'Bettwäsche und Handtücher', 'Hafengebühren', 'Treibstoff' ),
 			'excludes'  => array( 'Mahlzeiten und Getränke', 'Anreise nach Enkhuizen' ),
+		),
+	),
+	array(
+		'slug'    => 'einsegeln-beurtveer',
+		'start'   => '2027-09-25',
+		'end'     => '2027-09-26',
+		'embark'  => 'hoorn',
+		'mode'    => 'per_berth',
+		'price'   => '',
+		'nl'      => array(
+			'title'     => 'Inzeilen voor de Beurtveer',
+			'highlight' => 'Voorbereidingstocht voor de Beurtveer.',
+			'excerpt'   => 'De voorbereidingstocht: manoeuvres oefenen, de crew op elkaar inspelen, klaar zijn voor de Beurtveer.',
+			'includes'  => array( 'Maaltijden aan boord', 'Beddengoed' ),
+			'excludes'  => array( 'Reis naar Hoorn', 'Dranken aan de bar' ),
+		),
+		'de'      => array(
+			'title'     => 'Einsegeln für die Beurtveer',
+			'highlight' => 'Vorbereitungstörn für die Beurtveer.',
+			'excerpt'   => 'Der Vorbereitungstörn: Manöver üben, Crew einspielen, bereit sein für die Beurtveer.',
+			'includes'  => array( 'Mahlzeiten an Bord', 'Bettwäsche' ),
+			'excludes'  => array( 'Anreise nach Hoorn', 'Getränke an der Bar' ),
+		),
+	),
+	array(
+		'slug'    => 'beurtveer',
+		'start'   => '2027-10-08',
+		'end'     => '2027-10-10',
+		'embark'  => 'hoorn',
+		'mode'    => 'per_berth',
+		'price'   => '',
+		'nl'      => array(
+			'title'     => 'Beurtveer',
+			'highlight' => 'Historische vrachtzeilrace.',
+			'excerpt'   => 'Historische vrachtzeilrace: zeilen als honderd jaar geleden, met lading en tactiek.',
+			'includes'  => array( 'Maaltijden aan boord', 'Inschrijfgeld regatta' ),
+			'excludes'  => array( 'Reis naar Hoorn', 'Dranken aan de bar' ),
+		),
+		'de'      => array(
+			'title'     => 'Beurtveer',
+			'highlight' => 'Historische Frachtsegel-Regatta.',
+			'excerpt'   => 'Historische Frachtsegel-Regatta: segeln wie vor 100 Jahren, mit Ladung und Taktik.',
+			'includes'  => array( 'Mahlzeiten an Bord', 'Regatta-Startgeld' ),
+			'excludes'  => array( 'Anreise nach Hoorn', 'Getränke an der Bar' ),
 		),
 	),
 	array(
@@ -237,11 +283,11 @@ foreach ( $trips as $trip ) {
 		update_field( 'date_end', $trip['end'], $post_id );
 		update_field( 'port_embark', $trip['embark'], $post_id );
 		update_field( 'booking_mode', $trip['mode'], $post_id );
-		update_field( 'price_berth', $trip['price'], $post_id );
 
-		if ( ! empty( $trip['price_cabin'] ) ) {
-			update_field( 'price_cabin', $trip['price_cabin'], $post_id );
-		}
+		// Written unconditionally so re-seeding also clears a value that was removed.
+		update_field( 'date_label', isset( $content['date_label'] ) ? $content['date_label'] : '', $post_id );
+		update_field( 'price_berth', $trip['price'], $post_id );
+		update_field( 'price_cabin', isset( $trip['price_cabin'] ) ? $trip['price_cabin'] : '', $post_id );
 		update_field( 'highlight', $content['highlight'], $post_id );
 
 		update_field(

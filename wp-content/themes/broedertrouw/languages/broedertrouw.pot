@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-26T14:13:40+00:00\n"
+"POT-Creation-Date: 2026-07-26T17:18:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha-bc61c73\n"
 "X-Domain: broedertrouw\n"
@@ -30,20 +30,111 @@ msgstr ""
 msgid "Niels Lange"
 msgstr ""
 
+#: blocks/calendar/render.php:16
+msgid "Calendar: add at least one row."
+msgstr ""
+
+#: blocks/calendar/render.php:21
+#: includes/trips.php:204
+msgid "On request"
+msgstr ""
+
+#: blocks/calendar/render.php:22
+msgid "Fully booked"
+msgstr ""
+
+#: blocks/calendar/render.php:23
+msgid "Open trip"
+msgstr ""
+
 #: blocks/charter-teaser/render.php:27
 msgid "Charter teaser: add a heading to at least one card."
 msgstr ""
 
-#: blocks/cta/render.php:19
+#: blocks/checklist-columns/render.php:15
+msgid "Checklist columns: add at least one column."
+msgstr ""
+
+#: blocks/contact-cards/render.php:15
+msgid "Contact cards: add at least one card."
+msgstr ""
+
+#: blocks/cta/render.php:21
 msgid "CTA band: add a heading."
+msgstr ""
+
+#: blocks/enquiry/render.php:20
+msgid "Enquiry: add a heading."
+msgstr ""
+
+#: blocks/enquiry/render.php:69
+msgid "The enquiry form is not available yet."
 msgstr ""
 
 #: blocks/gallery-teaser/render.php:17
 msgid "Gallery teaser: choose at least three images."
 msgstr ""
 
+#: blocks/gallery/render.php:15
+msgid "Gallery: add at least one category with images."
+msgstr ""
+
+#: blocks/gallery/render.php:20
+msgid "All"
+msgstr ""
+
+#: blocks/gallery/render.php:37
+msgid "Filter photos by category"
+msgstr ""
+
 #: blocks/hero/render.php:19
 msgid "Hero: choose an image and add a heading."
+msgstr ""
+
+#: blocks/price-grid/render.php:18
+msgid "Price grid: add at least one item."
+msgstr ""
+
+#: blocks/price-table/render.php:20
+msgid "Price table: add at least one row."
+msgstr ""
+
+#: blocks/price-table/render.php:24
+msgid "Enquire"
+msgstr ""
+
+#: blocks/price-table/render.php:44
+msgid "Trip"
+msgstr ""
+
+#: blocks/price-table/render.php:45
+msgid "Period"
+msgstr ""
+
+#: blocks/price-table/render.php:46
+#: includes/admin-columns.php:25
+#: includes/trip-templates.php:56
+msgid "Price"
+msgstr ""
+
+#: blocks/price-table/render.php:98
+msgid "Details"
+msgstr ""
+
+#: blocks/price-table/render.php:105
+msgid "Check-in"
+msgstr ""
+
+#: blocks/price-table/render.php:112
+msgid "Check-out"
+msgstr ""
+
+#: blocks/price-table/render.php:119
+msgid "Group size"
+msgstr ""
+
+#: blocks/price-table/render.php:126
+msgid "Discount periods −10 %"
 msgstr ""
 
 #: blocks/ship-teaser/render.php:20
@@ -58,7 +149,7 @@ msgstr ""
 msgid "Testimonials: add at least one quote."
 msgstr ""
 
-#: blocks/upcoming-trips/render.php:26
+#: blocks/upcoming-trips/render.php:30
 msgid "Upcoming trips: no published trips with a future end date yet."
 msgstr ""
 
@@ -86,9 +177,8 @@ msgstr ""
 msgid "Embarkation"
 msgstr ""
 
-#: includes/admin-columns.php:25
-#: includes/trip-templates.php:56
-msgid "Price"
+#: includes/blocks.php:57
+msgid "Notice box"
 msgstr ""
 
 #: includes/post-types.php:18
@@ -182,66 +272,114 @@ msgstr ""
 msgid "Past trips"
 msgstr ""
 
-#: includes/trips.php:138
+#: includes/trips.php:145
 msgctxt "trip date format"
 msgid "d-m-Y"
 msgstr ""
 
 #. translators: 1: start day, 2: full end date.
-#: includes/trips.php:150
+#: includes/trips.php:157
 #, php-format
 msgctxt "trip date range, same month"
 msgid "%1$s t/m %2$s"
 msgstr ""
 
-#: includes/trips.php:151
+#: includes/trips.php:158
 msgctxt "trip start day format"
 msgid "d"
 msgstr ""
 
 #. translators: 1: full start date, 2: full end date.
-#: includes/trips.php:158
+#: includes/trips.php:165
 #, php-format
 msgctxt "trip date range"
 msgid "%1$s t/m %2$s"
 msgstr ""
 
-#: includes/trips.php:172
+#: includes/trips.php:179
 msgid "Hoorn"
 msgstr ""
 
-#: includes/trips.php:173
+#: includes/trips.php:180
 msgid "Enkhuizen"
 msgstr ""
 
-#: includes/trips.php:174
+#: includes/trips.php:181
 msgid "Amsterdam"
 msgstr ""
 
-#: includes/trips.php:175
+#: includes/trips.php:182
 msgid "Other port"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:208
+#: includes/trips.php:224
 #, php-format
 msgid "from € %s for the whole ship"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:212
+#: includes/trips.php:228
 #, php-format
 msgid "from € %s per person"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:229
+#: includes/trips.php:248
+#, php-format
+msgid "from € %s"
+msgstr ""
+
+#. translators: %s: price amount.
+#: includes/trips.php:265
 #, php-format
 msgid "€ %s per person"
 msgstr ""
 
-#: template-parts/trip-card.php:49
+#. translators: %s: cabin price, or the on-request label.
+#: includes/trips.php:281
+#, php-format
+msgid "With a private cabin: %s"
+msgstr ""
+
+#: template-parts/trip-card.php:16
 msgid "View trip"
+msgstr ""
+
+#: template-parts/trip-card.php:48
+msgid "p. p."
+msgstr ""
+
+#: blocks/calendar/block.json
+msgctxt "block title"
+msgid "Availability calendar"
+msgstr ""
+
+#: blocks/calendar/block.json
+msgctxt "block description"
+msgid "Season availability grouped by month, with status pills."
+msgstr ""
+
+#: blocks/calendar/block.json
+#: blocks/upcoming-trips/block.json
+msgctxt "block keyword"
+msgid "calendar"
+msgstr ""
+
+#: blocks/calendar/block.json
+msgctxt "block keyword"
+msgid "availability"
+msgstr ""
+
+#: blocks/calendar/block.json
+msgctxt "block keyword"
+msgid "season"
+msgstr ""
+
+#: blocks/calendar/block.json
+#: blocks/upcoming-trips/block.json
+msgctxt "block keyword"
+msgid "dates"
 msgstr ""
 
 #: blocks/charter-teaser/block.json
@@ -255,6 +393,7 @@ msgid "Two-card split: sail along per berth versus charter the whole ship."
 msgstr ""
 
 #: blocks/charter-teaser/block.json
+#: blocks/price-table/block.json
 msgctxt "block keyword"
 msgid "charter"
 msgstr ""
@@ -268,6 +407,62 @@ msgstr ""
 #: blocks/ship-teaser/block.json
 msgctxt "block keyword"
 msgid "split"
+msgstr ""
+
+#: blocks/checklist-columns/block.json
+msgctxt "block title"
+msgid "Checklist columns"
+msgstr ""
+
+#: blocks/checklist-columns/block.json
+msgctxt "block description"
+msgid "Side by side lists of what is included and what is not."
+msgstr ""
+
+#: blocks/checklist-columns/block.json
+msgctxt "block keyword"
+msgid "checklist"
+msgstr ""
+
+#: blocks/checklist-columns/block.json
+msgctxt "block keyword"
+msgid "included"
+msgstr ""
+
+#: blocks/checklist-columns/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr ""
+
+#: blocks/contact-cards/block.json
+msgctxt "block title"
+msgid "Contact cards"
+msgstr ""
+
+#: blocks/contact-cards/block.json
+msgctxt "block description"
+msgid "Bordered cards for phone, email and address details."
+msgstr ""
+
+#: blocks/contact-cards/block.json
+#: blocks/enquiry/block.json
+msgctxt "block keyword"
+msgid "contact"
+msgstr ""
+
+#: blocks/contact-cards/block.json
+msgctxt "block keyword"
+msgid "phone"
+msgstr ""
+
+#: blocks/contact-cards/block.json
+msgctxt "block keyword"
+msgid "email"
+msgstr ""
+
+#: blocks/contact-cards/block.json
+msgctxt "block keyword"
+msgid "address"
 msgstr ""
 
 #: blocks/cta/block.json
@@ -296,6 +491,31 @@ msgctxt "block keyword"
 msgid "banner"
 msgstr ""
 
+#: blocks/enquiry/block.json
+msgctxt "block title"
+msgid "Enquiry form"
+msgstr ""
+
+#: blocks/enquiry/block.json
+msgctxt "block description"
+msgid "Tinted band with contact details and the enquiry form."
+msgstr ""
+
+#: blocks/enquiry/block.json
+msgctxt "block keyword"
+msgid "enquiry"
+msgstr ""
+
+#: blocks/enquiry/block.json
+msgctxt "block keyword"
+msgid "form"
+msgstr ""
+
+#: blocks/enquiry/block.json
+msgctxt "block keyword"
+msgid "request"
+msgstr ""
+
 #: blocks/gallery-teaser/block.json
 msgctxt "block title"
 msgid "Gallery teaser"
@@ -307,18 +527,36 @@ msgid "Image grid with a link to the full gallery."
 msgstr ""
 
 #: blocks/gallery-teaser/block.json
+#: blocks/gallery/block.json
 msgctxt "block keyword"
 msgid "gallery"
 msgstr ""
 
 #: blocks/gallery-teaser/block.json
+#: blocks/gallery/block.json
 msgctxt "block keyword"
 msgid "images"
 msgstr ""
 
 #: blocks/gallery-teaser/block.json
+#: blocks/gallery/block.json
 msgctxt "block keyword"
 msgid "photos"
+msgstr ""
+
+#: blocks/gallery/block.json
+msgctxt "block title"
+msgid "Filterable gallery"
+msgstr ""
+
+#: blocks/gallery/block.json
+msgctxt "block description"
+msgid "Masonry photo gallery with category filter chips."
+msgstr ""
+
+#: blocks/gallery/block.json
+msgctxt "block keyword"
+msgid "filter"
 msgstr ""
 
 #: blocks/hero/block.json
@@ -332,13 +570,87 @@ msgid "Full-width image band with heading, subheading and up to two buttons."
 msgstr ""
 
 #: blocks/hero/block.json
+#: blocks/page-header/block.json
 msgctxt "block keyword"
 msgid "hero"
 msgstr ""
 
 #: blocks/hero/block.json
+#: blocks/page-header/block.json
 msgctxt "block keyword"
 msgid "header"
+msgstr ""
+
+#: blocks/page-header/block.json
+msgctxt "block title"
+msgid "Page header"
+msgstr ""
+
+#: blocks/page-header/block.json
+msgctxt "block description"
+msgid "Tinted page hero with kicker, title, lead and optional portraits."
+msgstr ""
+
+#: blocks/page-header/block.json
+msgctxt "block keyword"
+msgid "title"
+msgstr ""
+
+#: blocks/page-header/block.json
+msgctxt "block keyword"
+msgid "intro"
+msgstr ""
+
+#: blocks/price-grid/block.json
+msgctxt "block title"
+msgid "Price grid"
+msgstr ""
+
+#: blocks/price-grid/block.json
+msgctxt "block description"
+msgid "Grid of short priced items, as a boxed group or separate cards."
+msgstr ""
+
+#: blocks/price-grid/block.json
+#: blocks/price-table/block.json
+msgctxt "block keyword"
+msgid "price"
+msgstr ""
+
+#: blocks/price-grid/block.json
+#: blocks/usp-grid/block.json
+msgctxt "block keyword"
+msgid "grid"
+msgstr ""
+
+#: blocks/price-grid/block.json
+msgctxt "block keyword"
+msgid "extras"
+msgstr ""
+
+#: blocks/price-grid/block.json
+msgctxt "block keyword"
+msgid "surcharges"
+msgstr ""
+
+#: blocks/price-table/block.json
+msgctxt "block title"
+msgid "Price table"
+msgstr ""
+
+#: blocks/price-table/block.json
+msgctxt "block description"
+msgid "Charter price rows with expandable check-in and discount details."
+msgstr ""
+
+#: blocks/price-table/block.json
+msgctxt "block keyword"
+msgid "table"
+msgstr ""
+
+#: blocks/price-table/block.json
+msgctxt "block keyword"
+msgid "rates"
 msgstr ""
 
 #: blocks/ship-teaser/block.json
@@ -431,16 +743,6 @@ msgctxt "block keyword"
 msgid "trips"
 msgstr ""
 
-#: blocks/upcoming-trips/block.json
-msgctxt "block keyword"
-msgid "calendar"
-msgstr ""
-
-#: blocks/upcoming-trips/block.json
-msgctxt "block keyword"
-msgid "dates"
-msgstr ""
-
 #: blocks/usp-grid/block.json
 msgctxt "block title"
 msgid "USP grid"
@@ -459,9 +761,4 @@ msgstr ""
 #: blocks/usp-grid/block.json
 msgctxt "block keyword"
 msgid "features"
-msgstr ""
-
-#: blocks/usp-grid/block.json
-msgctxt "block keyword"
-msgid "grid"
 msgstr ""

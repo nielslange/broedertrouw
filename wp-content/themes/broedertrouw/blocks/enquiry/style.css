@@ -1,0 +1,139 @@
+.bt-enquiry {
+	background: var(--bt-tint);
+	padding-block: 64px;
+}
+
+.bt-enquiry__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	display: grid;
+	gap: 40px;
+	grid-template-columns: 1fr;
+	align-items: start;
+}
+
+@media (min-width: 900px) {
+	.bt-enquiry__inner {
+		grid-template-columns: 1fr 480px;
+		gap: 56px;
+	}
+}
+
+.bt-enquiry__heading {
+	margin: 0 0 14px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: clamp(24px, 3vw, 32px);
+	font-weight: 800;
+	line-height: 1.2;
+	text-wrap: pretty;
+}
+
+.bt-enquiry__text {
+	margin: 0 0 20px;
+	color: var(--bt-text-2);
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.bt-enquiry__contact {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: 15px;
+}
+
+.bt-enquiry__contact li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.bt-enquiry__glyph {
+	color: var(--bt-blue);
+	font-weight: 700;
+}
+
+.bt-enquiry__contact a {
+	color: var(--bt-heading);
+	text-decoration: none;
+}
+
+.bt-enquiry__contact a:hover,
+.bt-enquiry__contact a:focus-visible {
+	color: var(--bt-navy);
+	text-decoration: underline;
+}
+
+.bt-enquiry__card {
+	padding: 28px;
+	border: 1px solid var(--bt-border);
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 4px 18px rgba(15, 58, 92, .08);
+}
+
+.bt-enquiry__disclaimer {
+	margin: 14px 0 0;
+	color: var(--bt-text-3);
+	font-size: 12.5px;
+	text-align: center;
+}
+
+.bt-enquiry__missing {
+	margin: 0;
+	color: var(--bt-text-3);
+	font-size: 14.5px;
+}
+
+/* FluentForm overrides, scoped to the block so other forms keep their own
+   styling. Class names come from FluentForm's default markup. */
+.bt-enquiry .fluentform .ff-el-group {
+	margin-bottom: 14px;
+}
+
+.bt-enquiry .fluentform .ff-el-input--label label {
+	color: var(--bt-heading);
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.bt-enquiry .fluentform .ff-el-form-control {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #C6D4DE;
+	border-radius: 6px;
+	color: var(--bt-heading);
+	font-family: inherit;
+	font-size: 14.5px;
+	background: #fff;
+}
+
+.bt-enquiry .fluentform .ff-el-form-control:focus {
+	border-color: var(--bt-blue);
+	outline: 2px solid rgba(34, 115, 166, .25);
+	outline-offset: 0;
+}
+
+.bt-enquiry .fluentform .ff-btn-submit {
+	width: 100%;
+	padding: 14px;
+	border: none;
+	border-radius: 6px;
+	background: var(--bt-navy);
+	color: #fff;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.bt-enquiry .fluentform .ff-btn-submit:hover,
+.bt-enquiry .fluentform .ff-btn-submit:focus-visible {
+	background: var(--bt-footer);
+	color: #fff;
+}

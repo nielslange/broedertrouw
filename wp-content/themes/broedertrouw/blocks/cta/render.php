@@ -14,6 +14,8 @@ $text    = get_field( 'text' );
 $button  = get_field( 'button' );
 $style   = get_field( 'style' );
 $style   = $style ? $style : 'dark';
+$layout  = get_field( 'layout' );
+$layout  = 'split' === $layout ? 'split' : 'center';
 
 if ( ! $heading ) {
 	bt_block_placeholder( $block, __( 'CTA band: add a heading.', 'broedertrouw' ) );
@@ -24,14 +26,16 @@ $anchor = bt_block_anchor( $block );
 ?>
 <section
 	<?php echo $anchor ? 'id="' . esc_attr( $anchor ) . '" ' : ''; ?>
-	class="<?php echo esc_attr( bt_block_classes( $block, 'bt-cta' ) ); ?> bt-cta--<?php echo esc_attr( $style ); ?>">
+	class="<?php echo esc_attr( bt_block_classes( $block, 'bt-cta' ) ); ?> bt-cta--<?php echo esc_attr( $style ); ?> bt-cta--<?php echo esc_attr( $layout ); ?>">
 
 	<div class="bt-cta__inner">
-		<h2 class="bt-cta__heading"><?php echo esc_html( $heading ); ?></h2>
+		<div class="bt-cta__body">
+			<h2 class="bt-cta__heading"><?php echo esc_html( $heading ); ?></h2>
 
-		<?php if ( $text ) : ?>
-			<p class="bt-cta__text"><?php echo esc_html( $text ); ?></p>
-		<?php endif; ?>
+			<?php if ( $text ) : ?>
+				<p class="bt-cta__text"><?php echo esc_html( $text ); ?></p>
+			<?php endif; ?>
+		</div>
 
 		<?php if ( $button && ! empty( $button['url'] ) ) : ?>
 			<a

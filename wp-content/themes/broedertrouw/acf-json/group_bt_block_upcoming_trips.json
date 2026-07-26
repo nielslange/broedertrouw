@@ -47,6 +47,72 @@
             "pll_default_value": 3
         },
         {
+            "key": "field_bt_upcoming_layout",
+            "label": "Layout",
+            "name": "layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "rows": "Rows",
+                "cards": "Cards"
+            },
+            "default_value": "rows",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "rows"
+        },
+        {
+            "key": "field_bt_upcoming_intro",
+            "label": "Intro",
+            "name": "intro",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_upcoming_cta_label",
+            "label": "Card button label",
+            "name": "cta_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Used on each card in the cards layout. Falls back to \"View trip\".",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
             "key": "field_bt_upcoming_link",
             "label": "Link to all trips",
             "name": "link",
@@ -111,5 +177,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785071079
+    "modified": 1785084529
 }

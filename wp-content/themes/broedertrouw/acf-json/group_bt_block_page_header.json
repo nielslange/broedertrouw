@@ -1,0 +1,184 @@
+{
+    "key": "group_bt_block_page_header",
+    "title": "Block: Page header",
+    "fields": [
+        {
+            "key": "field_bt_ph_kicker",
+            "label": "Kicker",
+            "name": "kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small uppercase label above the title, e.g. \"Prijzen · Seizoen 2026\".",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_ph_heading",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave empty to use the page title.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_ph_lead",
+            "label": "Lead",
+            "name": "lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Leave empty to use the page excerpt.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_ph_people",
+            "label": "People",
+            "name": "people",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Optional portraits shown to the right of the text.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "max": 3,
+            "layout": "block",
+            "button_label": "Add person",
+            "min": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_ph_person_image",
+                    "label": "Photo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_bt_ph_people"
+                },
+                {
+                    "key": "field_bt_ph_person_name",
+                    "label": "Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_ph_people"
+                },
+                {
+                    "key": "field_bt_ph_person_role",
+                    "label": "Role",
+                    "name": "role",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_ph_people"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "bt\/page-header"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785084529
+}

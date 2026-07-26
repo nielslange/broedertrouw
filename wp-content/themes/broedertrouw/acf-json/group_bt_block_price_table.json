@@ -1,0 +1,373 @@
+{
+    "key": "group_bt_block_price_table",
+    "title": "Block: Price table",
+    "fields": [
+        {
+            "key": "field_bt_pt_heading",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_pt_intro",
+            "label": "Intro",
+            "name": "intro",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_pt_rows",
+            "label": "Packages",
+            "name": "rows",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "layout": "block",
+            "button_label": "Add package",
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_pt_row_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_badge",
+                    "label": "Badge",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional, e.g. \"Popular\".",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_featured",
+                    "label": "Highlight row",
+                    "name": "featured",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "ui": 1,
+                    "default_value": 0,
+                    "message": "",
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "pll_default_value": 0,
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_subtitle",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_period",
+                    "label": "Period",
+                    "name": "period",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_period_note",
+                    "label": "Period note",
+                    "name": "period_note",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_price",
+                    "label": "Price",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_price_note",
+                    "label": "Price note",
+                    "name": "price_note",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_check_in",
+                    "label": "Check-in",
+                    "name": "check_in",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_check_out",
+                    "label": "Check-out",
+                    "name": "check_out",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_group_size",
+                    "label": "Group size",
+                    "name": "group_size",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                },
+                {
+                    "key": "field_bt_pt_row_discount",
+                    "label": "Discount note",
+                    "name": "discount_note",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional green note in the details, e.g. discount periods.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_pt_rows"
+                }
+            ]
+        },
+        {
+            "key": "field_bt_pt_cta",
+            "label": "Row button",
+            "name": "cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Target for every \"Enquire\" button, usually the enquiry anchor.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "bt\/price-table"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785084529
+}

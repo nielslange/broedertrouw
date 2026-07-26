@@ -43,6 +43,28 @@
             "default_to_current_date": 0
         },
         {
+            "key": "field_bt_trip_date_label",
+            "label": "Date label",
+            "name": "date_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Shown instead of the computed date range, e.g. \"Easter 2027, date to follow\". Dates above still control sorting.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "translate",
+            "maxlength": 80,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
             "key": "field_bt_trip_port_embark",
             "label": "Embarkation port",
             "name": "port_embark",
@@ -346,5 +368,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785073028
+    "modified": 1785084528
 }

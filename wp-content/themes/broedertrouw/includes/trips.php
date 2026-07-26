@@ -121,6 +121,13 @@ function bt_get_trips( $args = array() ) {
  * @return string
  */
 function bt_trip_date_range( $post_id = null ) {
+	// An explicit label wins over any date maths ("Several dates, on request").
+	$label = bt_field( 'date_label', $post_id );
+
+	if ( $label ) {
+		return $label;
+	}
+
 	$start = bt_field( 'date_start', $post_id );
 	$end   = bt_field( 'date_end', $post_id );
 
@@ -189,6 +196,15 @@ function bt_format_price( $amount ) {
 }
 
 /**
+ * Returns the label used wherever a price is not published.
+ *
+ * @return string
+ */
+function bt_on_request_label() {
+	return __( 'On request', 'broedertrouw' );
+}
+
+/**
  * Formats a trip's headline price for cards and lists.
  *
  * @param int $post_id Post ID.
@@ -198,7 +214,7 @@ function bt_trip_price( $post_id = null ) {
 	$price = bt_field( 'price_berth', $post_id );
 
 	if ( ! $price ) {
-		return '';
+		return bt_on_request_label();
 	}
 
 	$amount = bt_format_price( $price );
@@ -210,6 +226,26 @@ function bt_trip_price( $post_id = null ) {
 
 	/* translators: %s: price amount. */
 	return sprintf( __( 'from € %s per person', 'broedertrouw' ), $amount );
+}
+
+/**
+ * Formats a trip's price as the bare amount used on cards.
+ *
+ * Cards print the unit ("p. P.") as a separate, smaller element, so this
+ * returns only "from € 1.080" where bt_trip_price() returns a full sentence.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_price_amount( $post_id = null ) {
+	$price = bt_field( 'price_berth', $post_id );
+
+	if ( ! $price ) {
+		return bt_on_request_label();
+	}
+
+	/* translators: %s: price amount. */
+	return sprintf( __( 'from € %s', 'broedertrouw' ), bt_format_price( $price ) );
 }
 
 /**
@@ -227,4 +263,20 @@ function bt_trip_cabin_price( $post_id = null ) {
 
 	/* translators: %s: price amount. */
 	return sprintf( __( '€ %s per person', 'broedertrouw' ), bt_format_price( $price ) );
+}
+
+/**
+ * Formats the private cabin line shown on trip cards.
+ *
+ * The design always shows this line, so an unpublished cabin price falls back
+ * to the on-request label rather than hiding the line.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_cabin_note( $post_id = null ) {
+	$price = bt_trip_cabin_price( $post_id );
+
+	/* translators: %s: cabin price, or the on-request label. */
+	return sprintf( __( 'With a private cabin: %s', 'broedertrouw' ), $price ? $price : bt_on_request_label() );
 }

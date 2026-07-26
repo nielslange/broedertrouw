@@ -175,6 +175,20 @@
 	font-weight: 700;
 }
 
+/* Notice box: a core paragraph with the "bt-notice" block style. */
+.is-style-bt-notice {
+	background: var(--bt-tint);
+	border-radius: 12px;
+	padding: 22px 26px;
+	color: var(--bt-text-2);
+	font-size: 14.5px;
+	line-height: 1.6;
+}
+
+.is-style-bt-notice strong {
+	color: var(--bt-heading);
+}
+
 .bt-block-placeholder {
 	padding: 28px;
 	border: 1px dashed var(--bt-border);
@@ -356,6 +370,15 @@
 	color: var(--bt-text);
 	text-transform: none;
 	letter-spacing: 0;
+}
+
+/* Active menu item: blue underline and navy label, matching the design. */
+.ct-header [data-id="menu"] .menu > li.current-menu-item > a,
+.ct-header [data-id="menu"] .menu > li.current-menu-ancestor > a,
+.ct-header [data-id="menu"] .menu > li.current-page-ancestor > a {
+	color: var(--bt-navy);
+	border-bottom: 2px solid var(--bt-blue);
+	padding-bottom: 2px;
 }
 
 .ct-header [data-id="button"] .ct-button {

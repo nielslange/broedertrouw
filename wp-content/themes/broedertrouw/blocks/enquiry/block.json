@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/enquiry",
+	"title": "Enquiry form",
+	"description": "Tinted band with contact details and the enquiry form.",
+	"category": "broedertrouw",
+	"icon": "feedback",
+	"keywords": [ "enquiry", "form", "contact", "request" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

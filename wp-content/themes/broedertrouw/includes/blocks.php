@@ -47,6 +47,20 @@ function bt_register_blocks() {
 add_action( 'init', 'bt_register_blocks', 5 );
 
 /**
+ * Registers block styles for core blocks used in theme layouts.
+ */
+function bt_register_block_styles() {
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'  => 'bt-notice',
+			'label' => __( 'Notice box', 'broedertrouw' ),
+		)
+	);
+}
+add_action( 'init', 'bt_register_block_styles' );
+
+/**
  * Renders an editor-only placeholder for a block whose required fields are empty.
  *
  * @param array  $block   Block settings.

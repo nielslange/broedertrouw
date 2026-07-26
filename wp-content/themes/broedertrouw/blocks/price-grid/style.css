@@ -1,0 +1,96 @@
+.bt-price-grid {
+	padding-block: 28px;
+}
+
+.bt-price-grid__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+.bt-price-grid__heading {
+	margin: 0 0 12px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.bt-price-grid--cards .bt-price-grid__heading {
+	font-size: 20px;
+	margin-bottom: 16px;
+}
+
+/* Boxed: one bordered container around heading and columns. */
+.bt-price-grid--boxed .bt-price-grid__box {
+	border: 1px solid var(--bt-border);
+	border-radius: 12px;
+	padding: 24px 26px;
+}
+
+.bt-price-grid__items {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+	.bt-price-grid__items {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 900px) {
+	.bt-price-grid--boxed .bt-price-grid__items {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.bt-price-grid--cards .bt-price-grid__items {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.bt-price-grid__item {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+/* Cards: each item is its own bordered box, price first. */
+.bt-price-grid--cards .bt-price-grid__item {
+	border: 1px solid var(--bt-border);
+	border-radius: 10px;
+	padding: 18px;
+}
+
+.bt-price-grid__title {
+	margin: 0;
+	color: var(--bt-heading);
+	font-size: 15.5px;
+	font-weight: 700;
+}
+
+.bt-price-grid__sub {
+	margin: 0;
+	color: var(--bt-text-3);
+	font-size: 14px;
+}
+
+.bt-price-grid__price {
+	margin: 4px 0 0;
+	color: var(--bt-navy);
+	font-family: var(--bt-font-heading);
+	font-size: 19px;
+	font-weight: 800;
+}
+
+.bt-price-grid--cards .bt-price-grid__price {
+	margin: 0;
+	font-size: 20px;
+}
+
+.bt-price-grid__text {
+	margin: 2px 0 0;
+	color: var(--bt-text-2);
+	font-size: 14px;
+}

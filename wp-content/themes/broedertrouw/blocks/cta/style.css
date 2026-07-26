@@ -17,6 +17,38 @@
 	text-align: center;
 }
 
+/* Split layout: text left, button right ------------------------------ */
+
+.bt-cta--split {
+	padding-block: 44px;
+}
+
+.bt-cta--split .bt-cta__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px 40px;
+	text-align: left;
+}
+
+.bt-cta--split .bt-cta__body {
+	max-width: 620px;
+}
+
+.bt-cta--split .bt-cta__heading {
+	font-size: clamp(21px, 2.4vw, 26px);
+}
+
+.bt-cta--split .bt-cta__text {
+	margin: 0;
+	max-width: none;
+}
+
+.bt-cta--split .bt-button {
+	flex: none;
+}
+
 .bt-cta__heading {
 	margin: 0 0 10px;
 	font-family: var(--bt-font-heading);

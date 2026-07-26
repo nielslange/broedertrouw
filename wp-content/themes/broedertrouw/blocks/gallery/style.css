@@ -1,0 +1,82 @@
+.bt-gallery {
+	padding-block: 32px 56px;
+}
+
+.bt-gallery__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+.bt-gallery__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 26px;
+}
+
+.bt-gallery__chip {
+	padding: 8px 16px;
+	border: 1px solid var(--bt-border);
+	border-radius: 100px;
+	background: #fff;
+	color: var(--bt-heading);
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.bt-gallery__chip:hover,
+.bt-gallery__chip:focus-visible {
+	background: var(--bt-tint);
+	color: var(--bt-navy);
+}
+
+.bt-gallery__chip[aria-pressed="true"] {
+	background: var(--bt-navy);
+	border-color: var(--bt-navy);
+	color: #fff;
+}
+
+.bt-gallery__chip[aria-pressed="true"]:hover,
+.bt-gallery__chip[aria-pressed="true"]:focus-visible {
+	background: var(--bt-footer);
+	border-color: var(--bt-footer);
+	color: #fff;
+}
+
+.bt-gallery__grid {
+	column-count: 1;
+	column-gap: 16px;
+}
+
+@media (min-width: 600px) {
+	.bt-gallery__grid {
+		column-count: 2;
+	}
+}
+
+@media (min-width: 900px) {
+	.bt-gallery__grid {
+		column-count: 3;
+	}
+}
+
+.bt-gallery__figure {
+	break-inside: avoid;
+	margin: 0 0 16px;
+}
+
+/* [hidden] alone does not reliably remove an element from multi-column
+   flow, so filtered-out figures are display:none. */
+.bt-gallery__figure[hidden] {
+	display: none;
+}
+
+.bt-gallery__figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+}
