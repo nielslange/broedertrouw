@@ -6,7 +6,9 @@
  * the visitor to complete the rest.
  */
 document.addEventListener( 'click', function ( event ) {
-	const trigger = event.target.closest( '[data-bt-trip], [data-bt-group]' );
+	// Every button that links to the form carries data-bt-enquiry, whether or
+	// not it has context to pass, so behaviour is identical site wide.
+	const trigger = event.target.closest( '[data-bt-enquiry]' );
 
 	if ( ! trigger ) {
 		return;

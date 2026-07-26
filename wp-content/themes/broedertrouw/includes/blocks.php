@@ -115,6 +115,60 @@ function bt_enquiry_url() {
 }
 
 /**
+ * Builds the data attributes that prefill the enquiry form.
+ *
+ * Every button that points at the form goes through here, so a click behaves
+ * the same wherever it happens: the form is filled with whatever the button
+ * already knows and the visitor never retypes it.
+ *
+ * @param array $args {
+ *     Optional context to carry into the form.
+ *
+ *     @type string $trip   Trip name, printed into the message.
+ *     @type string $period Date range for the preferred period field.
+ *     @type int    $group  Group type index, 0 school class .. 3 club/other.
+ * }
+ * @return string Attribute string, ready to echo inside a tag.
+ */
+function bt_enquiry_attrs( $args = array() ) {
+	// Always present, so the script can recognise an enquiry button even when
+	// it carries no context of its own.
+	$attrs = array( 'data-bt-enquiry' => '' );
+
+	if ( ! empty( $args['trip'] ) ) {
+		$attrs['data-bt-trip'] = $args['trip'];
+	}
+
+	if ( ! empty( $args['period'] ) ) {
+		$attrs['data-bt-period'] = $args['period'];
+	}
+
+	if ( isset( $args['group'] ) && '' !== $args['group'] ) {
+		$attrs['data-bt-group'] = (int) $args['group'];
+	}
+
+	$out = '';
+
+	foreach ( $attrs as $name => $value ) {
+		$out .= '' === $value
+			? ' ' . $name
+			: sprintf( ' %s="%s"', $name, esc_attr( $value ) );
+	}
+
+	return $out;
+}
+
+/**
+ * Whether a URL points at the enquiry form on the current page.
+ *
+ * @param string $url URL to test.
+ * @return bool
+ */
+function bt_is_enquiry_url( $url ) {
+	return false !== strpos( (string) $url, '#' . bt_enquiry_anchor() );
+}
+
+/**
  * Records the tone a self-coloured section paints, without taking a band.
  *
  * Sections such as the page header, the enquiry band and the light CTA are

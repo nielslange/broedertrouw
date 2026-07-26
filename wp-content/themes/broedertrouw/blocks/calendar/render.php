@@ -83,10 +83,31 @@ $allowed = array(
 
 							<p class="bt-calendar__text"><?php echo wp_kses( $row['text'], $allowed ); ?></p>
 
-							<?php if ( $link ) : ?>
+							<?php
+							if ( $link ) :
+								/*
+								 * Open rows name the trip in bold at the start of
+								 * their text, so the button can carry it into the
+								 * form along with the row's own period.
+								 */
+								$trip = '';
+
+								if ( preg_match( '/<strong>(.*?)<\/strong>/', (string) $row['text'], $match ) ) {
+									$trip = wp_strip_all_tags( $match[1] );
+								}
+								?>
 								<a
 									class="bt-button <?php echo 'open' === $status ? 'bt-button--navy' : 'bt-button--outline-navy'; ?> bt-calendar__cta"
-									href="<?php echo esc_url( $link['url'] ); ?>">
+									href="<?php echo esc_url( $link['url'] ); ?>"
+									<?php
+									echo bt_is_enquiry_url( $link['url'] ) ? bt_enquiry_attrs( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										array(
+											'trip'   => $trip,
+											'period' => $row['period'],
+										)
+									) : '';
+									?>
+									>
 									<?php echo esc_html( $link['title'] ); ?>
 								</a>
 							<?php else : ?>

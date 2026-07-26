@@ -65,12 +65,12 @@ $anchor = bt_block_anchor( $block );
 				 * school class group type in the enquiry form. The index maps
 				 * to the dropdown, which keeps it language independent.
 				 */
-				$is_enquiry = false !== strpos( $link['url'], bt_enquiry_url() );
+				$is_enquiry = bt_is_enquiry_url( $link['url'] );
 				?>
 				<a
 					class="bt-button bt-button--navy"
 					href="<?php echo esc_url( $link['url'] ); ?>"
-					<?php echo $is_enquiry ? 'data-bt-group="0"' : ''; ?>
+					<?php echo $is_enquiry ? bt_enquiry_attrs( array( 'group' => 0 ) ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener"' : ''; ?>>
 					<?php echo esc_html( $link['title'] ); ?>
 				</a>

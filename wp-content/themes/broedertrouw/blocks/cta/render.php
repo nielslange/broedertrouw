@@ -41,6 +41,11 @@ $anchor = bt_block_anchor( $block );
 			<a
 				class="bt-button <?php echo 'dark' === $style ? 'bt-button--white' : 'bt-button--navy'; ?>"
 				href="<?php echo esc_url( $button['url'] ); ?>"
+				<?php
+				// A general CTA has no trip of its own, but it still marks the
+				// click so the form scrolls and behaves like every other button.
+				echo bt_is_enquiry_url( $button['url'] ) ? bt_enquiry_attrs() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?>
 				<?php echo ! empty( $button['target'] ) ? 'target="' . esc_attr( $button['target'] ) . '" rel="noopener"' : ''; ?>>
 				<?php echo esc_html( $button['title'] ); ?>
 			</a>

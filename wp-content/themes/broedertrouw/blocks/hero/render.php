@@ -49,6 +49,7 @@ $anchor = bt_block_anchor( $block );
 						<a
 							class="bt-button bt-button--white"
 							href="<?php echo esc_url( $primary['url'] ); ?>"
+							<?php echo bt_is_enquiry_url( $primary['url'] ) ? bt_enquiry_attrs() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php echo ! empty( $primary['target'] ) ? 'target="' . esc_attr( $primary['target'] ) . '" rel="noopener"' : ''; ?>>
 							<?php echo esc_html( $primary['title'] ); ?>
 						</a>
@@ -58,6 +59,7 @@ $anchor = bt_block_anchor( $block );
 						<a
 							class="bt-button bt-button--outline-white"
 							href="<?php echo esc_url( $secondary['url'] ); ?>"
+							<?php echo bt_is_enquiry_url( $secondary['url'] ) ? bt_enquiry_attrs() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php echo ! empty( $secondary['target'] ) ? 'target="' . esc_attr( $secondary['target'] ) . '" rel="noopener"' : ''; ?>>
 							<?php echo esc_html( $secondary['title'] ); ?>
 						</a>

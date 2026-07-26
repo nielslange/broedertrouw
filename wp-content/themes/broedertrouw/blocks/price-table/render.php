@@ -88,9 +88,25 @@ $anchor = bt_block_anchor( $block );
 						 * needs no JavaScript.
 						 */
 						?>
+						<?php
+						/*
+						 * Each row is one charter option, so its title and dates
+						 * travel to the form the same way a trip card's do.
+						 */
+						$row_period = trim( ( $row['period'] ?? '' ) . ( ! empty( $row['period_note'] ) ? ' · ' . $row['period_note'] : '' ) );
+						?>
 						<a
 							class="bt-button <?php echo ! empty( $row['featured'] ) ? 'bt-button--navy' : 'bt-button--outline-navy'; ?> bt-price-row__cta"
-							href="<?php echo esc_url( $cta_url ); ?>">
+							href="<?php echo esc_url( $cta_url ); ?>"
+							<?php
+							echo bt_is_enquiry_url( $cta_url ) ? bt_enquiry_attrs( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								array(
+									'trip'   => $row['title'],
+									'period' => $row_period,
+								)
+							) : '';
+							?>
+							>
 							<?php echo esc_html( $cta_label ); ?>
 						</a>
 

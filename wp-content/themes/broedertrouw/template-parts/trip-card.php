@@ -62,8 +62,15 @@ if ( 'card' === $variant ) {
 		<a
 			class="bt-button bt-button--outline-navy bt-trip-card__cta"
 			href="<?php echo esc_url( bt_enquiry_url() ); ?>"
-			data-bt-trip="<?php echo esc_attr( get_the_title( $trip_id ) ); ?>"
-			data-bt-period="<?php echo esc_attr( $date_range ); ?>">
+			<?php
+			echo bt_enquiry_attrs( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				array(
+					'trip'   => get_the_title( $trip_id ),
+					'period' => $date_range,
+				)
+			);
+			?>
+			>
 			<?php echo esc_html( $cta_label ); ?>
 		</a>
 	</article>
