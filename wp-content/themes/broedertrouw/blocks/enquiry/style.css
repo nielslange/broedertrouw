@@ -135,6 +135,23 @@
 	background-position: right 10px center;
 }
 
+/*
+ * The tour field only appears when a tour button fills it, so it starts
+ * hidden and the duration dropdown holds that slot until then. Visibility is
+ * driven by the hidden attribute alone, which the script toggles.
+ */
+.bt-enquiry .fluentform .ff-el-group[hidden] {
+	display: none;
+}
+
+/* Read-only, so it reads as a stated fact rather than something to fill in. */
+.bt-enquiry .fluentform .bt-field-tour {
+	background: var(--bt-tint);
+	color: var(--bt-heading);
+	font-weight: 700;
+	cursor: default;
+}
+
 /* The message is optional, so it stays compact: about three lines, with the
    visitor free to drag it taller. */
 .bt-enquiry .fluentform textarea.ff-el-form-control {

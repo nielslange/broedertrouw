@@ -65,14 +65,48 @@ document.addEventListener( 'click', function ( event ) {
 		}
 	}
 
-	// A trip is always the "open trip / regatta" duration, which is the last
-	// option in both languages.
-	if ( trigger.dataset.btTrip ) {
-		const duration = form.querySelector( '[name="duration"]' );
-		const last     = duration && duration.options[ duration.options.length - 1 ];
+	/*
+	 * A named tour answers the duration question by itself, so the duration
+	 * dropdown is swapped for a read-only tour field. Duration is also cleared
+	 * and un-required, otherwise a hidden required field blocks submission.
+	 */
+	const durationField = form.querySelector( '[name="duration"]' );
+	const tourField     = form.querySelector( '[name="tour"]' );
 
-		if ( last ) {
-			setValue( 'duration', last.value );
+	if ( durationField && tourField ) {
+		const durationWrap = durationField.closest( '.ff-el-group' );
+		const tourWrap     = tourField.closest( '.ff-el-group' );
+
+		if ( trip ) {
+			tourField.value = trip;
+			tourField.dispatchEvent( new Event( 'input', { bubbles: true } ) );
+
+			// Hidden and empty, so it must not block submission. The stored
+			// rule allows this; the attribute is what the browser enforces.
+			durationField.value = '';
+			durationField.required = false;
+			durationField.removeAttribute( 'required' );
+
+			if ( durationWrap ) {
+				durationWrap.hidden = true;
+			}
+
+			if ( tourWrap ) {
+				tourWrap.hidden = false;
+			}
+		} else {
+			// A generic enquiry: put the duration question back.
+			tourField.value = '';
+			durationField.required = true;
+			durationField.setAttribute( 'required', 'required' );
+
+			if ( durationWrap ) {
+				durationWrap.hidden = false;
+			}
+
+			if ( tourWrap ) {
+				tourWrap.hidden = true;
+			}
 		}
 	}
 

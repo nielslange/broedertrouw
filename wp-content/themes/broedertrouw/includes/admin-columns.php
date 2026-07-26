@@ -103,3 +103,25 @@ function bt_trip_admin_order( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'bt_trip_admin_order' );
+
+/**
+ * Orders the page list table by menu order, so it mirrors the menus.
+ *
+ * Pages carry a menu_order that follows the main menu, then the footer legals
+ * menu. WordPress defaults the list table to title order, which interleaves the
+ * two languages alphabetically and hides that structure.
+ *
+ * @param WP_Query $query Current query.
+ */
+function bt_page_admin_order( $query ) {
+	if ( ! is_admin() || ! $query->is_main_query() || 'page' !== $query->get( 'post_type' ) ) {
+		return;
+	}
+
+	if ( $query->get( 'orderby' ) ) {
+		return;
+	}
+
+	$query->set( 'orderby', array( 'menu_order' => 'ASC', 'title' => 'ASC' ) );
+}
+add_action( 'pre_get_posts', 'bt_page_admin_order' );

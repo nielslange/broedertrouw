@@ -71,7 +71,37 @@ $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';
 		?>
 		<div class="bt-enquiry__card" data-bt-trip-template="<?php echo esc_attr( $trip_template ); ?>">
 			<?php if ( $form_id && shortcode_exists( 'fluentform' ) ) : ?>
-				<?php echo do_shortcode( sprintf( '[fluentform id="%d"]', $form_id ) ); ?>
+				<?php
+				$form = do_shortcode( sprintf( '[fluentform id="%d"]', $form_id ) );
+
+				/*
+				 * The tour field starts hidden: it only has an answer once a
+				 * tour button fills it. Marking it here rather than in CSS
+				 * means it is hidden before any script runs, so it never
+				 * flashes on screen.
+				 */
+				$form = preg_replace(
+					'/(<div\s+class=([\'"])ff-el-group bt-field-tour-wrap\2)/',
+					'$1 hidden',
+					$form,
+					1
+				);
+
+				/*
+				 * Duration is stored as optional so a hidden empty value cannot
+				 * block submission when a tour answers it instead. While it is
+				 * the visible question it is still required, which the browser
+				 * enforces from this attribute.
+				 */
+				$form = preg_replace(
+					'/(<select[^>]*name=([\'"])duration\2)/',
+					'$1 required',
+					$form,
+					1
+				);
+
+				echo $form; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?>
 			<?php else : ?>
 				<p class="bt-enquiry__missing"><?php esc_html_e( 'The enquiry form is not available yet.', 'broedertrouw' ); ?></p>
 			<?php endif; ?>
