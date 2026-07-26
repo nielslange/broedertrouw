@@ -22,16 +22,9 @@ function bt_trip_event_schema() {
 		return;
 	}
 
-	$end          = bt_field( 'date_end', $post_id );
-	$port         = bt_port_label( bt_field( 'port_embark', $post_id ) );
-	$price        = bt_field( 'price_pp', $post_id );
-	$berth_status = bt_field( 'berth_status', $post_id );
-
-	$availability = array(
-		'open' => 'https://schema.org/InStock',
-		'few'  => 'https://schema.org/LimitedAvailability',
-		'full' => 'https://schema.org/SoldOut',
-	);
+	$end   = bt_field( 'date_end', $post_id );
+	$port  = bt_port_label( bt_field( 'port_embark', $post_id ) );
+	$price = bt_field( 'price_berth', $post_id );
 
 	$data = array(
 		'@context'            => 'https://schema.org',
@@ -75,7 +68,6 @@ function bt_trip_event_schema() {
 			'@type'         => 'Offer',
 			'price'         => (float) $price,
 			'priceCurrency' => 'EUR',
-			'availability'  => isset( $availability[ $berth_status ] ) ? $availability[ $berth_status ] : $availability['open'],
 			'url'           => get_permalink( $post_id ),
 		);
 	}

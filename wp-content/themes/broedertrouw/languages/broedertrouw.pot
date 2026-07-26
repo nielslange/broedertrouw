@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-26T12:29:22+00:00\n"
+"POT-Creation-Date: 2026-07-26T13:00:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha-bc61c73\n"
 "X-Domain: broedertrouw\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "USP grid: add at least two items."
 msgstr ""
 
-#: functions.php:55
+#: functions.php:72
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
@@ -81,7 +81,8 @@ msgid "Embarkation"
 msgstr ""
 
 #: includes/admin-columns.php:25
-msgid "Berths"
+#: includes/trip-templates.php:56
+msgid "Price"
 msgstr ""
 
 #: includes/post-types.php:18
@@ -147,35 +148,31 @@ msgstr ""
 msgid "Disembarkation"
 msgstr ""
 
-#: includes/trip-templates.php:56
-msgid "Price"
+#: includes/trip-templates.php:65
+msgid "Private cabin"
 msgstr ""
 
-#: includes/trip-templates.php:64
-msgid "Availability"
-msgstr ""
-
-#: includes/trip-templates.php:108
+#: includes/trip-templates.php:110
 msgid "Included"
 msgstr ""
 
-#: includes/trip-templates.php:122
+#: includes/trip-templates.php:124
 msgid "Not included"
 msgstr ""
 
-#: includes/trip-templates.php:160
+#: includes/trip-templates.php:162
 msgid "Request this trip"
 msgstr ""
 
-#: includes/trip-templates.php:177
+#: includes/trip-templates.php:179
 msgid "More trips"
 msgstr ""
 
-#: includes/trip-templates.php:260
+#: includes/trip-templates.php:262
 msgid "No upcoming trips are scheduled at the moment."
 msgstr ""
 
-#: includes/trip-templates.php:265
+#: includes/trip-templates.php:267
 msgid "Past trips"
 msgstr ""
 
@@ -195,31 +192,25 @@ msgstr ""
 msgid "Other port"
 msgstr ""
 
-#: includes/trips.php:179
-msgid "Berths available"
-msgstr ""
-
-#: includes/trips.php:183
-msgid "Few berths left"
-msgstr ""
-
-#: includes/trips.php:187
-msgid "Fully booked"
-msgstr ""
-
 #. translators: %s: price amount.
-#: includes/trips.php:212
+#: includes/trips.php:197
 #, php-format
 msgid "from € %s for the whole ship"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:216
+#: includes/trips.php:201
 #, php-format
 msgid "from € %s per person"
 msgstr ""
 
-#: template-parts/trip-card.php:57
+#. translators: %s: price amount.
+#: includes/trips.php:218
+#, php-format
+msgid "€ %s per person"
+msgstr ""
+
+#: template-parts/trip-card.php:51
 msgid "View trip"
 msgstr ""
 

@@ -58,12 +58,14 @@ function bt_trip_summary_card() {
 		);
 	}
 
-	$status = bt_berth_status( bt_field( 'berth_status', $post_id ) );
+	$cabin_price = bt_trip_cabin_price( $post_id );
 
-	$rows[] = array(
-		'label' => __( 'Availability', 'broedertrouw' ),
-		'value' => $status['label'],
-	);
+	if ( $cabin_price ) {
+		$rows[] = array(
+			'label' => __( 'Private cabin', 'broedertrouw' ),
+			'value' => $cabin_price,
+		);
+	}
 
 	if ( ! $rows ) {
 		return;

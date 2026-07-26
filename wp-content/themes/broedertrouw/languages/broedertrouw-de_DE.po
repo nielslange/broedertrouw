@@ -58,7 +58,7 @@ msgstr ""
 msgid "USP grid: add at least two items."
 msgstr ""
 
-#: functions.php:55
+#: functions.php:72
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
@@ -73,8 +73,9 @@ msgid "Embarkation"
 msgstr "Einstiegshafen"
 
 #: includes/admin-columns.php:25
-msgid "Berths"
-msgstr "Plätze"
+#: includes/trip-templates.php:56
+msgid "Price"
+msgstr "Preis"
 
 #: includes/post-types.php:18
 msgctxt "post type general name"
@@ -139,35 +140,31 @@ msgstr "Törn-Archiv"
 msgid "Disembarkation"
 msgstr "Ausstiegshafen"
 
-#: includes/trip-templates.php:56
-msgid "Price"
-msgstr "Preis"
+#: includes/trip-templates.php:65
+msgid "Private cabin"
+msgstr "Eigene Kajüte"
 
-#: includes/trip-templates.php:64
-msgid "Availability"
-msgstr "Verfügbarkeit"
-
-#: includes/trip-templates.php:108
+#: includes/trip-templates.php:110
 msgid "Included"
 msgstr "Inklusive"
 
-#: includes/trip-templates.php:122
+#: includes/trip-templates.php:124
 msgid "Not included"
 msgstr "Nicht enthalten"
 
-#: includes/trip-templates.php:160
+#: includes/trip-templates.php:162
 msgid "Request this trip"
 msgstr "Diesen Törn anfragen"
 
-#: includes/trip-templates.php:177
+#: includes/trip-templates.php:179
 msgid "More trips"
 msgstr "Weitere Törns"
 
-#: includes/trip-templates.php:260
+#: includes/trip-templates.php:262
 msgid "No upcoming trips are scheduled at the moment."
 msgstr "Derzeit sind keine Törns geplant."
 
-#: includes/trip-templates.php:265
+#: includes/trip-templates.php:267
 msgid "Past trips"
 msgstr "Vergangene Törns"
 
@@ -187,27 +184,19 @@ msgstr "Amsterdam"
 msgid "Other port"
 msgstr "Anderer Hafen"
 
-#: includes/trips.php:179
-msgid "Berths available"
-msgstr "Plätze frei"
-
-#: includes/trips.php:183
-msgid "Few berths left"
-msgstr "Wenige Plätze"
-
-#: includes/trips.php:187
-msgid "Fully booked"
-msgstr "Ausgebucht"
-
-#: includes/trips.php:212
+#: includes/trips.php:197
 msgid "from € %s for the whole ship"
 msgstr "ab € %s für das ganze Schiff"
 
-#: includes/trips.php:216
+#: includes/trips.php:201
 msgid "from € %s per person"
 msgstr "ab € %s p. P."
 
-#: template-parts/trip-card.php:57
+#: includes/trips.php:218
+msgid "€ %s per person"
+msgstr "€ %s p. P."
+
+#: template-parts/trip-card.php:51
 msgid "View trip"
 msgstr "Törn ansehen"
 

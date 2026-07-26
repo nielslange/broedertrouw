@@ -51,7 +51,7 @@
 }
 
 .bt-testimonial__name {
-	color: var(--bt-text);
+	color: var(--bt-heading);
 	font-weight: 700;
 }
 

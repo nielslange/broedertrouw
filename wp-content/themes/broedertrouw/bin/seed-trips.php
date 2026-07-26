@@ -26,8 +26,7 @@ $trips = array(
 		'embark'  => 'enkhuizen',
 		'mode'    => 'per_berth',
 		'price'   => 1080,
-		'status'  => 'open',
-		'berths'  => 32,
+		'price_cabin' => 1680,
 		'nl'      => array(
 			'title'     => 'Waddentocht',
 			'highlight' => 'Droogvallen op het wad bij eb.',
@@ -49,9 +48,8 @@ $trips = array(
 		'end'     => sprintf( '%d-10-11', $next_year ),
 		'embark'  => 'hoorn',
 		'mode'    => 'per_berth',
-		'price'   => 250,
-		'status'  => 'few',
-		'berths'  => 24,
+		'price'   => 265,
+		'price_cabin' => 420,
 		'nl'      => array(
 			'title'     => 'Klipperrace',
 			'highlight' => 'Regattaweekend met historische klippers.',
@@ -73,9 +71,8 @@ $trips = array(
 		'end'     => sprintf( '%d-05-17', $next_year ),
 		'embark'  => 'hoorn',
 		'mode'    => 'per_berth',
-		'price'   => 250,
-		'status'  => 'open',
-		'berths'  => 24,
+		'price'   => 265,
+		'price_cabin' => 420,
 		'nl'      => array(
 			'title'     => 'Pieperrace',
 			'highlight' => 'Seizoensopening met de hele vloot.',
@@ -97,9 +94,8 @@ $trips = array(
 		'end'     => sprintf( '%d-10-25', $next_year ),
 		'embark'  => 'hoorn',
 		'mode'    => 'per_berth',
-		'price'   => 250,
-		'status'  => 'open',
-		'berths'  => 24,
+		'price'   => 265,
+		'price_cabin' => 420,
 		'nl'      => array(
 			'title'     => 'Bontekoerace',
 			'highlight' => 'Seizoensafsluiting vanuit Hoorn.',
@@ -122,8 +118,7 @@ $trips = array(
 		'embark'  => 'hoorn',
 		'mode'    => 'per_berth',
 		'price'   => 395,
-		'status'  => 'open',
-		'berths'  => 28,
+		'price_cabin' => 620,
 		'nl'      => array(
 			'title'     => 'Paasweekend',
 			'highlight' => 'Vier dagen zeilen rond Pasen.',
@@ -146,8 +141,6 @@ $trips = array(
 		'embark'  => 'hoorn',
 		'mode'    => 'whole_boat',
 		'price'   => 4200,
-		'status'  => 'open',
-		'berths'  => 32,
 		'nl'      => array(
 			'title'     => 'Zeilweekend',
 			'highlight' => 'Het hele schip voor jouw groep.',
@@ -170,8 +163,7 @@ $trips = array(
 		'embark'  => 'enkhuizen',
 		'mode'    => 'per_berth',
 		'price'   => 980,
-		'status'  => 'full',
-		'berths'  => 32,
+		'price_cabin' => 1560,
 		'nl'      => array(
 			'title'     => 'Waddentocht (vorig seizoen)',
 			'highlight' => 'Afgelopen editie, ter referentie.',
@@ -245,9 +237,11 @@ foreach ( $trips as $trip ) {
 		update_field( 'date_end', $trip['end'], $post_id );
 		update_field( 'port_embark', $trip['embark'], $post_id );
 		update_field( 'booking_mode', $trip['mode'], $post_id );
-		update_field( 'price_pp', $trip['price'], $post_id );
-		update_field( 'berth_status', $trip['status'], $post_id );
-		update_field( 'berths_total', $trip['berths'], $post_id );
+		update_field( 'price_berth', $trip['price'], $post_id );
+
+		if ( ! empty( $trip['price_cabin'] ) ) {
+			update_field( 'price_cabin', $trip['price_cabin'], $post_id );
+		}
 		update_field( 'highlight', $content['highlight'], $post_id );
 
 		update_field(

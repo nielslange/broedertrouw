@@ -31,7 +31,7 @@
 
 .bt-ship__heading {
 	margin: 0 0 14px;
-	color: var(--bt-text);
+	color: var(--bt-heading);
 	font-family: var(--bt-font-heading);
 	font-size: clamp(26px, 3.2vw, 34px);
 	font-weight: 800;

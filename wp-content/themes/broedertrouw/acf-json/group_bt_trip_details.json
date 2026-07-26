@@ -16,6 +16,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "display_format": "d.m.Y",
             "return_format": "Y-m-d",
             "first_day": 1,
@@ -35,6 +36,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "display_format": "d.m.Y",
             "return_format": "Y-m-d",
             "first_day": 1,
@@ -54,6 +56,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "choices": {
                 "hoorn": "Hoorn",
                 "enkhuizen": "Enkhuizen",
@@ -85,6 +88,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "choices": {
                 "hoorn": "Hoorn",
                 "enkhuizen": "Enkhuizen",
@@ -116,6 +120,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "choices": {
                 "per_berth": "Per berth",
                 "whole_boat": "Whole ship"
@@ -127,12 +132,12 @@
             "pll_default_value": "per_berth"
         },
         {
-            "key": "field_bt_trip_price_pp",
-            "label": "Price",
-            "name": "price_pp",
+            "key": "field_bt_trip_price_berth",
+            "label": "Price per berth",
+            "name": "price_berth",
             "aria-label": "",
             "type": "number",
-            "instructions": "Price per person, or for the whole ship when booking mode is \"Whole ship\".",
+            "instructions": "Per person in a shared deck berth. For a whole-ship charter, the total price.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -140,8 +145,9 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "min": 0,
-            "step": 10,
+            "step": 5,
             "prepend": "€",
             "default_value": "",
             "max": "",
@@ -150,12 +156,12 @@
             "pll_default_value": ""
         },
         {
-            "key": "field_bt_trip_cabin_surcharge",
-            "label": "Cabin surcharge",
-            "name": "cabin_surcharge",
+            "key": "field_bt_trip_price_cabin",
+            "label": "Price for a private cabin",
+            "name": "price_cabin",
             "aria-label": "",
             "type": "number",
-            "instructions": "",
+            "instructions": "Total price per person for private use of a cabin. Leave empty when not offered.",
             "required": false,
             "conditional_logic": false,
             "wrapper": {
@@ -163,60 +169,13 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "min": 0,
-            "step": 10,
+            "step": 5,
             "prepend": "€",
             "default_value": "",
             "max": "",
             "placeholder": "",
-            "append": "",
-            "pll_default_value": ""
-        },
-        {
-            "key": "field_bt_trip_berth_status",
-            "label": "Berth status",
-            "name": "berth_status",
-            "aria-label": "",
-            "type": "button_group",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "open": "Berths available",
-                "few": "Few berths left",
-                "full": "Fully booked"
-            },
-            "default_value": "open",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal",
-            "pll_default_value": "open"
-        },
-        {
-            "key": "field_bt_trip_berths_total",
-            "label": "Berths total",
-            "name": "berths_total",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "min": 0,
-            "default_value": "",
-            "max": "",
-            "step": "",
-            "placeholder": "",
-            "prepend": "",
             "append": "",
             "pll_default_value": ""
         },
@@ -234,6 +193,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "translate",
             "maxlength": 120,
             "default_value": "",
             "placeholder": "",
@@ -255,6 +215,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "translate",
             "layout": "table",
             "button_label": "Add item",
             "min": 0,
@@ -276,6 +237,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "translations": "translate",
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -300,6 +262,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "translate",
             "layout": "table",
             "button_label": "Add item",
             "min": 0,
@@ -321,6 +284,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "translations": "translate",
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -345,6 +309,7 @@
                 "class": "",
                 "id": ""
             },
+            "translations": "sync",
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -381,5 +346,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785068844
+    "modified": 1785070583
 }

@@ -30,7 +30,7 @@
 }
 
 .bt-cta--light .bt-cta__heading {
-	color: var(--bt-text);
+	color: var(--bt-heading);
 }
 
 .bt-cta__text {

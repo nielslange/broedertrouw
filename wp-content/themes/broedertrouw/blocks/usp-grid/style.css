@@ -40,7 +40,7 @@
 
 .bt-usp__title {
 	margin: 0 0 6px;
-	color: var(--bt-text);
+	color: var(--bt-heading);
 	font-family: var(--bt-font-heading);
 	font-size: 18px;
 	font-weight: 700;

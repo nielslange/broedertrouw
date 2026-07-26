@@ -40,7 +40,7 @@
 
 .bt-charter__heading {
 	margin: 0 0 10px;
-	color: var(--bt-text);
+	color: var(--bt-heading);
 	font-family: var(--bt-font-heading);
 	font-size: 26px;
 	font-weight: 700;

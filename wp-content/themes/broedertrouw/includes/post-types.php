@@ -44,3 +44,19 @@ function bt_register_trip_post_type() {
 	);
 }
 add_action( 'init', 'bt_register_trip_post_type' );
+
+/**
+ * Uses the classic editor for trips.
+ *
+ * A trip is entered entirely through the Trip Details fields, so the block
+ * editor only hides them behind a canvas. The classic screen shows the ACF
+ * field group directly under the title.
+ *
+ * @param bool   $use_block_editor Whether to use the block editor.
+ * @param string $post_type        Post type name.
+ * @return bool
+ */
+function bt_trip_disable_block_editor( $use_block_editor, $post_type ) {
+	return 'trip' === $post_type ? false : $use_block_editor;
+}
+add_filter( 'use_block_editor_for_post_type', 'bt_trip_disable_block_editor', 10, 2 );

@@ -11,11 +11,13 @@ define( 'BT_THEME_VERSION', '1.0.0' );
 define( 'BT_THEME_DIR', get_stylesheet_directory() );
 define( 'BT_THEME_URI', get_stylesheet_directory_uri() );
 
+require_once BT_THEME_DIR . '/includes/colors.php';
 require_once BT_THEME_DIR . '/includes/trips.php';
 require_once BT_THEME_DIR . '/includes/post-types.php';
 require_once BT_THEME_DIR . '/includes/polylang.php';
 require_once BT_THEME_DIR . '/includes/admin-columns.php';
 require_once BT_THEME_DIR . '/includes/blocks.php';
+require_once BT_THEME_DIR . '/includes/acf-labels.php';
 require_once BT_THEME_DIR . '/includes/trip-templates.php';
 require_once BT_THEME_DIR . '/includes/schema.php';
 

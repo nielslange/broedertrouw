@@ -20,9 +20,9 @@ function bt_trip_columns( $columns ) {
 		$reordered[ $key ] = $label;
 
 		if ( 'title' === $key ) {
-			$reordered['trip_dates']  = __( 'Dates', 'broedertrouw' );
-			$reordered['trip_port']   = __( 'Embarkation', 'broedertrouw' );
-			$reordered['trip_status'] = __( 'Berths', 'broedertrouw' );
+			$reordered['trip_dates'] = __( 'Dates', 'broedertrouw' );
+			$reordered['trip_port']  = __( 'Embarkation', 'broedertrouw' );
+			$reordered['trip_price'] = __( 'Price', 'broedertrouw' );
 		}
 	}
 
@@ -48,16 +48,9 @@ function bt_trip_column_content( $column, $post_id ) {
 			echo $port ? esc_html( $port ) : '&mdash;';
 			break;
 
-		case 'trip_status':
-			$status = bt_field( 'berth_status', $post_id );
-
-			if ( ! $status ) {
-				echo '&mdash;';
-				break;
-			}
-
-			$resolved = bt_berth_status( $status );
-			echo esc_html( $resolved['label'] );
+		case 'trip_price':
+			$price = bt_trip_price( $post_id );
+			echo $price ? esc_html( $price ) : '&mdash;';
 			break;
 	}
 }
@@ -70,9 +63,9 @@ add_action( 'manage_trip_posts_custom_column', 'bt_trip_column_content', 10, 2 )
  * @return array
  */
 function bt_trip_sortable_columns( $columns ) {
-	$columns['trip_dates']  = 'trip_dates';
-	$columns['trip_port']   = 'trip_port';
-	$columns['trip_status'] = 'trip_status';
+	$columns['trip_dates'] = 'trip_dates';
+	$columns['trip_port']  = 'trip_port';
+	$columns['trip_price'] = 'trip_price';
 
 	return $columns;
 }
@@ -89,9 +82,9 @@ function bt_trip_admin_order( $query ) {
 	}
 
 	$meta_keys = array(
-		'trip_dates'  => 'date_start',
-		'trip_port'   => 'port_embark',
-		'trip_status' => 'berth_status',
+		'trip_dates' => 'date_start',
+		'trip_port'  => 'port_embark',
+		'trip_price' => 'price_berth',
 	);
 
 	$orderby = $query->get( 'orderby' );

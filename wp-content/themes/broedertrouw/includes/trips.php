@@ -168,44 +168,29 @@ function bt_port_label( $port ) {
 }
 
 /**
- * Returns the translated label and modifier for a berth status.
+ * Formats a money amount the way the Dutch and German sites write it.
  *
- * @param string $status Berth status key.
- * @return array{label:string,modifier:string}
+ * @param float $amount Amount in euros.
+ * @return string
  */
-function bt_berth_status( $status ) {
-	$map = array(
-		'open' => array(
-			'label'    => __( 'Berths available', 'broedertrouw' ),
-			'modifier' => 'open',
-		),
-		'few'  => array(
-			'label'    => __( 'Few berths left', 'broedertrouw' ),
-			'modifier' => 'few',
-		),
-		'full' => array(
-			'label'    => __( 'Fully booked', 'broedertrouw' ),
-			'modifier' => 'full',
-		),
-	);
-
-	return isset( $map[ $status ] ) ? $map[ $status ] : $map['open'];
+function bt_format_price( $amount ) {
+	return number_format( (float) $amount, 0, ',', '.' );
 }
 
 /**
- * Formats a trip's price for display.
+ * Formats a trip's headline price for cards and lists.
  *
  * @param int $post_id Post ID.
  * @return string
  */
 function bt_trip_price( $post_id = null ) {
-	$price = bt_field( 'price_pp', $post_id );
+	$price = bt_field( 'price_berth', $post_id );
 
 	if ( ! $price ) {
 		return '';
 	}
 
-	$amount = number_format( (float) $price, 0, ',', '.' );
+	$amount = bt_format_price( $price );
 
 	if ( 'whole_boat' === bt_field( 'booking_mode', $post_id ) ) {
 		/* translators: %s: price amount. */
@@ -214,4 +199,21 @@ function bt_trip_price( $post_id = null ) {
 
 	/* translators: %s: price amount. */
 	return sprintf( __( 'from € %s per person', 'broedertrouw' ), $amount );
+}
+
+/**
+ * Formats the private cabin price, when the trip offers one.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_cabin_price( $post_id = null ) {
+	$price = bt_field( 'price_cabin', $post_id );
+
+	if ( ! $price ) {
+		return '';
+	}
+
+	/* translators: %s: price amount. */
+	return sprintf( __( '€ %s per person', 'broedertrouw' ), bt_format_price( $price ) );
 }

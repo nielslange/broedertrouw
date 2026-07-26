@@ -17,8 +17,6 @@ $date_range = bt_trip_date_range( $trip_id );
 $highlight  = bt_field( 'highlight', $trip_id );
 $price      = bt_trip_price( $trip_id );
 $port       = bt_port_label( bt_field( 'port_embark', $trip_id ) );
-$status     = bt_berth_status( bt_field( 'berth_status', $trip_id ) );
-
 $meta_parts = array_filter( array( $port, $price ) );
 ?>
 <article class="bt-trip-card bt-trip-card--<?php echo esc_attr( $variant ); ?>">
@@ -49,10 +47,6 @@ $meta_parts = array_filter( array( $port, $price ) );
 	</div>
 
 	<div class="bt-trip-card__aside">
-		<span class="bt-badge bt-badge--<?php echo esc_attr( $status['modifier'] ); ?>">
-			<?php echo esc_html( $status['label'] ); ?>
-		</span>
-
 		<a class="bt-button bt-button--outline-navy" href="<?php echo esc_url( get_permalink( $trip_id ) ); ?>">
 			<?php esc_html_e( 'View trip', 'broedertrouw' ); ?>
 		</a>
