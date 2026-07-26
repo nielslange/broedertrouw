@@ -78,7 +78,7 @@
 .bt-calendar__row--open {
 	margin-inline: -14px;
 	padding-inline: 14px;
-	border-radius: 8px;
+	border-radius: var(--bt-radius);
 	background: var(--bt-tint);
 }
 

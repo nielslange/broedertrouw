@@ -23,7 +23,7 @@
 	margin: 0;
 	padding: 26px;
 	background: var(--bt-tint);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-testimonial__quote {

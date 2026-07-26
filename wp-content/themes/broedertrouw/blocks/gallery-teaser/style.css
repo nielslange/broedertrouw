@@ -23,7 +23,7 @@
 .bt-gallery__item {
 	margin: 0;
 	overflow: hidden;
-	border-radius: 8px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-gallery__item img {

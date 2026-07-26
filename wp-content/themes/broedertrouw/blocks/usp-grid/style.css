@@ -28,7 +28,7 @@
 .bt-usp__item {
 	padding: 22px;
 	border: 1px solid var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-usp__icon {

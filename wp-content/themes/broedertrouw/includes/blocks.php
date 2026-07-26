@@ -61,26 +61,74 @@ function bt_register_block_styles() {
 add_action( 'init', 'bt_register_block_styles' );
 
 /**
- * Returns the alternating band class for a neutral section, then advances.
+ * Records the tone a self-coloured section paints, without taking a band.
  *
- * Blocks that paint their own background (page header, enquiry, CTA) call this
- * with $counts = false so they keep their own look without disturbing the
- * alternation of the sections around them.
+ * Sections such as the page header, the enquiry band and the light CTA are
+ * tinted by their own stylesheet. The alternation has to know about them, or a
+ * neutral section that happens to land on tint will sit flush against one and
+ * the seam between the two disappears.
+ *
+ * @param string $tone 'tint', 'dark' or 'plain'.
+ */
+function bt_band_note( $tone ) {
+	bt_band_state( $tone );
+}
+
+/**
+ * Tracks and returns the tone of the previous section.
+ *
+ * @param string|null $set Tone to record, or null to read the current one.
+ * @return string
+ */
+function bt_band_state( $set = null ) {
+	static $previous = 'plain';
+
+	if ( null !== $set ) {
+		$previous = $set;
+	}
+
+	return $previous;
+}
+
+/**
+ * Restarts the alternation for each rendered post.
+ *
+ * Without this the state carries over between the main query and anything
+ * else that renders blocks in the same request, such as the REST preview.
+ */
+function bt_band_reset() {
+	bt_band_state( 'plain' );
+}
+add_action( 'the_post', 'bt_band_reset' );
+
+/**
+ * Returns the band class for a neutral section, then records its tone.
+ *
+ * Rather than counting sections, this looks at what the previous section
+ * painted: a neutral section takes the tint only when the one before it did
+ * not, so two tinted bands can never touch and every seam stays visible.
  *
  * @param bool $counts Whether this block participates in the alternation.
  * @return string Class name to add to the section, or ''.
  */
 function bt_band_class( $counts = true ) {
-	static $index = 0;
-
 	if ( ! $counts ) {
 		return '';
 	}
 
-	$class = ( 1 === $index % 2 ) ? 'bt-section-alt' : '';
-	++$index;
+	/*
+	 * Follow a tinted neighbour with plain. A dark band is a hard break, so the
+	 * section after it may start on tint again without the two running together.
+	 */
+	if ( 'tint' === bt_band_state() ) {
+		bt_band_state( 'plain' );
 
-	return $class;
+		return '';
+	}
+
+	bt_band_state( 'tint' );
+
+	return 'bt-section-alt';
 }
 
 /**
@@ -122,14 +170,41 @@ function bt_block_classes( $block, $base ) {
 	}
 
 	/*
-	 * Sections that paint their own background sit outside the alternation,
-	 * so consecutive neutral sections keep alternating around them.
+	 * Sections that paint their own background report the tone they use so the
+	 * alternation can avoid putting two tinted bands next to each other. The
+	 * rest take a band based on what came before them.
 	 */
-	$self_colored = array( 'bt-hero', 'bt-page-header', 'bt-enquiry', 'bt-cta', 'bt-charter' );
-	$band         = bt_band_class( ! in_array( $base, $self_colored, true ) );
+	$self_colored = array(
+		'bt-hero'        => 'dark',
+		'bt-page-header' => 'tint',
+		'bt-enquiry'     => 'tint',
+		'bt-charter'     => 'plain',
+	);
 
-	if ( $band && empty( $block['className'] ) ) {
-		$classes[] = $band;
+	if ( 'bt-enquiry' === $base ) {
+		/*
+		 * The enquiry band is always tinted and always last, so when the
+		 * section above it already took the tint it switches to the soft band
+		 * instead of repeating it.
+		 */
+		if ( 'tint' === bt_band_state() ) {
+			$classes[] = 'bt-enquiry--soft';
+			bt_band_note( 'soft' );
+		} else {
+			bt_band_note( 'tint' );
+		}
+	} elseif ( isset( $self_colored[ $base ] ) ) {
+		bt_band_note( $self_colored[ $base ] );
+	} elseif ( 'bt-cta' === $base ) {
+		// The CTA is tinted when light and reads as a break when dark.
+		$style = function_exists( 'get_field' ) ? get_field( 'style' ) : '';
+		bt_band_note( 'light' === $style ? 'tint' : 'dark' );
+	} else {
+		$band = bt_band_class();
+
+		if ( $band && empty( $block['className'] ) ) {
+			$classes[] = $band;
+		}
 	}
 
 	return implode( ' ', array_map( 'sanitize_html_class', $classes ) );

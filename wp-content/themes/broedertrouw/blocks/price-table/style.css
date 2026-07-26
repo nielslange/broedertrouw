@@ -24,7 +24,7 @@
 
 .bt-price-table__table {
 	border: 1px solid var(--bt-border);
-	border-radius: 12px;
+	border-radius: var(--bt-radius);
 	overflow: hidden;
 }
 
@@ -162,14 +162,23 @@
 	transform: rotate(180deg);
 }
 
+/*
+ * The panel is inset from the row edges, but its spacing has to stay inside
+ * the row: a bottom margin would sit outside the row's background box and
+ * leave an uncoloured band between rows.
+ */
 .bt-price-row__panel {
 	display: grid;
 	gap: 18px;
-	margin: 0 26px 20px;
+	margin: 0 26px;
 	padding: 16px 20px;
 	border: 1px solid var(--bt-border);
-	border-radius: 8px;
+	border-radius: var(--bt-radius);
 	background: #fff;
+}
+
+.bt-price-row[open] {
+	padding-bottom: 20px;
 }
 
 .bt-price-row__detail-label,

@@ -24,7 +24,7 @@
 /* Boxed: one bordered container around heading and columns. */
 .bt-price-grid--boxed .bt-price-grid__box {
 	border: 1px solid var(--bt-border);
-	border-radius: 12px;
+	border-radius: var(--bt-radius);
 	padding: 24px 26px;
 }
 
@@ -59,7 +59,7 @@
 /* Cards: each item is its own bordered box, price first. */
 .bt-price-grid--cards .bt-price-grid__item {
 	border: 1px solid var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 	padding: 18px;
 }
 

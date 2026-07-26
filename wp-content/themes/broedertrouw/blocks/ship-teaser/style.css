@@ -26,7 +26,7 @@
 	width: 100%;
 	aspect-ratio: 4 / 3;
 	object-fit: cover;
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-ship__heading {

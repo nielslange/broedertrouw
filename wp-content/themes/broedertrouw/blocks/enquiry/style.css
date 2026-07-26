@@ -3,6 +3,11 @@
 	padding-block: 64px;
 }
 
+/* Set when the section above already took the tint, so the two do not merge. */
+.bt-enquiry--soft {
+	background: var(--bt-soft);
+}
+
 .bt-enquiry__inner {
 	max-width: var(--bt-content-width);
 	margin-inline: auto;
@@ -73,7 +78,7 @@
 .bt-enquiry__card {
 	padding: 28px;
 	border: 1px solid var(--bt-border);
-	border-radius: 12px;
+	border-radius: var(--bt-radius);
 	background: #fff;
 	box-shadow: 0 4px 18px rgba(15, 58, 92, .08);
 }
@@ -110,7 +115,7 @@
 	height: 40px;
 	padding: 9px 10px;
 	border: 1px solid #C6D4DE;
-	border-radius: 6px;
+	border-radius: var(--bt-radius-sm);
 	color: var(--bt-heading);
 	font-family: inherit;
 	font-size: 14.5px;
@@ -175,7 +180,7 @@
 	width: 100%;
 	padding: 14px;
 	border: none;
-	border-radius: 6px;
+	border-radius: var(--bt-radius-sm);
 	background: var(--bt-navy);
 	color: #fff;
 	font-family: inherit;
@@ -188,4 +193,27 @@
 .bt-enquiry .fluentform .ff-btn-submit:focus-visible {
 	background: var(--bt-footer);
 	color: #fff;
+}
+
+/*
+ * Confirmation. FluentForm's default is a square grey box that reads like an
+ * empty input; this makes it a calm tinted panel instead.
+ */
+.bt-enquiry .fluentform .ff-message-success {
+	margin: 0;
+	padding: 20px 22px;
+	border: 1px solid #BBD5CB;
+	border-radius: var(--bt-radius);
+	background: #F1F8F4;
+	color: var(--bt-heading);
+	font-size: 15.5px;
+	line-height: 1.55;
+}
+
+/*
+ * The disclaimer sells the form before it is sent, so it has nothing to say
+ * once the confirmation replaces it.
+ */
+.bt-enquiry__card:has(.ff-message-success) .bt-enquiry__disclaimer {
+	display: none;
 }

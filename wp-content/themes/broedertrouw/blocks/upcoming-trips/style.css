@@ -46,7 +46,7 @@
 	gap: 8px;
 	padding: 26px;
 	border: 1px solid var(--bt-border);
-	border-radius: 12px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-trip-card--card .bt-trip-card__date {

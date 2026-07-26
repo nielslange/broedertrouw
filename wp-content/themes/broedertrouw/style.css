@@ -29,6 +29,23 @@
 	--bt-content-width: 1124px;
 	--bt-gutter: 32px;
 	--bt-font-heading: 'Archivo', sans-serif;
+
+	/*
+	 * Corner radii. Blocksy has no global radius option, so panels, cards and
+	 * media all resolve to one token: change it here and every surface follows.
+	 * Pills and avatars keep their own full rounding.
+	 */
+	--bt-radius: 8px;
+	--bt-radius-sm: 6px;
+
+	/*
+	 * Card surface: a hair darker than white so cards read as raised panels
+	 * without competing with the tint bands.
+	 */
+	--bt-card: #FAFCFD;
+
+	/* Third section band, between white and the blue tint. */
+	--bt-soft: #F4F7F9;
 }
 
 /* ------------------------------------------------------------
@@ -81,15 +98,21 @@
 	margin: 0;
 }
 
+/**
+ * Buttons follow the header CTA: compact, 14.5px, restrained padding. Larger
+ * or heavier buttons dominate the page and read as shouty next to the
+ * type scale.
+ */
 .bt-button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 6px;
-	font-size: 15.5px;
+	min-height: 36px;
+	border-radius: var(--bt-radius-sm);
+	font-size: 14.5px;
 	font-weight: 700;
+	line-height: 1.2;
 	text-decoration: none;
-	transition: opacity .15s ease;
 }
 
 /**
@@ -100,7 +123,7 @@
 .bt-button--white {
 	background: #fff;
 	color: var(--bt-navy);
-	padding: 13px 24px;
+	padding: 8px 18px;
 }
 
 .bt-button--white:hover,
@@ -111,9 +134,9 @@
 
 .bt-button--outline-white {
 	background: rgba(9, 32, 52, .72);
-	border: 2px solid #fff;
+	border: 1.5px solid #fff;
 	color: #fff;
-	padding: 11px 24px;
+	padding: 7px 18px;
 }
 
 .bt-button--outline-white:hover,
@@ -126,7 +149,7 @@
 .bt-button--navy {
 	background: var(--bt-navy);
 	color: #fff;
-	padding: 13px 24px;
+	padding: 8px 18px;
 }
 
 .bt-button--navy:hover,
@@ -139,8 +162,7 @@
 	background: transparent;
 	border: 1.5px solid var(--bt-navy);
 	color: var(--bt-navy);
-	font-size: 14px;
-	padding: 9px 18px;
+	padding: 7px 18px;
 }
 
 .bt-button--outline-navy:hover,
@@ -183,8 +205,27 @@
  * (page header, enquiry, CTA, and anything explicitly banded) are excluded
  * from the count, so the alternation is not thrown off by them.
  */
+/*
+ * Full-width block sections own their vertical rhythm through padding.
+ * Blocksy's default block margin would otherwise leave an uncoloured strip
+ * between two coloured bands.
+ */
+.entry-content > section[class*="bt-"],
+main > section[class*="bt-"] {
+	margin-block: 0;
+}
+
 .bt-section-alt {
 	background: var(--bt-tint);
+}
+
+/*
+ * A third, near-neutral band for runs where tint and white alone would leave
+ * two similar sections touching. Warmer than the tint, so the seam reads
+ * without turning the page into stripes.
+ */
+.bt-section-soft {
+	background: var(--bt-soft);
 }
 
 /* An explicit band wins over the automatic alternation. */
@@ -215,12 +256,10 @@
  * without competing with the tint bands. Cards that land on a tinted section
  * flip back to white, keeping the same one-step contrast either way.
  */
-:root {
-	--bt-card: #FAFCFD;
-}
-
 .bt-trip-card--card,
 .bt-contact-card,
+.bt-charter__card,
+.bt-usp__item,
 .bt-price-grid--cards .bt-price-grid__item,
 .bt-price-grid--boxed .bt-price-grid__box {
 	background: var(--bt-card);
@@ -228,15 +267,23 @@
 
 .bt-section-alt .bt-trip-card--card,
 .bt-section-alt .bt-contact-card,
+.bt-section-alt .bt-charter__card,
+.bt-section-alt .bt-usp__item,
 .bt-section-alt .bt-price-grid--cards .bt-price-grid__item,
 .bt-section-alt .bt-price-grid--boxed .bt-price-grid__box {
 	background: #fff;
 }
 
+/* A card that deliberately carries the tint keeps it on any background. */
+.bt-charter__card--boat,
+.bt-section-alt .bt-charter__card--boat {
+	background: var(--bt-tint);
+}
+
 /* Notice box: a core paragraph with the "bt-notice" block style. */
 .is-style-bt-notice {
 	background: var(--bt-tint);
-	border-radius: 12px;
+	border-radius: var(--bt-radius);
 	padding: 22px 26px;
 	color: var(--bt-text-2);
 	font-size: 14.5px;
@@ -250,7 +297,7 @@
 .bt-block-placeholder {
 	padding: 28px;
 	border: 1px dashed var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 	background: #F7F9FB;
 	color: var(--bt-text-3);
 	font-size: 14.5px;
@@ -267,7 +314,7 @@
 	padding: 24px;
 	margin-block: 28px;
 	border: 1px solid var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 	background: var(--bt-tint);
 }
 
@@ -329,7 +376,7 @@
 .bt-trip-gallery figure {
 	margin: 0;
 	overflow: hidden;
-	border-radius: 8px;
+	border-radius: var(--bt-radius);
 }
 
 .bt-trip-gallery img {
@@ -356,7 +403,7 @@
 	gap: 6px;
 	padding: 0 0 22px;
 	border: 1px solid var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 	overflow: hidden;
 }
 
@@ -413,14 +460,14 @@
  * stays here.
  */
 .ct-header [data-id="button"] .ct-button {
-	border-radius: 6px;
+	border-radius: var(--bt-radius-sm);
 	min-height: 36px;
 	padding: 0 18px;
 }
 
 .ct-header .ct-language-switcher a {
 	border: 1px solid var(--bt-border);
-	border-radius: 6px;
+	border-radius: var(--bt-radius-sm);
 	padding: 0 10px;
 	min-height: 36px;
 	display: inline-flex;
@@ -609,7 +656,7 @@
 	min-height: 36px;
 	padding: 0 10px;
 	border: 1px solid rgba(255, 255, 255, .35);
-	border-radius: 6px;
+	border-radius: var(--bt-radius-sm);
 	color: #fff;
 	font-size: 12.5px;
 	font-weight: 700;

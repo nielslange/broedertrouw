@@ -20,13 +20,11 @@
 	display: flex;
 	flex-direction: column;
 	border: 1px solid var(--bt-border);
-	border-radius: 10px;
+	border-radius: var(--bt-radius);
 	overflow: hidden;
 }
 
-.bt-charter__card--boat {
-	background: var(--bt-tint);
-}
+/* Card backgrounds come from the shared card surface in style.css. */
 
 .bt-charter__image {
 	width: 100%;
