@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-26T13:00:42+00:00\n"
+"POT-Creation-Date: 2026-07-26T14:13:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha-bc61c73\n"
 "X-Domain: broedertrouw\n"
@@ -66,7 +66,13 @@ msgstr ""
 msgid "USP grid: add at least two items."
 msgstr ""
 
-#: functions.php:72
+#: footer-items/menu-tertiary/config.php:11
+#: includes/footer.php:21
+#: includes/footer.php:34
+msgid "Footer Menu 3"
+msgstr ""
+
+#: functions.php:73
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
@@ -176,41 +182,65 @@ msgstr ""
 msgid "Past trips"
 msgstr ""
 
-#: includes/trips.php:161
+#: includes/trips.php:138
+msgctxt "trip date format"
+msgid "d-m-Y"
+msgstr ""
+
+#. translators: 1: start day, 2: full end date.
+#: includes/trips.php:150
+#, php-format
+msgctxt "trip date range, same month"
+msgid "%1$s t/m %2$s"
+msgstr ""
+
+#: includes/trips.php:151
+msgctxt "trip start day format"
+msgid "d"
+msgstr ""
+
+#. translators: 1: full start date, 2: full end date.
+#: includes/trips.php:158
+#, php-format
+msgctxt "trip date range"
+msgid "%1$s t/m %2$s"
+msgstr ""
+
+#: includes/trips.php:172
 msgid "Hoorn"
 msgstr ""
 
-#: includes/trips.php:162
+#: includes/trips.php:173
 msgid "Enkhuizen"
 msgstr ""
 
-#: includes/trips.php:163
+#: includes/trips.php:174
 msgid "Amsterdam"
 msgstr ""
 
-#: includes/trips.php:164
+#: includes/trips.php:175
 msgid "Other port"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:197
+#: includes/trips.php:208
 #, php-format
 msgid "from € %s for the whole ship"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:201
+#: includes/trips.php:212
 #, php-format
 msgid "from € %s per person"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:218
+#: includes/trips.php:229
 #, php-format
 msgid "€ %s per person"
 msgstr ""
 
-#: template-parts/trip-card.php:51
+#: template-parts/trip-card.php:49
 msgid "View trip"
 msgstr ""
 

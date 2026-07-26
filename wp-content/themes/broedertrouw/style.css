@@ -19,13 +19,13 @@
 	--bt-blue: var(--theme-palette-color-1, #2273A6);
 	--bt-link: var(--theme-link-initial-color, #14567F);
 	--bt-tint: var(--theme-palette-color-6, #EBF3F8);
-	--bt-text: var(--theme-palette-color-4, #113A5C);
+	--bt-text: var(--theme-palette-color-4, #1A5C8A);
 	--bt-text-2: var(--theme-palette-color-3, #3A4650);
 	--bt-text-3: #5B6B77;
 	--bt-border: var(--theme-palette-color-5, #DCE5EC);
 	--bt-footer: var(--theme-palette-color-8, #0B2C47);
 	--bt-footer-link: #BFD7E8;
-	--bt-heading: var(--theme-headings-color, var(--theme-palette-color-4, #113A5C));
+	--bt-heading: var(--theme-headings-color, var(--theme-palette-color-4, #1A5C8A));
 	--bt-content-width: 1124px;
 	--bt-gutter: 32px;
 	--bt-font-heading: 'Archivo', sans-serif;
@@ -339,7 +339,7 @@
 	font-weight: 800;
 	font-size: 21px;
 	letter-spacing: .03em;
-	color: var(--bt-navy);
+	color: var(--bt-heading);
 	text-transform: uppercase;
 }
 

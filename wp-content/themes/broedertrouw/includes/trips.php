@@ -130,24 +130,35 @@ function bt_trip_date_range( $post_id = null ) {
 
 	$start_ts = strtotime( $start );
 
+	/*
+	 * Numeric short dates per CLDR: nl_NL uses dd-MM-y, de_DE uses dd.MM.y.
+	 * The full date is the translatable unit so each language keeps its own
+	 * separators and its own range wording ("t/m" / "bis").
+	 */
+	$full = _x( 'd-m-Y', 'trip date format', 'broedertrouw' );
+
 	if ( ! $end || $end === $start ) {
-		return wp_date( 'j. F Y', $start_ts );
+		return wp_date( $full, $start_ts );
 	}
 
 	$end_ts = strtotime( $end );
 
-	if ( wp_date( 'Y', $start_ts ) !== wp_date( 'Y', $end_ts ) ) {
-		/* translators: 1: start date, 2: end date. */
-		return sprintf( '%1$s – %2$s', wp_date( 'j. M Y', $start_ts ), wp_date( 'j. M Y', $end_ts ) );
+	// Within one month the shared month and year are printed once only.
+	if ( wp_date( 'Y-m', $start_ts ) === wp_date( 'Y-m', $end_ts ) ) {
+		return sprintf(
+			/* translators: 1: start day, 2: full end date. */
+			_x( '%1$s t/m %2$s', 'trip date range, same month', 'broedertrouw' ),
+			wp_date( _x( 'd', 'trip start day format', 'broedertrouw' ), $start_ts ),
+			wp_date( $full, $end_ts )
+		);
 	}
 
-	if ( wp_date( 'm', $start_ts ) !== wp_date( 'm', $end_ts ) ) {
-		/* translators: 1: start date, 2: end date. */
-		return sprintf( '%1$s – %2$s', wp_date( 'j. M', $start_ts ), wp_date( 'j. M Y', $end_ts ) );
-	}
-
-	/* translators: 1: start day, 2: end date. */
-	return sprintf( '%1$s – %2$s', wp_date( 'j.', $start_ts ), wp_date( 'j. M Y', $end_ts ) );
+	return sprintf(
+		/* translators: 1: full start date, 2: full end date. */
+		_x( '%1$s t/m %2$s', 'trip date range', 'broedertrouw' ),
+		wp_date( $full, $start_ts ),
+		wp_date( $full, $end_ts )
+	);
 }
 
 /**

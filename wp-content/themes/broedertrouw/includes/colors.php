@@ -28,7 +28,7 @@ function bt_register_color_palette( $palettes ) {
 		'color1' => array( 'color' => '#2273A6' ),
 		'color2' => array( 'color' => '#113A5C' ),
 		'color3' => array( 'color' => '#3A4650' ),
-		'color4' => array( 'color' => '#113A5C' ),
+		'color4' => array( 'color' => '#1A5C8A' ),
 		'color5' => array( 'color' => '#DCE5EC' ),
 		'color6' => array( 'color' => '#EBF3F8' ),
 		'color7' => array( 'color' => '#FFFFFF' ),

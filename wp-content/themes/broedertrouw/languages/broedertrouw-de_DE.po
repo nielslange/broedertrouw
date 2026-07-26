@@ -58,7 +58,13 @@ msgstr ""
 msgid "USP grid: add at least two items."
 msgstr ""
 
-#: functions.php:72
+#: footer-items/menu-tertiary/config.php:11
+#: includes/footer.php:21
+#: includes/footer.php:34
+msgid "Footer Menu 3"
+msgstr ""
+
+#: functions.php:73
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
@@ -80,17 +86,17 @@ msgstr "Preis"
 #: includes/post-types.php:18
 msgctxt "post type general name"
 msgid "Trips"
-msgstr "Törns"
+msgstr ""
 
 #: includes/post-types.php:19
 msgctxt "post type singular name"
 msgid "Trip"
-msgstr "Törn"
+msgstr ""
 
 #: includes/post-types.php:20
 msgctxt "admin menu"
 msgid "Trips"
-msgstr "Törns"
+msgstr ""
 
 #: includes/post-types.php:21
 msgid "Add New"
@@ -168,35 +174,55 @@ msgstr "Derzeit sind keine Törns geplant."
 msgid "Past trips"
 msgstr "Vergangene Törns"
 
-#: includes/trips.php:161
+#: includes/trips.php:138
+msgctxt "trip date format"
+msgid "d-m-Y"
+msgstr "d.m.Y"
+
+#: includes/trips.php:150
+msgctxt "trip date range, same month"
+msgid "%1$s t/m %2$s"
+msgstr "%1$s bis %2$s"
+
+#: includes/trips.php:151
+msgctxt "trip start day format"
+msgid "d"
+msgstr "d."
+
+#: includes/trips.php:158
+msgctxt "trip date range"
+msgid "%1$s t/m %2$s"
+msgstr "%1$s bis %2$s"
+
+#: includes/trips.php:172
 msgid "Hoorn"
 msgstr "Hoorn"
 
-#: includes/trips.php:162
+#: includes/trips.php:173
 msgid "Enkhuizen"
 msgstr "Enkhuizen"
 
-#: includes/trips.php:163
+#: includes/trips.php:174
 msgid "Amsterdam"
 msgstr "Amsterdam"
 
-#: includes/trips.php:164
+#: includes/trips.php:175
 msgid "Other port"
 msgstr "Anderer Hafen"
 
-#: includes/trips.php:197
+#: includes/trips.php:208
 msgid "from € %s for the whole ship"
 msgstr "ab € %s für das ganze Schiff"
 
-#: includes/trips.php:201
+#: includes/trips.php:212
 msgid "from € %s per person"
 msgstr "ab € %s p. P."
 
-#: includes/trips.php:218
+#: includes/trips.php:229
 msgid "€ %s per person"
 msgstr "€ %s p. P."
 
-#: template-parts/trip-card.php:51
+#: template-parts/trip-card.php:49
 msgid "View trip"
 msgstr "Törn ansehen"
 
@@ -375,7 +401,7 @@ msgstr ""
 #: blocks/upcoming-trips/block.json
 msgctxt "block title"
 msgid "Upcoming trips"
-msgstr "Kommende Törns"
+msgstr ""
 
 #: blocks/upcoming-trips/block.json
 msgctxt "block description"
