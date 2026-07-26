@@ -138,9 +138,6 @@
 	min-height: 400px;
 	max-height: 400px;
 	padding: 0;
-	border-radius: 10px;
-	overflow: hidden;
-	margin-top: 28px;
 }
 
 .wp-block-cover.bt-hero.has-custom-content-position.has-custom-content-position .wp-block-cover__inner-container {
@@ -150,10 +147,6 @@
 
 .bt-hero__content {
 	padding-bottom: 40px;
-}
-
-.bt-hero .bt-container {
-	max-width: none;
 }
 
 .bt-hero h1 {
