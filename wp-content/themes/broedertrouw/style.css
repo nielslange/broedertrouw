@@ -372,15 +372,6 @@
 	letter-spacing: 0;
 }
 
-/* Active menu item: blue underline and navy label, matching the design. */
-.ct-header [data-id="menu"] .menu > li.current-menu-item > a,
-.ct-header [data-id="menu"] .menu > li.current-menu-ancestor > a,
-.ct-header [data-id="menu"] .menu > li.current-page-ancestor > a {
-	color: var(--bt-navy);
-	border-bottom: 2px solid var(--bt-blue);
-	padding-bottom: 2px;
-}
-
 .ct-header [data-id="button"] .ct-button {
 	background: var(--bt-navy);
 	font-weight: 700;
