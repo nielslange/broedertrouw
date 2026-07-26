@@ -61,7 +61,7 @@ if ( 'card' === $variant ) {
 		?>
 		<a
 			class="bt-button bt-button--outline-navy bt-trip-card__cta"
-			href="#enquiry"
+			href="<?php echo esc_url( bt_enquiry_url() ); ?>"
 			data-bt-trip="<?php echo esc_attr( get_the_title( $trip_id ) ); ?>"
 			data-bt-period="<?php echo esc_attr( $date_range ); ?>">
 			<?php echo esc_html( $cta_label ); ?>

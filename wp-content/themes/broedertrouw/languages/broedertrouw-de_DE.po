@@ -39,7 +39,7 @@ msgstr "Ausgebucht"
 msgid "Open trip"
 msgstr "Offener Törn"
 
-#: blocks/charter-teaser/render.php:27
+#: blocks/charter-teaser/render.php:28
 msgid "Charter teaser: add a heading to at least one card."
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr "Galerie: mindestens eine Kategorie mit Bildern hinzufügen."
 msgid "All"
 msgstr "Alle"
 
-#: blocks/gallery/render.php:37
+#: blocks/gallery/render.php:44
 msgid "Filter photos by category"
 msgstr "Bilder nach Kategorie filtern"
 
@@ -176,6 +176,11 @@ msgstr "Einstiegshafen"
 #: includes/blocks.php:57
 msgid "Notice box"
 msgstr "Hinweisbox"
+
+#: includes/blocks.php:73
+msgctxt "enquiry form URL anchor"
+msgid "enquiry"
+msgstr "anfrage"
 
 #: includes/post-types.php:18
 msgctxt "post type general name"

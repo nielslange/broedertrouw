@@ -22,7 +22,7 @@ if ( ! $rows ) {
 }
 
 $cta_label = $cta && ! empty( $cta['title'] ) ? $cta['title'] : __( 'Enquire', 'broedertrouw' );
-$cta_url   = $cta && ! empty( $cta['url'] ) ? $cta['url'] : '#enquiry';
+$cta_url   = $cta && ! empty( $cta['url'] ) ? $cta['url'] : bt_enquiry_url();
 
 $anchor = bt_block_anchor( $block );
 ?>

@@ -61,6 +61,28 @@ function bt_register_block_styles() {
 add_action( 'init', 'bt_register_block_styles' );
 
 /**
+ * Returns the enquiry anchor for the current language.
+ *
+ * The anchor ends up in the address bar, so unlike a field key or a block name
+ * it is content and gets translated: /de/preise/#anfrage, /prijzen/#aanvraag.
+ * Everything that links to the form resolves it through here.
+ *
+ * @return string Anchor without the leading hash.
+ */
+function bt_enquiry_anchor() {
+	return _x( 'enquiry', 'enquiry form URL anchor', 'broedertrouw' );
+}
+
+/**
+ * Returns the enquiry link for the current page.
+ *
+ * @return string
+ */
+function bt_enquiry_url() {
+	return '#' . bt_enquiry_anchor();
+}
+
+/**
  * Records the tone a self-coloured section paints, without taking a band.
  *
  * Sections such as the page header, the enquiry band and the light CTA are

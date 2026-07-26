@@ -155,7 +155,7 @@ function bt_trip_details() {
 	$contact = bt_contact_page_url();
 
 	if ( $contact ) :
-		$enquiry_url = add_query_arg( 'trip', $post_id, $contact ) . '#enquiry';
+		$enquiry_url = add_query_arg( 'trip', $post_id, $contact ) . bt_enquiry_url();
 		?>
 		<p>
 			<a class="bt-button bt-button--navy" href="<?php echo esc_url( $enquiry_url ); ?>">

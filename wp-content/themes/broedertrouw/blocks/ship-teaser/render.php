@@ -65,7 +65,7 @@ $anchor = bt_block_anchor( $block );
 				 * school class group type in the enquiry form. The index maps
 				 * to the dropdown, which keeps it language independent.
 				 */
-				$is_enquiry = false !== strpos( $link['url'], '#enquiry' );
+				$is_enquiry = false !== strpos( $link['url'], bt_enquiry_url() );
 				?>
 				<a
 					class="bt-button bt-button--navy"

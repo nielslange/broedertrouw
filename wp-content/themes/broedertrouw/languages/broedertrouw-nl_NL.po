@@ -39,7 +39,7 @@ msgstr "Volgeboekt"
 msgid "Open trip"
 msgstr "Open tocht"
 
-#: blocks/charter-teaser/render.php:27
+#: blocks/charter-teaser/render.php:28
 msgid "Charter teaser: add a heading to at least one card."
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr "Galerij: voeg minstens één categorie met foto’s toe."
 msgid "All"
 msgstr "Alles"
 
-#: blocks/gallery/render.php:37
+#: blocks/gallery/render.php:44
 msgid "Filter photos by category"
 msgstr "Foto's filteren op categorie"
 
@@ -176,6 +176,11 @@ msgstr "Opstapplaats"
 #: includes/blocks.php:57
 msgid "Notice box"
 msgstr "Infokader"
+
+#: includes/blocks.php:73
+msgctxt "enquiry form URL anchor"
+msgid "enquiry"
+msgstr "aanvraag"
 
 #: includes/post-types.php:18
 msgctxt "post type general name"

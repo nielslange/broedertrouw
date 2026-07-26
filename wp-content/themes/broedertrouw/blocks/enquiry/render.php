@@ -22,11 +22,11 @@ if ( ! $heading ) {
 }
 
 /*
- * Links across the site point at #enquiry, so the anchor defaults to that
- * rather than to an empty value.
+ * Every link to the form resolves the same translated anchor, so the address
+ * bar stays in the visitor's language.
  */
 $anchor = bt_block_anchor( $block );
-$anchor = $anchor ? $anchor : 'enquiry';
+$anchor = $anchor ? $anchor : bt_enquiry_anchor();
 
 // The phone number is written for humans; strip it down for the tel: link.
 $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';

@@ -21,15 +21,26 @@ document.addEventListener( 'click', function ( event ) {
 	const trip   = trigger.dataset.btTrip || '';
 	const period = trigger.dataset.btPeriod || '';
 
+	/*
+	 * Values this script wrote are replaced when another trip is clicked, but
+	 * anything the visitor typed is left alone. Without the marker a second
+	 * click would leave the first trip's dates in the form.
+	 */
 	const setValue = function ( name, value ) {
 		const field = form.querySelector( '[name="' + name + '"]' );
 
-		// Never overwrite something the visitor already typed.
-		if ( ! field || ! value || field.value ) {
+		if ( ! field || ! value ) {
+			return;
+		}
+
+		const ours = field.dataset.btPrefilled;
+
+		if ( field.value && field.value !== ours ) {
 			return;
 		}
 
 		field.value = value;
+		field.dataset.btPrefilled = value;
 		field.dispatchEvent( new Event( 'input', { bubbles: true } ) );
 		field.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 	};
@@ -42,38 +53,32 @@ document.addEventListener( 'click', function ( event ) {
 	 * 1 company outing, 2 family celebration, 3 club or other.
 	 */
 	const groupIndex = trigger.dataset.btGroup;
-	const groupType  = form.querySelector( '[name="group_type"]' );
 
-	if ( groupType && ! groupType.value && groupIndex !== undefined ) {
-		const option = groupType.querySelectorAll( 'option:not([value=""])' )[ groupIndex ];
+	if ( groupIndex !== undefined ) {
+		const groupType = form.querySelector( '[name="group_type"]' );
+		const option    = groupType && groupType.querySelectorAll( 'option:not([value=""])' )[ groupIndex ];
 
 		if ( option ) {
-			groupType.value = option.value;
-			groupType.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+			setValue( 'group_type', option.value );
 		}
 	}
 
 	// A trip is always the "open trip / regatta" duration, which is the last
 	// option in both languages.
-	const duration = form.querySelector( '[name="duration"]' );
-
-	if ( duration && ! duration.value && trigger.dataset.btTrip ) {
-		const last = duration.options[ duration.options.length - 1 ];
+	if ( trigger.dataset.btTrip ) {
+		const duration = form.querySelector( '[name="duration"]' );
+		const last     = duration && duration.options[ duration.options.length - 1 ];
 
 		if ( last ) {
-			duration.value = last.value;
-			duration.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+			setValue( 'duration', last.value );
 		}
 	}
 
 	// Name the trip in the message so the crew knows which one was clicked.
-	const message = form.querySelector( '[name="message"]' );
-
-	if ( message && ! message.value && trip ) {
+	if ( trip ) {
 		const card     = form.closest( '.bt-enquiry__card' );
 		const template = ( card && card.dataset.btTripTemplate ) || '%s';
 
-		message.value = template.replace( '%s', trip );
-		message.dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		setValue( 'message', template.replace( '%s', trip ) );
 	}
 } );
