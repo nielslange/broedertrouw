@@ -59,9 +59,18 @@ $anchor = bt_block_anchor( $block );
 			<?php endif; ?>
 
 			<?php if ( $link && ! empty( $link['url'] ) ) : ?>
+				<?php
+				/*
+				 * This block sells the school trip, so a click preselects the
+				 * school class group type in the enquiry form. The index maps
+				 * to the dropdown, which keeps it language independent.
+				 */
+				$is_enquiry = false !== strpos( $link['url'], '#enquiry' );
+				?>
 				<a
 					class="bt-button bt-button--navy"
 					href="<?php echo esc_url( $link['url'] ); ?>"
+					<?php echo $is_enquiry ? 'data-bt-group="0"' : ''; ?>
 					<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '" rel="noopener"' : ''; ?>>
 					<?php echo esc_html( $link['title'] ); ?>
 				</a>

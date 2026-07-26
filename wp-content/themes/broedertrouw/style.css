@@ -220,6 +220,15 @@ main > section[class*="bt-"] {
 }
 
 /*
+ * Safety net: a block that paints its own dark background must keep it even if
+ * it is ever handed a band class, because its text is white.
+ */
+.bt-hero.bt-section-alt,
+.bt-stats.bt-section-alt {
+	background: var(--bt-navy);
+}
+
+/*
  * A third, near-neutral band for runs where tint and white alone would leave
  * two similar sections touching. Warmer than the tint, so the seam reads
  * without turning the page into stripes.

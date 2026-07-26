@@ -6,7 +6,7 @@
  * the visitor to complete the rest.
  */
 document.addEventListener( 'click', function ( event ) {
-	const trigger = event.target.closest( '[data-bt-trip]' );
+	const trigger = event.target.closest( '[data-bt-trip], [data-bt-group]' );
 
 	if ( ! trigger ) {
 		return;
@@ -36,11 +36,28 @@ document.addEventListener( 'click', function ( event ) {
 
 	setValue( 'preferred_period', period );
 
-	// An open trip is always the "open trip / regatta" duration, which is the
-	// last option in both languages.
+	/*
+	 * A button can name the group type it is selling, by index into the
+	 * dropdown so the value stays correct in both languages: 0 school class,
+	 * 1 company outing, 2 family celebration, 3 club or other.
+	 */
+	const groupIndex = trigger.dataset.btGroup;
+	const groupType  = form.querySelector( '[name="group_type"]' );
+
+	if ( groupType && ! groupType.value && groupIndex !== undefined ) {
+		const option = groupType.querySelectorAll( 'option:not([value=""])' )[ groupIndex ];
+
+		if ( option ) {
+			groupType.value = option.value;
+			groupType.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+		}
+	}
+
+	// A trip is always the "open trip / regatta" duration, which is the last
+	// option in both languages.
 	const duration = form.querySelector( '[name="duration"]' );
 
-	if ( duration && ! duration.value ) {
+	if ( duration && ! duration.value && trigger.dataset.btTrip ) {
 		const last = duration.options[ duration.options.length - 1 ];
 
 		if ( last ) {

@@ -174,11 +174,19 @@ function bt_block_classes( $block, $base ) {
 	 * alternation can avoid putting two tinted bands next to each other. The
 	 * rest take a band based on what came before them.
 	 */
+	/*
+	 * Every block whose own stylesheet sets a section background must be listed
+	 * here. Adding .bt-section-alt on top of one would repaint it: the stats
+	 * band lost its navy that way and left white text on a light tint.
+	 */
 	$self_colored = array(
-		'bt-hero'        => 'dark',
-		'bt-page-header' => 'tint',
-		'bt-enquiry'     => 'tint',
-		'bt-charter'     => 'plain',
+		'bt-hero'         => 'dark',
+		'bt-stats'        => 'dark',
+		'bt-ship'         => 'tint',
+		'bt-testimonials' => 'tint',
+		'bt-page-header'  => 'tint',
+		'bt-enquiry'      => 'tint',
+		'bt-charter'      => 'plain',
 	);
 
 	if ( 'bt-enquiry' === $base ) {
