@@ -280,6 +280,39 @@ main > section[class*="bt-"] {
 	background: var(--bt-tint);
 }
 
+/* Two notices side by side, each filling its column to equal height. */
+.bt-notice-columns {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	margin-block: 0 56px;
+	gap: 24px;
+}
+
+.bt-notice-columns .wp-block-column {
+	display: flex;
+}
+
+.bt-notice-columns .is-style-bt-notice {
+	margin: 0;
+	width: 100%;
+}
+
+/* The VZR card leads with the insurer's mark, so the guarantee is
+   recognisable before the text is read. */
+.bt-notice--vzr {
+	display: flex;
+	align-items: flex-start;
+	gap: 18px;
+}
+
+.bt-notice__logo {
+	flex: none;
+	width: 96px;
+	height: auto;
+	margin-top: 2px;
+}
+
 /* Notice box: a core paragraph with the "bt-notice" block style. */
 .is-style-bt-notice {
 	background: var(--bt-tint);
