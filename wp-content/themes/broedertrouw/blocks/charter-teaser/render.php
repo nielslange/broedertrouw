@@ -9,9 +9,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Chartering the whole ship leads: it is the main offer and the bigger booking.
 $cards = array(
-	'berth' => get_field( 'card_berth' ),
 	'boat'  => get_field( 'card_boat' ),
+	'berth' => get_field( 'card_berth' ),
 );
 
 $has_content = false;
@@ -52,7 +53,13 @@ $anchor = bt_block_anchor( $block );
 
 				<div class="bt-charter__body">
 					<?php if ( ! empty( $card['kicker'] ) ) : ?>
-						<p class="bt-kicker"><?php echo esc_html( $card['kicker'] ); ?></p>
+						<p class="bt-kicker bt-charter__kicker">
+							<?php
+							// The whole ship is a group booking; a berth is a single guest.
+							echo bt_icon( 'boat' === $key ? 'users' : 'user', array( 'class' => 'bt-charter__icon', 'size' => 16 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							?>
+							<span><?php echo esc_html( $card['kicker'] ); ?></span>
+						</p>
 					<?php endif; ?>
 
 					<h2 class="bt-charter__heading"><?php echo esc_html( $card['heading'] ); ?></h2>
