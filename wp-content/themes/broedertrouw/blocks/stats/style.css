@@ -1,0 +1,36 @@
+.bt-stats {
+	background: var(--bt-navy);
+	padding-block: 34px;
+}
+
+.bt-stats__inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 24px 40px;
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+.bt-stats__item {
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.bt-stats__value {
+	margin: 0;
+	color: #fff;
+	font-family: var(--bt-font-heading);
+	font-size: 30px;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+.bt-stats__label {
+	margin: 0;
+	color: var(--bt-footer-link);
+	font-size: 13px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}

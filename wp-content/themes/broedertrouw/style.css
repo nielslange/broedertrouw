@@ -1,0 +1,773 @@
+/**
+ * Theme Name: Broedertrouw
+ * Description: Custom child theme for Broedertrouw.
+ * Author: Niels Lange
+ * Template: blocksy
+ * Version: 1.0.0
+ * Text Domain: broedertrouw
+ */
+
+/**
+ * Design tokens.
+ *
+ * Colors resolve to the Blocksy global palette so the Customizer
+ * (General > Colors) stays the single source of truth. The hex values are
+ * fallbacks only, used if the palette variables are ever unavailable.
+ */
+:root {
+	--bt-navy: var(--theme-palette-color-2, #113A5C);
+	--bt-blue: var(--theme-palette-color-1, #2273A6);
+	--bt-link: var(--theme-link-initial-color, #14567F);
+	--bt-tint: var(--theme-palette-color-6, #EBF3F8);
+	--bt-text: var(--theme-palette-color-4, #1A5C8A);
+	--bt-text-2: var(--theme-palette-color-3, #3A4650);
+	--bt-text-3: #5B6B77;
+	--bt-border: var(--theme-palette-color-5, #DCE5EC);
+	--bt-footer: var(--theme-palette-color-8, #0B2C47);
+	--bt-footer-link: #BFD7E8;
+	--bt-heading: var(--theme-headings-color, var(--theme-palette-color-4, #1A5C8A));
+	--bt-content-width: 1124px;
+	--bt-gutter: 32px;
+	--bt-font-heading: 'Archivo', sans-serif;
+
+	/*
+	 * Corner radii. Blocksy has no global radius option, so panels, cards and
+	 * media all resolve to one token: change it here and every surface follows.
+	 * Pills and avatars keep their own full rounding.
+	 */
+	--bt-radius: 8px;
+	--bt-radius-sm: 6px;
+
+	/*
+	 * Card surface: a hair darker than white so cards read as raised panels
+	 * without competing with the tint bands.
+	 */
+	--bt-card: #FAFCFD;
+
+	/* Third section band, between white and the blue tint. */
+	--bt-soft: #F4F7F9;
+}
+
+/* ------------------------------------------------------------
+   Block primitives shared by every bt/ block
+   ------------------------------------------------------------ */
+
+.bt-kicker {
+	margin: 0 0 10px;
+	color: var(--bt-blue);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+/*
+ * Blocksy renders the breadcrumbs, including their baseline alignment. Only
+ * the placement is adjusted: the hero shows nothing but the trail, so it drops
+ * the banner's vertical space and lines the trail up with the page title
+ * rather than centring it.
+ */
+/*
+ * The hero holds only the trail, so Blocksy's banner variables are set to the
+ * room one line needs. The trail belongs to the title beneath it, not to the
+ * site header above it, so it keeps the page header's own 52px above and sits
+ * close underneath: the page header then supplies the small remaining gap.
+ */
+.hero-section[data-type="type-2"] > [class*="ct-container"] {
+	--min-height: 0;
+	--container-padding: 52px 0 0;
+}
+
+/* The trail shares the page header's tint so the two read as one band with no
+   seam between them. */
+.hero-section[data-type="type-2"] {
+	background: var(--bt-tint);
+}
+
+/* The hero's own header centres its children inside a narrow container, so the
+   alignment has to be undone there rather than on the trail itself. */
+.hero-section .entry-header {
+	max-width: calc( var(--bt-content-width) - var(--bt-gutter) * 2 );
+	margin-inline: auto;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.bt-arrow-link {
+	color: var(--bt-link);
+	font-size: 15px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.bt-arrow-link::after {
+	content: " \2192";
+}
+
+.bt-arrow-link:hover {
+	color: var(--bt-navy);
+}
+
+.bt-section-head {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 6px 24px;
+	margin-bottom: 20px;
+}
+
+.bt-section-head__title {
+	margin: 0 0 20px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.bt-section-head .bt-section-head__title {
+	margin: 0;
+}
+
+/**
+ * Buttons follow the header CTA: compact, 14.5px, restrained padding. Larger
+ * or heavier buttons dominate the page and read as shouty next to the
+ * type scale.
+ */
+.bt-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 36px;
+	border-radius: var(--bt-radius-sm);
+	font-size: 14.5px;
+	font-weight: 700;
+	line-height: 1.2;
+	text-decoration: none;
+}
+
+/**
+ * Every variant states both background and text color on hover, so the pair
+ * always keeps a WCAG AA contrast ratio. Never fade a button with opacity:
+ * that drags the label toward the backdrop and makes it unreadable.
+ */
+.bt-button--white {
+	background: #fff;
+	color: var(--bt-navy);
+	padding: 8px 18px;
+}
+
+.bt-button--white:hover,
+.bt-button--white:focus-visible {
+	background: var(--bt-tint);
+	color: var(--bt-navy);
+}
+
+.bt-button--outline-white {
+	background: rgba(9, 32, 52, .72);
+	border: 1.5px solid #fff;
+	color: #fff;
+	padding: 7px 18px;
+}
+
+.bt-button--outline-white:hover,
+.bt-button--outline-white:focus-visible {
+	background: #fff;
+	border-color: #fff;
+	color: var(--bt-navy);
+}
+
+.bt-button--navy {
+	background: var(--bt-navy);
+	color: #fff;
+	padding: 8px 18px;
+}
+
+.bt-button--navy:hover,
+.bt-button--navy:focus-visible {
+	background: var(--bt-footer);
+	color: #fff;
+}
+
+.bt-button--outline-navy {
+	background: transparent;
+	border: 1.5px solid var(--bt-navy);
+	color: var(--bt-navy);
+	padding: 7px 18px;
+}
+
+.bt-button--outline-navy:hover,
+.bt-button--outline-navy:focus-visible {
+	background: var(--bt-navy);
+	border-color: var(--bt-navy);
+	color: #fff;
+}
+
+.bt-checklist {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 22px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	color: var(--bt-text);
+	font-size: 15.5px;
+}
+
+.bt-checklist li {
+	position: relative;
+	margin: 0;
+	padding-left: 26px;
+}
+
+.bt-checklist li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	color: var(--bt-blue);
+	font-weight: 700;
+}
+
+/**
+ * Alternating section bands.
+ *
+ * Consecutive sections on a white background run together visually, so every
+ * second neutral section takes the tint. Blocks that already own a background
+ * (page header, enquiry, CTA, and anything explicitly banded) are excluded
+ * from the count, so the alternation is not thrown off by them.
+ */
+/*
+ * Full-width block sections own their vertical rhythm through padding.
+ * Blocksy's default block margin would otherwise leave an uncoloured strip
+ * between two coloured bands.
+ */
+.entry-content > section[class*="bt-"],
+main > section[class*="bt-"] {
+	margin-block: 0;
+}
+
+.bt-section-alt {
+	background: var(--bt-tint);
+}
+
+/*
+ * Safety net: a block that paints its own dark background must keep it even if
+ * it is ever handed a band class, because its text is white.
+ */
+.bt-hero.bt-section-alt,
+.bt-stats.bt-section-alt {
+	background: var(--bt-navy);
+}
+
+/*
+ * A third, near-neutral band for runs where tint and white alone would leave
+ * two similar sections touching. Warmer than the tint, so the seam reads
+ * without turning the page into stripes.
+ */
+.bt-section-soft {
+	background: var(--bt-soft);
+}
+
+/* An explicit band wins over the automatic alternation. */
+.bt-band-tint {
+	background: var(--bt-tint);
+}
+
+.bt-band-plain {
+	background: transparent;
+}
+
+/**
+ * Inline SVG icons (Lucide paths, see includes/icons.php).
+ *
+ * Every icon shares a 24x24 viewBox and is rendered at a fixed pixel size, so
+ * icons always line up and never inherit a font's glyph metrics.
+ */
+.bt-icon {
+	display: inline-block;
+	flex: none;
+	vertical-align: middle;
+}
+
+/**
+ * Card surface.
+ *
+ * A hair darker than white so cards read as raised panels against the page
+ * without competing with the tint bands. Cards that land on a tinted section
+ * flip back to white, keeping the same one-step contrast either way.
+ */
+.bt-trip-card--card,
+.bt-contact-card,
+.bt-charter__card,
+.bt-usp__item,
+.bt-price-grid--cards .bt-price-grid__item,
+.bt-price-grid--boxed .bt-price-grid__box {
+	background: var(--bt-card);
+}
+
+.bt-section-alt .bt-trip-card--card,
+.bt-section-alt .bt-contact-card,
+.bt-section-alt .bt-charter__card,
+.bt-section-alt .bt-usp__item,
+.bt-section-alt .bt-price-grid--cards .bt-price-grid__item,
+.bt-section-alt .bt-price-grid--boxed .bt-price-grid__box {
+	background: #fff;
+}
+
+/* A card that deliberately carries the tint keeps it on any background. */
+.bt-charter__card--boat,
+.bt-section-alt .bt-charter__card--boat {
+	background: var(--bt-tint);
+}
+
+/* Two notices side by side, each filling its column to equal height. */
+.bt-notice-columns {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	margin-block: 0 56px;
+	gap: 24px;
+}
+
+.bt-notice-columns .wp-block-column {
+	display: flex;
+}
+
+.bt-notice-columns .is-style-bt-notice {
+	margin: 0;
+	width: 100%;
+}
+
+/* The VZR card leads with the insurer's mark, so the guarantee is
+   recognisable before the text is read. */
+.bt-notice--vzr {
+	display: flex;
+	align-items: flex-start;
+	gap: 18px;
+}
+
+.bt-notice__logo {
+	flex: none;
+	width: 96px;
+	height: auto;
+	margin-top: 2px;
+}
+
+/* Notice box: a core paragraph with the "bt-notice" block style. */
+.is-style-bt-notice {
+	background: var(--bt-tint);
+	border-radius: var(--bt-radius);
+	padding: 22px 26px;
+	color: var(--bt-text-2);
+	font-size: 14.5px;
+	line-height: 1.6;
+}
+
+.is-style-bt-notice strong {
+	color: var(--bt-heading);
+}
+
+.bt-block-placeholder {
+	padding: 28px;
+	border: 1px dashed var(--bt-border);
+	border-radius: var(--bt-radius);
+	background: #F7F9FB;
+	color: var(--bt-text-3);
+	font-size: 14.5px;
+	text-align: center;
+}
+
+/* ------------------------------------------------------------
+   Trip templates
+   ------------------------------------------------------------ */
+
+.bt-trip-summary {
+	display: grid;
+	gap: 18px 28px;
+	padding: 24px;
+	margin-block: 28px;
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius);
+	background: var(--bt-tint);
+}
+
+@media (min-width: 600px) {
+	.bt-trip-summary {
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	}
+}
+
+.bt-trip-summary__label {
+	margin: 0 0 2px;
+	color: var(--bt-text-3);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.bt-trip-summary__value {
+	margin: 0;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.bt-trip-lists {
+	display: grid;
+	gap: 28px;
+	margin-block: 32px;
+}
+
+@media (min-width: 600px) {
+	.bt-trip-lists {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.bt-trip-lists h2 {
+	margin: 0 0 12px;
+	font-family: var(--bt-font-heading);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.bt-trip-gallery {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 14px;
+	margin-block: 32px;
+}
+
+@media (min-width: 782px) {
+	.bt-trip-gallery {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.bt-trip-gallery figure {
+	margin: 0;
+	overflow: hidden;
+	border-radius: var(--bt-radius);
+}
+
+.bt-trip-gallery img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.bt-trip-grid {
+	display: grid;
+	gap: 28px;
+}
+
+@media (min-width: 600px) {
+	.bt-trip-grid {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	}
+}
+
+.bt-trip-card--tile {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 0 0 22px;
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius);
+	overflow: hidden;
+}
+
+.bt-trip-card--tile .bt-trip-card__media img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+}
+
+.bt-trip-card--tile .bt-trip-card__date,
+.bt-trip-card--tile .bt-trip-card__body,
+.bt-trip-card--tile .bt-trip-card__aside {
+	padding-inline: 22px;
+}
+
+.bt-trip-card--tile .bt-trip-card__date {
+	padding-top: 18px;
+}
+
+.bt-trip-card--tile .bt-trip-card__aside {
+	margin-top: auto;
+	padding-top: 12px;
+}
+
+.bt-past-trips {
+	margin-block: 48px;
+}
+
+.bt-past-trips summary {
+	cursor: pointer;
+	font-family: var(--bt-font-heading);
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--bt-heading);
+}
+
+.bt-past-trips .bt-trip-grid {
+	margin-top: 22px;
+}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+
+.ct-header [data-row*="middle"] > div {
+	border-bottom: 1px solid var(--bt-border);
+}
+
+/*
+ * The site title, tagline, menu and button are styled entirely through the
+ * Customizer (Header > Logo / Menu / Button): font, color, transform and
+ * spacing all have real options there. Only geometry Blocksy does not expose
+ * stays here.
+ */
+.ct-header [data-id="button"] .ct-button {
+	border-radius: var(--bt-radius-sm);
+	min-height: 36px;
+	padding: 0 18px;
+}
+
+.ct-header .ct-language-switcher a {
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius-sm);
+	padding: 0 10px;
+	min-height: 36px;
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 12.5px;
+	font-weight: 700;
+	color: var(--bt-text);
+}
+
+.ct-header .ct-language-switcher a:hover,
+.ct-header .ct-language-switcher a:focus-visible {
+	border-color: var(--bt-navy);
+	color: var(--bt-navy);
+}
+
+/* ------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------ */
+
+.ct-footer {
+	font-size: 14.5px;
+}
+
+/* Footer text and widget-title colors come from the Customizer
+   (Footer > row > Font Color / Widgets Title Color), so only the
+   typography and spacing are set here. */
+.ct-footer .widget-title {
+	font-size: 14.5px;
+	font-weight: 700;
+	margin-bottom: 14px;
+}
+
+.ct-footer .ct-widget a {
+	text-decoration: none;
+}
+
+.ct-footer .ct-widget a:hover {
+	text-decoration: underline;
+}
+
+/**
+ * Footer menu elements (locations footer, footer_2, footer_3). Blocksy renders
+ * these centered and inheriting the row's own link color, so the columns are
+ * re-aligned and recolored to match the contact column beside them.
+ */
+.ct-footer [data-column^="menu"] {
+	text-align: left;
+	align-items: flex-start;
+}
+
+.ct-footer .footer-menu-inline {
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.ct-footer [data-id^="menu"] .menu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 11px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ct-footer [data-id^="menu"] .menu > li {
+	margin: 0;
+	align-self: flex-start;
+	text-align: left;
+	width: auto;
+}
+
+/*
+ * Font and color come from the Customizer (Footer > menu > Font / Font Color).
+ * Blocksy gives the link its own inline padding, which pushes it right of the
+ * column heading rendered by nav::before. Zeroing it lines the links up with
+ * the heading and with the contact column beside them.
+ */
+.ct-footer [data-id^="menu"] .menu > li > a {
+	justify-content: flex-start;
+	padding-inline: 0;
+	text-align: left;
+	text-decoration: none;
+}
+
+.ct-footer [data-id^="menu"] .menu > li > a:hover,
+.ct-footer [data-id^="menu"] .menu > li > a:focus-visible {
+	text-decoration: underline;
+}
+
+/**
+ * Column headings for the footer menus.
+ *
+ * Blocksy's footer menu element has no title field, so the heading is generated
+ * from the nav's aria-label, which Blocksy fills with the assigned menu name.
+ * Keep these selectors in sync with the menu names in Appearance > Menus.
+ */
+.ct-footer .footer-menu-inline::before {
+	display: block;
+	margin-bottom: 14px;
+	color: #fff;
+	font-size: 14.5px;
+	font-weight: 700;
+}
+
+.ct-footer nav[aria-label="Footer Menu Trips NL"]::before {
+	content: "Zeiltochten";
+}
+
+.ct-footer nav[aria-label="Footer Menu Info NL"]::before {
+	content: "Informatie";
+}
+
+.ct-footer nav[aria-label="Footer Menu Legals NL"]::before {
+	content: "Juridisch";
+}
+
+.ct-footer nav[aria-label="Footer Menu Trips DE"]::before {
+	content: "Segeltörns";
+}
+
+.ct-footer nav[aria-label="Footer Menu Info DE"]::before {
+	content: "Informationen";
+}
+
+.ct-footer nav[aria-label="Footer Menu Legals DE"]::before {
+	content: "Rechtliches";
+}
+
+.ct-footer [data-row*="bottom"] {
+	font-size: 14px;
+}
+
+.ct-footer [data-row*="bottom"] .ct-container {
+	align-items: center;
+}
+
+.ct-footer .ct-footer-copyright {
+	color: var(--bt-footer-link);
+}
+
+.ct-footer .ct-footer-copyright p {
+	margin: 0;
+}
+
+.ct-footer [data-column="widget-area-5"] {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 22px;
+}
+
+.ct-footer [data-column="widget-area-5"] .ct-widget {
+	margin: 0;
+}
+
+.ct-footer .widget_text .textwidget p {
+	line-height: 1.6;
+	margin: 0 0 11px;
+}
+
+.ct-footer .widget_text .textwidget p:last-child {
+	margin-bottom: 0;
+}
+
+/* Mirrors the header language switcher, inverted for the dark footer. */
+.ct-footer .widget_polylang ul {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+	padding: 0;
+	margin: 0;
+}
+
+.ct-footer .widget_polylang li {
+	margin: 0;
+}
+
+.ct-footer .widget_polylang a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	box-sizing: border-box;
+	min-height: 36px;
+	padding: 0 10px;
+	border: 1px solid rgba(255, 255, 255, .35);
+	border-radius: var(--bt-radius-sm);
+	color: #fff;
+	font-size: 12.5px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.ct-footer .widget_polylang a:hover,
+.ct-footer .widget_polylang a:focus-visible {
+	border-color: #fff;
+	background: rgba(255, 255, 255, .1);
+	color: #fff;
+	text-decoration: none;
+}
+
+.ct-footer .widget_polylang img {
+	border-radius: 2px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+}
+
+.ct-footer .widget_polylang a span {
+	margin: 0 !important;
+}
+
+.bt-vzr {
+	font-weight: 600;
+	color: var(--bt-footer-link);
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Editor adjustments
+   ------------------------------------------------------------ */
+
+.editor-styles-wrapper .bt-hero,
+.editor-styles-wrapper .bt-stats,
+.editor-styles-wrapper .bt-cta {
+	color: #fff;
+}

@@ -1,0 +1,36 @@
+.bt-checklist-columns {
+	padding-block: 28px;
+}
+
+.bt-checklist-columns__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	display: grid;
+	gap: 32px 48px;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 782px) {
+	.bt-checklist-columns__inner {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.bt-checklist-columns__heading {
+	margin: 0 0 14px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.bt-checklist-columns .bt-checklist {
+	margin-bottom: 0;
+}
+
+/* The "not included" column uses a muted plus instead of the blue check. */
+.bt-checklist--plus li::before {
+	content: "+";
+	color: var(--bt-text-3);
+}

@@ -1,0 +1,398 @@
+{
+    "key": "group_bt_trip_details",
+    "title": "Trip Details",
+    "fields": [
+        {
+            "key": "field_bt_trip_date_start",
+            "label": "Start date",
+            "name": "date_start",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_bt_trip_date_end",
+            "label": "End date",
+            "name": "date_end",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_bt_trip_date_label",
+            "label": "Date label",
+            "name": "date_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Shown instead of the computed date range, e.g. \"Easter 2027, date to follow\". Dates above still control sorting.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "translate",
+            "maxlength": 80,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_port_embark",
+            "label": "Embarkation port",
+            "name": "port_embark",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "choices": {
+                "hoorn": "Hoorn",
+                "enkhuizen": "Enkhuizen",
+                "amsterdam": "Amsterdam",
+                "other": "Other port"
+            },
+            "default_value": "enkhuizen",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": "enkhuizen"
+        },
+        {
+            "key": "field_bt_trip_port_disembark",
+            "label": "Disembarkation port",
+            "name": "port_disembark",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Leave empty when it matches the embarkation port.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "choices": {
+                "hoorn": "Hoorn",
+                "enkhuizen": "Enkhuizen",
+                "amsterdam": "Amsterdam",
+                "other": "Other port"
+            },
+            "allow_null": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "default_value": false,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": false
+        },
+        {
+            "key": "field_bt_trip_booking_mode",
+            "label": "Booking mode",
+            "name": "booking_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "choices": {
+                "per_berth": "Per berth",
+                "whole_boat": "Whole ship"
+            },
+            "default_value": "per_berth",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "per_berth"
+        },
+        {
+            "key": "field_bt_trip_booking_status",
+            "label": "Availability",
+            "name": "booking_status",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Shown on the calendar page as a status pill.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "choices": {
+                "open": "Open trip",
+                "request": "On request",
+                "booked": "Fully booked"
+            },
+            "default_value": "open",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "open"
+        },
+        {
+            "key": "field_bt_trip_price_berth",
+            "label": "Price per berth",
+            "name": "price_berth",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Per person in a shared deck berth. For a whole-ship charter, the total price.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "min": 0,
+            "step": 5,
+            "prepend": "€",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_price_cabin",
+            "label": "Price for a private cabin",
+            "name": "price_cabin",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Total price per person for private use of a cabin. Leave empty when not offered.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "min": 0,
+            "step": 5,
+            "prepend": "€",
+            "default_value": "",
+            "max": "",
+            "placeholder": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_highlight",
+            "label": "Highlight",
+            "name": "highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "One-liner for cards and lists.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "translate",
+            "maxlength": 120,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_bt_trip_includes",
+            "label": "Included",
+            "name": "includes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "translate",
+            "layout": "table",
+            "button_label": "Add item",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_trip_includes_item",
+                    "label": "Item",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "translations": "translate",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_trip_includes"
+                }
+            ]
+        },
+        {
+            "key": "field_bt_trip_excludes",
+            "label": "Not included",
+            "name": "excludes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "translate",
+            "layout": "table",
+            "button_label": "Add item",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_bt_trip_excludes_item",
+                    "label": "Item",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "translations": "translate",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_bt_trip_excludes"
+                }
+            ]
+        },
+        {
+            "key": "field_bt_trip_gallery",
+            "label": "Gallery",
+            "name": "gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "insert": "append",
+            "min": 0,
+            "max": 0,
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "trip"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Dates, ports, pricing and availability for a sailing trip.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785107884
+}

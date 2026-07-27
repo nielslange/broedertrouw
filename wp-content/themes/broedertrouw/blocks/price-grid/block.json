@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/price-grid",
+	"title": "Price grid",
+	"description": "Grid of short priced items, as a boxed group or separate cards.",
+	"category": "broedertrouw",
+	"icon": "grid-view",
+	"keywords": [ "price", "grid", "extras", "surcharges" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

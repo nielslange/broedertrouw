@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/calendar",
+	"title": "Availability calendar",
+	"description": "Season availability grouped by month, with status pills.",
+	"category": "broedertrouw",
+	"icon": "calendar-alt",
+	"keywords": [ "calendar", "availability", "season", "dates" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

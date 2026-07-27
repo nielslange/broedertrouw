@@ -1,0 +1,153 @@
+.bt-calendar {
+	padding-block: 48px;
+}
+
+.bt-calendar__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+}
+
+.bt-calendar__legend {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 22px;
+	color: var(--bt-heading);
+	font-size: 14px;
+}
+
+.bt-calendar__legend-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bt-calendar__swatch {
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+}
+
+/* Status colors are shared by the legend swatches and the row pills. */
+.bt-calendar__swatch--request,
+.bt-calendar__pill--request {
+	background: #8A5A00;
+}
+
+.bt-calendar__swatch--booked,
+.bt-calendar__pill--booked {
+	background: #B3382D;
+}
+
+.bt-calendar__swatch--open,
+.bt-calendar__pill--open {
+	background: var(--bt-blue);
+}
+
+.bt-calendar__month-title {
+	margin: 0 0 14px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid var(--bt-navy);
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 21px;
+	font-weight: 700;
+}
+
+.bt-calendar__rows {
+	display: flex;
+	flex-direction: column;
+}
+
+.bt-calendar__row {
+	display: grid;
+	gap: 8px 18px;
+	align-items: center;
+	padding-block: 15px;
+	border-bottom: 1px solid var(--bt-border);
+}
+
+/* Open trips are the bookable rows, so they get the tint highlight. The
+   negative margin lets the background bleed past the text column. */
+.bt-calendar__row--open {
+	margin-inline: -14px;
+	padding-inline: 14px;
+	border-radius: var(--bt-radius);
+	background: var(--bt-tint);
+}
+
+.bt-calendar__period {
+	margin: 0;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.bt-calendar__status {
+	margin: 0;
+}
+
+.bt-calendar__pill {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 110px;
+	padding: 4px 0;
+	border-radius: 100px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .05em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.bt-calendar__text {
+	margin: 0;
+	color: var(--bt-text-3);
+	font-size: 15px;
+}
+
+/* The trip name is the row's link; the meta after it stays quiet. */
+.bt-calendar__link {
+	color: var(--bt-heading);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.bt-calendar__link:hover,
+.bt-calendar__link:focus-visible {
+	color: var(--bt-blue);
+	text-decoration: underline;
+}
+
+.bt-calendar__meta {
+	color: var(--bt-text-3);
+}
+
+.bt-calendar__row--open .bt-calendar__text {
+	color: var(--bt-heading);
+}
+
+.bt-calendar__cta {
+	justify-content: center;
+	width: 150px;
+	padding-block: 9px;
+}
+
+@media (min-width: 900px) {
+	.bt-calendar__row {
+		grid-template-columns: 150px 110px 1fr auto;
+	}
+
+	.bt-calendar__cta-spacer {
+		display: block;
+		width: 150px;
+	}
+}

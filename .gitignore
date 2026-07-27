@@ -1,19 +1,47 @@
-*.log
-wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/mu-plugins/
-wp-content/wp-cache-config.php
-wp-content/plugins/hello.php
+# ============================================================
+# System & editor
+# ============================================================
+.DS_Store
+.idea
+.vscode/sftp.json
+.valetrc
+.env
+.env.*
+!.env.*.example
+.env.local
 
-/.htaccess
-/license.txt
-/readme.html
-/sitemap.xml
-/sitemap.xml.gz
+# ============================================================
+# Cache & build artifacts
+# ============================================================
+.cache/
+*.cache
+**/*.log
+.playwright-mcp/
+node_modules/
+vendor/
 
+# ============================================================
+# WordPress core (managed separately)
+# ============================================================
+wp-includes/
+wp-admin/
+/*.php
+!/index.php
+license.txt
+readme.html
+
+# ============================================================
+# wp-content: ignore everything, then allowlist what we track
+# ============================================================
+wp-content/*
+
+# Child theme (our custom code)
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/broedertrouw/
+!wp-content/themes/broedertrouw/**
+
+# Premium plugins, uploads, languages etc. stay untracked
+
+# Session build scripts (untracked, see PLAN.md step 0b)
+/scripts/

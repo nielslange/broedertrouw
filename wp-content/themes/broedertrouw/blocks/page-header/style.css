@@ -1,0 +1,98 @@
+.bt-page-header {
+	background: var(--bt-tint);
+	padding-block: 52px;
+}
+
+/*
+ * The breadcrumb hero sits directly above and shares this band's tint, so the
+ * header drops most of its top padding: the trail's own padding already opened
+ * the band, and the title needs only the short gap that ties it to the trail.
+ * The hero is not a sibling, so this is keyed off the body class Blocksy sets
+ * when the hero is present.
+ */
+.hero-section ~ * .bt-page-header:first-child,
+.ct-container-full .entry-content > .bt-page-header:first-child {
+	padding-top: 12px;
+}
+
+.bt-page-header__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+/* Portraits sit right of the text, so the band becomes a two-column flex row
+   only when the people repeater is filled. */
+.bt-page-header--has-people .bt-page-header__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px 40px;
+}
+
+.bt-page-header--has-people .bt-page-header__body {
+	flex: 1;
+	min-width: 0;
+	max-width: 620px;
+}
+
+.bt-page-header__title {
+	margin: 0 0 12px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: clamp(30px, 4vw, 40px);
+	font-weight: 800;
+	line-height: 1.1;
+	text-wrap: pretty;
+}
+
+/*
+ * Measure is capped in ch rather than px so it tracks the font size: ~68
+ * characters per line sits inside the 60 to 75 that reads most comfortably.
+ * text-wrap: pretty only tidies the last lines, where balance would even out
+ * every line and can leave a multi-line lead looking short.
+ */
+.bt-page-header__lead {
+	margin: 0;
+	max-width: 68ch;
+	color: var(--bt-text-2);
+	font-size: 17px;
+	line-height: 1.6;
+	text-wrap: pretty;
+}
+
+.bt-page-header__people {
+	display: flex;
+	flex: none;
+	flex-wrap: wrap;
+	gap: 28px;
+}
+
+.bt-person {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
+}
+
+.bt-person__photo {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.bt-person__name {
+	margin: 0;
+	color: var(--bt-heading);
+	font-size: 15.5px;
+	font-weight: 700;
+}
+
+.bt-person__role {
+	margin: 2px 0 0;
+	color: var(--bt-text-3);
+	font-size: 13.5px;
+}

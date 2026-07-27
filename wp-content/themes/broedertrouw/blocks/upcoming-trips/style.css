@@ -1,0 +1,167 @@
+.bt-upcoming {
+	padding-block: 56px;
+}
+
+.bt-upcoming__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+.bt-upcoming__intro {
+	margin: -12px 0 24px;
+	color: var(--bt-text-3);
+	font-size: 15px;
+}
+
+.bt-upcoming__list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Cards layout ------------------------------------------------------- */
+
+.bt-upcoming--cards .bt-upcoming__list {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+	.bt-upcoming--cards .bt-upcoming__list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 900px) {
+	.bt-upcoming--cards .bt-upcoming__list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Background comes from the shared card surface in style.css. */
+.bt-trip-card--card {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 26px;
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius);
+}
+
+.bt-trip-card--card .bt-trip-card__date {
+	font-size: 15px;
+	font-weight: 800;
+	color: var(--bt-blue);
+}
+
+.bt-trip-card--card .bt-trip-card__title {
+	font-size: 20px;
+}
+
+.bt-trip-card__text {
+	margin: 0;
+	color: var(--bt-text-2);
+	font-size: 14.5px;
+	line-height: 1.55;
+}
+
+/* Pins the price and button to the bottom, so cards of unequal text
+   length still line their prices up across the row. */
+.bt-trip-card__price {
+	margin-top: auto;
+	padding-top: 10px;
+}
+
+.bt-trip-card__amount {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	margin: 0;
+}
+
+.bt-trip-card__amount-value {
+	color: var(--bt-navy);
+	font-family: var(--bt-font-heading);
+	font-size: 24px;
+	font-weight: 800;
+}
+
+.bt-trip-card__amount-suffix {
+	color: var(--bt-text-3);
+	font-size: 14px;
+}
+
+.bt-trip-card__cabin {
+	margin: 0;
+	color: var(--bt-text-3);
+	font-size: 13px;
+}
+
+/* Sits flush in the card's padding box, with a little breathing room above
+   so it never crowds the price block. */
+.bt-trip-card__cta {
+	justify-content: center;
+	width: 100%;
+	margin-top: 6px;
+	padding-block: 10px;
+	box-sizing: border-box;
+}
+
+.bt-trip-card--row {
+	display: grid;
+	gap: 8px 20px;
+	align-items: center;
+	padding-block: 18px;
+	border-top: 1px solid var(--bt-border);
+}
+
+.bt-trip-card--row:last-child {
+	border-bottom: 1px solid var(--bt-border);
+}
+
+@media (min-width: 782px) {
+	.bt-trip-card--row {
+		grid-template-columns: 150px 1fr auto;
+	}
+}
+
+.bt-trip-card__date {
+	margin: 0;
+	color: var(--bt-navy);
+	font-family: var(--bt-font-heading);
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.bt-trip-card__title {
+	margin: 0;
+	font-family: var(--bt-font-heading);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.bt-trip-card__title a {
+	color: var(--bt-heading);
+	text-decoration: none;
+}
+
+.bt-trip-card__title a:hover {
+	color: var(--bt-navy);
+	text-decoration: underline;
+}
+
+.bt-trip-card__meta {
+	margin: 2px 0 0;
+	color: var(--bt-text-3);
+	font-size: 14px;
+}
+
+.bt-trip-card__aside {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+

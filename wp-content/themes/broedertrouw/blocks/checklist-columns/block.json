@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/checklist-columns",
+	"title": "Checklist columns",
+	"description": "Side by side lists of what is included and what is not.",
+	"category": "broedertrouw",
+	"icon": "yes-alt",
+	"keywords": [ "checklist", "included", "list" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

@@ -1,0 +1,64 @@
+.bt-charter {
+	padding-block: 56px;
+}
+
+.bt-charter__inner {
+	display: grid;
+	gap: 28px;
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+}
+
+@media (min-width: 782px) {
+	.bt-charter__inner {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.bt-charter__card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius);
+	overflow: hidden;
+}
+
+/* Card backgrounds come from the shared card surface in style.css. */
+
+/* The kicker leads with an icon that says group or single guest at a glance. */
+.bt-charter__kicker {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bt-charter__icon {
+	color: var(--bt-blue);
+}
+
+.bt-charter__image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.bt-charter__body {
+	padding: 32px;
+}
+
+.bt-charter__heading {
+	margin: 0 0 10px;
+	color: var(--bt-heading);
+	font-family: var(--bt-font-heading);
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.bt-charter__text {
+	margin: 0 0 10px;
+	color: var(--bt-text-2);
+	font-size: 15.5px;
+	line-height: 1.55;
+}

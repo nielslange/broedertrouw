@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bt/upcoming-trips",
+	"title": "Upcoming trips",
+	"description": "Lists the next trips from the trip post type, filtered to the current language.",
+	"category": "broedertrouw",
+	"icon": "calendar-alt",
+	"keywords": [ "trips", "calendar", "dates" ],
+	"textdomain": "broedertrouw",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"style": [ "file:./style.css" ]
+}

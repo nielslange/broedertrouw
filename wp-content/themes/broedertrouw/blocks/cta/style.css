@@ -1,0 +1,81 @@
+.bt-cta {
+	padding-block: 64px;
+}
+
+.bt-cta--dark {
+	background: var(--bt-navy);
+}
+
+.bt-cta--light {
+	background: var(--bt-tint);
+}
+
+.bt-cta__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	text-align: center;
+}
+
+/* Split layout: text left, button right ------------------------------ */
+
+.bt-cta--split {
+	padding-block: 44px;
+}
+
+.bt-cta--split .bt-cta__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px 40px;
+	text-align: left;
+}
+
+.bt-cta--split .bt-cta__body {
+	max-width: 620px;
+}
+
+.bt-cta--split .bt-cta__heading {
+	font-size: clamp(21px, 2.4vw, 26px);
+}
+
+.bt-cta--split .bt-cta__text {
+	margin: 0;
+	max-width: none;
+}
+
+.bt-cta--split .bt-button {
+	flex: none;
+}
+
+.bt-cta__heading {
+	margin: 0 0 10px;
+	font-family: var(--bt-font-heading);
+	font-size: clamp(24px, 3vw, 30px);
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+.bt-cta--dark .bt-cta__heading {
+	color: #fff;
+}
+
+.bt-cta--light .bt-cta__heading {
+	color: var(--bt-heading);
+}
+
+.bt-cta__text {
+	margin: 0 auto 22px;
+	max-width: 560px;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.bt-cta--dark .bt-cta__text {
+	color: var(--bt-footer-link);
+}
+
+.bt-cta--light .bt-cta__text {
+	color: var(--bt-text-2);
+}

@@ -1,0 +1,75 @@
+.bt-contact-cards {
+	padding-block: 56px;
+}
+
+.bt-contact-cards__inner {
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding-inline: var(--bt-gutter);
+	display: grid;
+	gap: 24px;
+	grid-template-columns: 1fr;
+}
+
+/*
+ * Cards stay on one row while every column is wide enough to hold a phone
+ * number or email address unbroken. Below that the track minimum forces a
+ * wrap, so three cards become 2 + 1 only when the viewport actually demands
+ * it, never by default.
+ */
+@media (min-width: 600px) {
+	.bt-contact-cards__inner {
+		grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+	}
+}
+
+.bt-contact-card {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 26px;
+	border: 1px solid var(--bt-border);
+	border-radius: var(--bt-radius);
+}
+
+.bt-contact-card .bt-kicker {
+	margin: 0;
+}
+
+/*
+ * A phone number or email address must never break: a wrapped one reads as
+ * two different values. The size steps down on narrow cards so the whole
+ * value still fits on one line instead of overflowing.
+ */
+.bt-contact-card__value {
+	margin: 0;
+	color: var(--bt-navy);
+	font-family: var(--bt-font-heading);
+	font-size: clamp(17px, 2.1vw, 22px);
+	font-weight: 800;
+	line-height: 1.25;
+	text-decoration: none;
+	white-space: nowrap;
+	overflow-wrap: normal;
+}
+
+/* Below the two-column breakpoint the card is full width, so the value has
+   room for its full size again. */
+@media (max-width: 599px) {
+	.bt-contact-card__value {
+		font-size: 20px;
+	}
+}
+
+a.bt-contact-card__value:hover,
+a.bt-contact-card__value:focus-visible {
+	color: var(--bt-footer);
+	text-decoration: underline;
+}
+
+.bt-contact-card__text {
+	margin: 0;
+	color: var(--bt-text-2);
+	font-size: 14.5px;
+	line-height: 1.55;
+}

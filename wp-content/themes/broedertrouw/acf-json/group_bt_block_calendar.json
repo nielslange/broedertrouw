@@ -1,0 +1,71 @@
+{
+    "key": "group_bt_block_calendar",
+    "title": "Block: Calendar",
+    "fields": [
+        {
+            "key": "field_bt_cal_legend",
+            "label": "Show legend",
+            "name": "show_legend",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "default_value": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "pll_default_value": 1
+        },
+        {
+            "key": "field_bt_cal_show_past",
+            "label": "Include past trips",
+            "name": "show_past",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Off by default, so the calendar only lists trips that have not ended yet.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "pll_default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "bt\/calendar"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Lists the published trips, grouped by month, with an availability pill.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1785107940
+}

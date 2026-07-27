@@ -1,0 +1,73 @@
+.bt-hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-height: 400px;
+	max-height: 400px;
+	overflow: hidden;
+}
+
+.bt-hero__image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/**
+ * The heading and subheading are white over a photograph, so the overlay has
+ * to guarantee the contrast rather than rely on whatever image is uploaded.
+ * The horizontal scrim darkens the text side; the vertical one keeps the
+ * original mood of the design.
+ */
+.bt-hero__overlay {
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(
+			90deg,
+			rgba(9, 32, 52, .78) 0%,
+			rgba(9, 32, 52, .58) 45%,
+			rgba(9, 32, 52, .25) 100%
+		),
+		linear-gradient(
+			180deg,
+			rgba(9, 32, 52, .15) 0%,
+			rgba(9, 32, 52, .45) 78%,
+			rgba(9, 32, 52, .2) 100%
+		);
+}
+
+.bt-hero__inner {
+	position: relative;
+	width: 100%;
+	max-width: var(--bt-content-width);
+	margin-inline: auto;
+	padding: 32px var(--bt-gutter);
+}
+
+.bt-hero__heading {
+	margin: 0 0 12px;
+	max-width: 640px;
+	color: #fff;
+	font-family: var(--bt-font-heading);
+	font-size: clamp(30px, 4.4vw, 46px);
+	font-weight: 800;
+	line-height: 1.1;
+	text-wrap: pretty;
+}
+
+.bt-hero__subheading {
+	margin: 0 0 24px;
+	max-width: 560px;
+	color: rgba(255, 255, 255, .92);
+	font-size: clamp(16px, 1.6vw, 19px);
+	text-wrap: balance;
+}
+
+.bt-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+}
