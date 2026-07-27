@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-26T21:49:32+00:00\n"
+"POT-Creation-Date: 2026-07-26T23:58:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha-bc61c73\n"
 "X-Domain: broedertrouw\n"
@@ -30,21 +30,12 @@ msgstr ""
 msgid "Niels Lange"
 msgstr ""
 
-#: blocks/calendar/render.php:16
-msgid "Calendar: add at least one row."
-msgstr ""
-
 #: blocks/calendar/render.php:21
-#: includes/trips.php:216
-msgid "On request"
+msgid "Calendar: no trips are published yet."
 msgstr ""
 
-#: blocks/calendar/render.php:22
-msgid "Fully booked"
-msgstr ""
-
-#: blocks/calendar/render.php:23
-msgid "Open trip"
+#: blocks/calendar/render.php:109
+msgid "Request trip"
 msgstr ""
 
 #: blocks/charter-teaser/render.php:28
@@ -67,12 +58,12 @@ msgstr ""
 msgid "Enquiry: add a heading."
 msgstr ""
 
-#: blocks/enquiry/render.php:70
+#: blocks/enquiry/render.php:77
 #, php-format
-msgid "I would like to enquire about: %s"
+msgid "Hello, we are interested in \"%s\". Could you tell us more?"
 msgstr ""
 
-#: blocks/enquiry/render.php:76
+#: blocks/enquiry/render.php:113
 msgid "The enquiry form is not available yet."
 msgstr ""
 
@@ -133,28 +124,28 @@ msgid "Period"
 msgstr ""
 
 #: blocks/price-table/render.php:46
-#: includes/admin-columns.php:25
-#: includes/trip-templates.php:56
+#: includes/admin-columns.php:26
+#: includes/trip-templates.php:78
 msgid "Price"
 msgstr ""
 
-#: blocks/price-table/render.php:98
+#: blocks/price-table/render.php:114
 msgid "Details"
 msgstr ""
 
-#: blocks/price-table/render.php:105
+#: blocks/price-table/render.php:121
 msgid "Check-in"
 msgstr ""
 
-#: blocks/price-table/render.php:112
+#: blocks/price-table/render.php:128
 msgid "Check-out"
 msgstr ""
 
-#: blocks/price-table/render.php:119
+#: blocks/price-table/render.php:135
 msgid "Group size"
 msgstr ""
 
-#: blocks/price-table/render.php:126
+#: blocks/price-table/render.php:142
 msgid "Discount periods −10 %"
 msgstr ""
 
@@ -184,18 +175,30 @@ msgstr ""
 msgid "Footer Menu 3"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:165
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
 #: includes/admin-columns.php:23
-#: includes/trip-templates.php:29
+#: includes/trip-templates.php:51
 msgid "Dates"
 msgstr ""
 
 #: includes/admin-columns.php:24
-#: includes/trip-templates.php:38
+msgid "Availability"
+msgstr ""
+
+#: includes/admin-columns.php:25
+#: includes/trip-templates.php:60
 msgid "Embarkation"
+msgstr ""
+
+#: includes/admin-columns.php:147
+msgid "Filter by availability"
+msgstr ""
+
+#: includes/admin-columns.php:149
+msgid "All availability"
 msgstr ""
 
 #: includes/blocks.php:89
@@ -205,6 +208,10 @@ msgstr ""
 #: includes/blocks.php:105
 msgctxt "enquiry form URL anchor"
 msgid "enquiry"
+msgstr ""
+
+#: includes/breadcrumbs.php:105
+msgid "Breadcrumb"
 msgstr ""
 
 #: includes/post-types.php:18
@@ -292,104 +299,122 @@ msgstr ""
 msgid "Trip types"
 msgstr ""
 
-#: includes/trip-templates.php:47
+#: includes/trip-templates.php:69
 msgid "Disembarkation"
 msgstr ""
 
-#: includes/trip-templates.php:65
+#: includes/trip-templates.php:87
 msgid "Private cabin"
 msgstr ""
 
-#: includes/trip-templates.php:110
+#: includes/trip-templates.php:136
 msgid "Included"
 msgstr ""
 
-#: includes/trip-templates.php:124
+#: includes/trip-templates.php:150
 msgid "Not included"
 msgstr ""
 
-#: includes/trip-templates.php:162
+#: includes/trip-templates.php:188
 msgid "Request this trip"
 msgstr ""
 
-#: includes/trip-templates.php:179
+#: includes/trip-templates.php:205
 msgid "More trips"
 msgstr ""
 
-#: includes/trip-templates.php:262
+#: includes/trip-templates.php:290
 msgid "No upcoming trips are scheduled at the moment."
 msgstr ""
 
-#: includes/trip-templates.php:267
+#: includes/trip-templates.php:295
 msgid "Past trips"
 msgstr ""
 
-#: includes/trips.php:157
+#: includes/trips.php:140
+msgid "Open trip"
+msgstr ""
+
+#: includes/trips.php:141
+#: includes/trips.php:319
+msgid "On request"
+msgstr ""
+
+#: includes/trips.php:142
+msgid "Fully booked"
+msgstr ""
+
+#: includes/trips.php:195
+msgctxt "calendar month heading"
+msgid "F Y"
+msgstr ""
+
+#: includes/trips.php:260
 msgctxt "trip date format"
 msgid "d-m-Y"
 msgstr ""
 
 #. translators: 1: start day, 2: full end date.
-#: includes/trips.php:169
+#: includes/trips.php:272
 #, php-format
 msgctxt "trip date range, same month"
 msgid "%1$s t/m %2$s"
 msgstr ""
 
-#: includes/trips.php:170
+#: includes/trips.php:273
 msgctxt "trip start day format"
 msgid "d"
 msgstr ""
 
 #. translators: 1: full start date, 2: full end date.
-#: includes/trips.php:177
+#: includes/trips.php:280
 #, php-format
 msgctxt "trip date range"
 msgid "%1$s t/m %2$s"
 msgstr ""
 
-#: includes/trips.php:191
+#: includes/trips.php:294
 msgid "Hoorn"
 msgstr ""
 
-#: includes/trips.php:192
+#: includes/trips.php:295
 msgid "Enkhuizen"
 msgstr ""
 
-#: includes/trips.php:193
+#: includes/trips.php:296
 msgid "Amsterdam"
 msgstr ""
 
-#: includes/trips.php:194
+#: includes/trips.php:297
 msgid "Other port"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:236
+#: includes/trips.php:339
 #, php-format
 msgid "from € %s for the whole ship"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:240
+#: includes/trips.php:343
 #, php-format
 msgid "from € %s per person"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:260
+#: includes/trips.php:363
 #, php-format
 msgid "from € %s"
 msgstr ""
 
 #. translators: %s: price amount.
-#: includes/trips.php:277
+#: includes/trips.php:380
 #, php-format
 msgid "€ %s per person"
 msgstr ""
 
 #. translators: %s: cabin price, or the on-request label.
-#: includes/trips.php:293
+#: includes/trips.php:396
 #, php-format
 msgid "With a private cabin: %s"
 msgstr ""

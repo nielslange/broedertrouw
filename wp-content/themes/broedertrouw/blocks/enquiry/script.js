@@ -24,6 +24,12 @@ document.addEventListener( 'click', function ( event ) {
 	const period = trigger.dataset.btPeriod || '';
 
 	/*
+	 * A berth on a named trip, as opposed to chartering the whole ship. Both
+	 * kinds of button name a trip, so this is what tells them apart.
+	 */
+	const individual = trigger.dataset.btIndividual !== undefined;
+
+	/*
 	 * Values this script wrote are replaced when another trip is clicked, but
 	 * anything the visitor typed is left alone. Without the marker a second
 	 * click would leave the first trip's dates in the form.
@@ -62,6 +68,40 @@ document.addEventListener( 'click', function ( event ) {
 
 		if ( option ) {
 			setValue( 'group_type', option.value );
+		}
+	}
+
+	/*
+	 * An individual trip is booked by the berth, so the group questions have
+	 * no answer the visitor can give and only add noise. They are hidden
+	 * together with their row, and un-required for the same reason duration is
+	 * below: a hidden required field blocks submission.
+	 */
+	const groupFields = [ 'group_type', 'group_size' ].map( function ( name ) {
+		return form.querySelector( '[name="' + name + '"]' );
+	} ).filter( Boolean );
+
+	if ( groupFields.length ) {
+		// Both fields share one row, so hiding the row leaves no empty column
+		// where the pair used to sit.
+		const groupRow = groupFields[ 0 ].closest( '.ff-t-container' );
+
+		groupFields.forEach( function ( field ) {
+			if ( individual ) {
+				// Cleared as well as hidden, so a charter clicked earlier
+				// cannot submit its group answers under an individual trip.
+				field.value = '';
+				delete field.dataset.btPrefilled;
+				field.required = false;
+				field.removeAttribute( 'required' );
+			} else {
+				field.required = true;
+				field.setAttribute( 'required', 'required' );
+			}
+		} );
+
+		if ( groupRow ) {
+			groupRow.hidden = individual;
 		}
 	}
 

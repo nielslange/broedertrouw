@@ -114,6 +114,23 @@
 	font-size: 15px;
 }
 
+/* The trip name is the row's link; the meta after it stays quiet. */
+.bt-calendar__link {
+	color: var(--bt-heading);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.bt-calendar__link:hover,
+.bt-calendar__link:focus-visible {
+	color: var(--bt-blue);
+	text-decoration: underline;
+}
+
+.bt-calendar__meta {
+	color: var(--bt-text-3);
+}
+
 .bt-calendar__row--open .bt-calendar__text {
 	color: var(--bt-heading);
 }

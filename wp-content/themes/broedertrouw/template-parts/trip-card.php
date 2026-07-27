@@ -65,8 +65,9 @@ if ( 'card' === $variant ) {
 			<?php
 			echo bt_enquiry_attrs( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				array(
-					'trip'   => get_the_title( $trip_id ),
-					'period' => $date_range,
+					'trip'       => get_the_title( $trip_id ),
+					'period'     => $date_range,
+					'individual' => true,
 				)
 			);
 			?>

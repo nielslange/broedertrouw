@@ -18,10 +18,13 @@
 	align-items: start;
 }
 
-@media (min-width: 900px) {
+/* 50:50 on the same breakpoint and gap as the other two-column blocks
+   (checklist-columns, charter-teaser), so the form's left edge lines up with
+   the column divider above it instead of sitting a fixed 480px from the right. */
+@media (min-width: 782px) {
 	.bt-enquiry__inner {
-		grid-template-columns: 1fr 480px;
-		gap: 56px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 48px;
 	}
 }
 
@@ -139,8 +142,15 @@
  * The tour field only appears when a tour button fills it, so it starts
  * hidden and the duration dropdown holds that slot until then. Visibility is
  * driven by the hidden attribute alone, which the script toggles.
+ *
+ * The group row is hidden the same way when a berth on a named trip is
+ * requested: that is one seat, so the group's type and size are questions the
+ * visitor cannot answer. A charter keeps them, because there the group is the
+ * whole point. FluentForm lays its rows out with flex, which beats the hidden
+ * attribute's own display rule, so the row needs saying explicitly.
  */
-.bt-enquiry .fluentform .ff-el-group[hidden] {
+.bt-enquiry .fluentform .ff-el-group[hidden],
+.bt-enquiry .fluentform .ff-t-container[hidden] {
 	display: none;
 }
 

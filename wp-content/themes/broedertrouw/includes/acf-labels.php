@@ -27,6 +27,7 @@ function bt_acf_translatable_strings() {
 		'Embarkation port',
 		'Disembarkation port',
 		'Booking mode',
+		'Availability',
 		'Price per berth',
 		'Price for a private cabin',
 		'Highlight',
@@ -37,6 +38,9 @@ function bt_acf_translatable_strings() {
 		// Choices.
 		'Per berth',
 		'Whole ship',
+		'Open trip',
+		'On request',
+		'Fully booked',
 		'Hoorn',
 		'Enkhuizen',
 		'Amsterdam',
@@ -46,6 +50,7 @@ function bt_acf_translatable_strings() {
 		'Per person in a shared deck berth. For a whole-ship charter, the total price.',
 		'Total price per person for private use of a cabin. Leave empty when not offered.',
 		'One-liner for cards and lists.',
+		'Shown on the calendar page as a status pill.',
 	);
 }
 

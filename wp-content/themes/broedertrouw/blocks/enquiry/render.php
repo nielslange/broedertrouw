@@ -67,7 +67,14 @@ $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';
 		 * Template for the message a trip card prefills. It lives here rather
 		 * than in the script so it stays translatable; %s is the trip name.
 		 */
-		$trip_template = __( 'I would like to enquire about: %s', 'broedertrouw' );
+		/*
+		 * Written as an opening sentence the visitor can continue, not a
+		 * label with a value after a colon. The trip name is quoted rather
+		 * than given an article, because German trip names span three
+		 * genders (die Wattentour, das Osterwochenende) and one hardcoded
+		 * article would be wrong for most of them.
+		 */
+		$trip_template = __( 'Hello, we are interested in "%s". Could you tell us more?', 'broedertrouw' );
 		?>
 		<div class="bt-enquiry__card" data-bt-trip-template="<?php echo esc_attr( $trip_template ); ?>">
 			<?php if ( $form_id && shortcode_exists( 'fluentform' ) ) : ?>
@@ -88,17 +95,20 @@ $tel = $phone ? preg_replace( '/[^0-9+]/', '', $phone ) : '';
 				);
 
 				/*
-				 * Duration is stored as optional so a hidden empty value cannot
-				 * block submission when a tour answers it instead. While it is
-				 * the visible question it is still required, which the browser
-				 * enforces from this attribute.
+				 * Duration and group type are stored as optional so a hidden
+				 * empty value cannot block submission when a tour answers the
+				 * one and an individual trip removes the other. While they are
+				 * the visible questions they are still required, which the
+				 * browser enforces from this attribute.
 				 */
-				$form = preg_replace(
-					'/(<select[^>]*name=([\'"])duration\2)/',
-					'$1 required',
-					$form,
-					1
-				);
+				foreach ( array( 'duration', 'group_type' ) as $name ) {
+					$form = preg_replace(
+						'/(<select[^>]*name=([\'"])' . $name . '\2)/',
+						'$1 required',
+						$form,
+						1
+					);
+				}
 
 				echo $form; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				?>

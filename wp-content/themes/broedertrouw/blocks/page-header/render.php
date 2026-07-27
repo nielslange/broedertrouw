@@ -9,7 +9,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$kicker = get_field( 'kicker' );
 $people = get_field( 'people' );
 
 /*
@@ -30,9 +29,6 @@ $anchor = bt_block_anchor( $block );
 
 	<div class="bt-page-header__inner">
 		<div class="bt-page-header__body">
-			<?php if ( $kicker ) : ?>
-				<p class="bt-kicker"><?php echo esc_html( $kicker ); ?></p>
-			<?php endif; ?>
 
 			<h1 class="bt-page-header__title"><?php echo esc_html( $heading ); ?></h1>
 

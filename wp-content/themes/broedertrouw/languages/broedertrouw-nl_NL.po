@@ -22,22 +22,13 @@ msgstr ""
 msgid "Niels Lange"
 msgstr ""
 
-#: blocks/calendar/render.php:16
-msgid "Calendar: add at least one row."
-msgstr "Kalender: voeg minstens één rij toe."
-
 #: blocks/calendar/render.php:21
-#: includes/trips.php:216
-msgid "On request"
-msgstr "Op aanvraag"
+msgid "Calendar: no trips are published yet."
+msgstr "Kalender: er zijn nog geen tochten gepubliceerd."
 
-#: blocks/calendar/render.php:22
-msgid "Fully booked"
-msgstr "Volgeboekt"
-
-#: blocks/calendar/render.php:23
-msgid "Open trip"
-msgstr "Open tocht"
+#: blocks/calendar/render.php:109
+msgid "Request trip"
+msgstr "Tocht aanvragen"
 
 #: blocks/charter-teaser/render.php:28
 msgid "Charter teaser: add a heading to at least one card."
@@ -59,11 +50,11 @@ msgstr ""
 msgid "Enquiry: add a heading."
 msgstr "Aanvraag: voeg een titel toe."
 
-#: blocks/enquiry/render.php:70
-msgid "I would like to enquire about: %s"
-msgstr "Ik wil graag informeren naar: %s"
+#: blocks/enquiry/render.php:77
+msgid "Hello, we are interested in \"%s\". Could you tell us more?"
+msgstr "Hallo, we hebben interesse in \"%s\". Kunnen jullie ons er meer over vertellen?"
 
-#: blocks/enquiry/render.php:76
+#: blocks/enquiry/render.php:113
 msgid "The enquiry form is not available yet."
 msgstr "Het aanvraagformulier is nog niet beschikbaar."
 
@@ -124,28 +115,28 @@ msgid "Period"
 msgstr "Periode"
 
 #: blocks/price-table/render.php:46
-#: includes/admin-columns.php:25
-#: includes/trip-templates.php:56
+#: includes/admin-columns.php:26
+#: includes/trip-templates.php:78
 msgid "Price"
 msgstr "Prijs"
 
-#: blocks/price-table/render.php:98
+#: blocks/price-table/render.php:114
 msgid "Details"
 msgstr "Details"
 
-#: blocks/price-table/render.php:105
+#: blocks/price-table/render.php:121
 msgid "Check-in"
 msgstr "Check-in"
 
-#: blocks/price-table/render.php:112
+#: blocks/price-table/render.php:128
 msgid "Check-out"
 msgstr "Check-out"
 
-#: blocks/price-table/render.php:119
+#: blocks/price-table/render.php:135
 msgid "Group size"
 msgstr "Groepsgrootte"
 
-#: blocks/price-table/render.php:126
+#: blocks/price-table/render.php:142
 msgid "Discount periods −10 %"
 msgstr "Kortingsperiodes −10 %"
 
@@ -175,19 +166,31 @@ msgstr ""
 msgid "Footer Menu 3"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:165
 msgid "Broedertrouw: ACF PRO is not active. Trip fields and content blocks are unavailable until it is enabled."
 msgstr ""
 
 #: includes/admin-columns.php:23
-#: includes/trip-templates.php:29
+#: includes/trip-templates.php:51
 msgid "Dates"
 msgstr "Data"
 
 #: includes/admin-columns.php:24
-#: includes/trip-templates.php:38
+msgid "Availability"
+msgstr "Beschikbaarheid"
+
+#: includes/admin-columns.php:25
+#: includes/trip-templates.php:60
 msgid "Embarkation"
 msgstr "Opstapplaats"
+
+#: includes/admin-columns.php:147
+msgid "Filter by availability"
+msgstr ""
+
+#: includes/admin-columns.php:149
+msgid "All availability"
+msgstr ""
 
 #: includes/blocks.php:89
 msgid "Notice box"
@@ -197,6 +200,10 @@ msgstr "Infokader"
 msgctxt "enquiry form URL anchor"
 msgid "enquiry"
 msgstr "aanvraag"
+
+#: includes/breadcrumbs.php:105
+msgid "Breadcrumb"
+msgstr ""
 
 #: includes/post-types.php:18
 msgctxt "post type general name"
@@ -283,91 +290,109 @@ msgstr ""
 msgid "Trip types"
 msgstr ""
 
-#: includes/trip-templates.php:47
+#: includes/trip-templates.php:69
 msgid "Disembarkation"
 msgstr "Uitstapplaats"
 
-#: includes/trip-templates.php:65
+#: includes/trip-templates.php:87
 msgid "Private cabin"
 msgstr "Eigen hut"
 
-#: includes/trip-templates.php:110
+#: includes/trip-templates.php:136
 msgid "Included"
 msgstr "Inbegrepen"
 
-#: includes/trip-templates.php:124
+#: includes/trip-templates.php:150
 msgid "Not included"
 msgstr "Niet inbegrepen"
 
-#: includes/trip-templates.php:162
+#: includes/trip-templates.php:188
 msgid "Request this trip"
 msgstr "Deze tocht aanvragen"
 
-#: includes/trip-templates.php:179
+#: includes/trip-templates.php:205
 msgid "More trips"
 msgstr "Meer tochten"
 
-#: includes/trip-templates.php:262
+#: includes/trip-templates.php:290
 msgid "No upcoming trips are scheduled at the moment."
 msgstr "Er staan momenteel geen tochten gepland."
 
-#: includes/trip-templates.php:267
+#: includes/trip-templates.php:295
 msgid "Past trips"
 msgstr "Afgelopen tochten"
 
-#: includes/trips.php:157
+#: includes/trips.php:140
+msgid "Open trip"
+msgstr "Open tocht"
+
+#: includes/trips.php:141
+#: includes/trips.php:319
+msgid "On request"
+msgstr "Op aanvraag"
+
+#: includes/trips.php:142
+msgid "Fully booked"
+msgstr "Volgeboekt"
+
+#: includes/trips.php:195
+msgctxt "calendar month heading"
+msgid "F Y"
+msgstr "F Y"
+
+#: includes/trips.php:260
 msgctxt "trip date format"
 msgid "d-m-Y"
 msgstr "d-m-Y"
 
-#: includes/trips.php:169
+#: includes/trips.php:272
 msgctxt "trip date range, same month"
 msgid "%1$s t/m %2$s"
 msgstr "%1$s t/m %2$s"
 
-#: includes/trips.php:170
+#: includes/trips.php:273
 msgctxt "trip start day format"
 msgid "d"
 msgstr "d"
 
-#: includes/trips.php:177
+#: includes/trips.php:280
 msgctxt "trip date range"
 msgid "%1$s t/m %2$s"
 msgstr "%1$s t/m %2$s"
 
-#: includes/trips.php:191
+#: includes/trips.php:294
 msgid "Hoorn"
 msgstr "Hoorn"
 
-#: includes/trips.php:192
+#: includes/trips.php:295
 msgid "Enkhuizen"
 msgstr "Enkhuizen"
 
-#: includes/trips.php:193
+#: includes/trips.php:296
 msgid "Amsterdam"
 msgstr "Amsterdam"
 
-#: includes/trips.php:194
+#: includes/trips.php:297
 msgid "Other port"
 msgstr "Andere haven"
 
-#: includes/trips.php:236
+#: includes/trips.php:339
 msgid "from € %s for the whole ship"
 msgstr "vanaf € %s voor het hele schip"
 
-#: includes/trips.php:240
+#: includes/trips.php:343
 msgid "from € %s per person"
 msgstr "vanaf € %s p.p."
 
-#: includes/trips.php:260
+#: includes/trips.php:363
 msgid "from € %s"
 msgstr "vanaf € %s"
 
-#: includes/trips.php:277
+#: includes/trips.php:380
 msgid "€ %s per person"
 msgstr "€ %s p.p."
 
-#: includes/trips.php:293
+#: includes/trips.php:396
 msgid "With a private cabin: %s"
 msgstr "Met eigen hut: %s"
 

@@ -12,9 +12,11 @@
 	padding-inline: var(--bt-gutter);
 }
 
+/* 50:50 rather than a fixed 480px image column, so the split matches the other
+   two-column blocks stacked with it on the same page. */
 @media (min-width: 782px) {
 	.bt-ship__inner {
-		grid-template-columns: 480px 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 

@@ -154,6 +154,32 @@
             "pll_default_value": "per_berth"
         },
         {
+            "key": "field_bt_trip_booking_status",
+            "label": "Availability",
+            "name": "booking_status",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Shown on the calendar page as a status pill.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "translations": "sync",
+            "choices": {
+                "open": "Open trip",
+                "request": "On request",
+                "booked": "Fully booked"
+            },
+            "default_value": "open",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "pll_default_value": "open"
+        },
+        {
             "key": "field_bt_trip_price_berth",
             "label": "Price per berth",
             "name": "price_berth",
@@ -368,5 +394,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785095053
+    "modified": 1785107884
 }

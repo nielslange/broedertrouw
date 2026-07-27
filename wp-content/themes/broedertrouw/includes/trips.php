@@ -127,6 +127,109 @@ function bt_get_trips( $args = array() ) {
 }
 
 /**
+ * Returns the availability statuses a trip can carry.
+ *
+ * Keys match the booking_status field choices and the calendar's pill
+ * modifiers, so the labels are defined exactly once for the front end, the
+ * legend and the admin list table.
+ *
+ * @return array Status key => translated label.
+ */
+function bt_trip_statuses() {
+	return array(
+		'open'    => __( 'Open trip', 'broedertrouw' ),
+		'request' => __( 'On request', 'broedertrouw' ),
+		'booked'  => __( 'Fully booked', 'broedertrouw' ),
+	);
+}
+
+/**
+ * Returns a trip's availability status key.
+ *
+ * Trips saved before the field existed have no value, so an unset status
+ * falls back to "open" rather than dropping the trip from the calendar.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_status( $post_id = null ) {
+	$status = bt_field( 'booking_status', $post_id );
+
+	return isset( bt_trip_statuses()[ $status ] ) ? $status : 'open';
+}
+
+/**
+ * Returns the translated label for a trip's availability status.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_status_label( $post_id = null ) {
+	$statuses = bt_trip_statuses();
+
+	return $statuses[ bt_trip_status( $post_id ) ];
+}
+
+/**
+ * Returns the month heading a trip is grouped under on the calendar.
+ *
+ * A trip spanning a month boundary is listed under the month it starts in,
+ * which is how both live sites present the season. Trips carrying only a
+ * date_label have no month to derive, so they group under an empty heading
+ * and render as a trailing, unlabelled group.
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function bt_trip_month( $post_id = null ) {
+	$start = bt_field( 'date_start', $post_id );
+
+	if ( ! $start ) {
+		return '';
+	}
+
+	/*
+	 * A month heading labels a period rather than stating a date, so it is
+	 * the one place a month name belongs.
+	 */
+	return wp_date( _x( 'F Y', 'calendar month heading', 'broedertrouw' ), strtotime( $start ) );
+}
+
+/**
+ * Queries the trips the availability calendar lists.
+ *
+ * Ascending by start date and unlimited, where bt_get_trips() defaults to a
+ * capped, card-sized list. Polylang filters the query, so each language shows
+ * its own trip posts.
+ *
+ * @param bool $include_past Whether to also list trips that have ended.
+ * @return WP_Post[]
+ */
+function bt_get_calendar_trips( $include_past = false ) {
+	$query_args = array(
+		'post_type'      => 'trip',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'meta_key'       => 'date_start',
+		'orderby'        => 'meta_value',
+		'order'          => 'ASC',
+	);
+
+	if ( ! $include_past ) {
+		$query_args['meta_query'] = array(
+			array(
+				'key'     => 'date_end',
+				'value'   => bt_today(),
+				'compare' => '>=',
+				'type'    => 'DATE',
+			),
+		);
+	}
+
+	return get_posts( $query_args );
+}
+
+/**
  * Formats a trip's date range for display.
  *
  * @param int $post_id Post ID.

@@ -61,6 +61,29 @@
 	text-transform: uppercase;
 }
 
+/*
+ * Blocksy renders the breadcrumbs, including their baseline alignment. Only
+ * the placement is adjusted: the hero shows nothing but the trail, so it drops
+ * the banner's vertical space and lines the trail up with the page title
+ * rather than centring it.
+ */
+/* The hero holds only the trail, so Blocksy's own banner variables are set to
+   the room a single line needs instead of a 250px banner. */
+.hero-section[data-type="type-2"] > [class*="ct-container"] {
+	--min-height: 0;
+	--container-padding: 26px 0 0;
+}
+
+/* The hero's own header centres its children inside a narrow container, so the
+   alignment has to be undone there rather than on the trail itself. */
+.hero-section .entry-header {
+	max-width: calc( var(--bt-content-width) - var(--bt-gutter) * 2 );
+	margin-inline: auto;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+}
+
 .bt-arrow-link {
 	color: var(--bt-link);
 	font-size: 15px;

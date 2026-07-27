@@ -20,9 +20,10 @@ function bt_trip_columns( $columns ) {
 		$reordered[ $key ] = $label;
 
 		if ( 'title' === $key ) {
-			$reordered['trip_dates'] = __( 'Dates', 'broedertrouw' );
-			$reordered['trip_port']  = __( 'Embarkation', 'broedertrouw' );
-			$reordered['trip_price'] = __( 'Price', 'broedertrouw' );
+			$reordered['trip_dates']  = __( 'Dates', 'broedertrouw' );
+			$reordered['trip_status'] = __( 'Availability', 'broedertrouw' );
+			$reordered['trip_port']   = __( 'Embarkation', 'broedertrouw' );
+			$reordered['trip_price']  = __( 'Price', 'broedertrouw' );
 		}
 	}
 
@@ -41,6 +42,16 @@ function bt_trip_column_content( $column, $post_id ) {
 		case 'trip_dates':
 			$range = bt_trip_date_range( $post_id );
 			echo $range ? esc_html( $range ) : '&mdash;';
+			break;
+
+		case 'trip_status':
+			$status = bt_trip_status( $post_id );
+
+			printf(
+				'<span class="bt-status-pill bt-status-pill--%1$s">%2$s</span>',
+				esc_attr( $status ),
+				esc_html( bt_trip_status_label( $post_id ) )
+			);
 			break;
 
 		case 'trip_port':
@@ -63,9 +74,10 @@ add_action( 'manage_trip_posts_custom_column', 'bt_trip_column_content', 10, 2 )
  * @return array
  */
 function bt_trip_sortable_columns( $columns ) {
-	$columns['trip_dates'] = 'trip_dates';
-	$columns['trip_port']  = 'trip_port';
-	$columns['trip_price'] = 'trip_price';
+	$columns['trip_dates']  = 'trip_dates';
+	$columns['trip_status'] = 'trip_status';
+	$columns['trip_port']   = 'trip_port';
+	$columns['trip_price']  = 'trip_price';
 
 	return $columns;
 }
@@ -82,10 +94,26 @@ function bt_trip_admin_order( $query ) {
 	}
 
 	$meta_keys = array(
-		'trip_dates' => 'date_start',
-		'trip_port'  => 'port_embark',
-		'trip_price' => 'price_berth',
+		'trip_dates'  => 'date_start',
+		'trip_status' => 'booking_status',
+		'trip_port'   => 'port_embark',
+		'trip_price'  => 'price_berth',
 	);
+
+	// The availability dropdown filters on the same meta the column prints.
+	$filter = isset( $_GET['bt_status'] ) ? sanitize_key( wp_unslash( $_GET['bt_status'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+	if ( $filter && isset( bt_trip_statuses()[ $filter ] ) ) {
+		$query->set(
+			'meta_query',
+			array(
+				array(
+					'key'   => 'booking_status',
+					'value' => $filter,
+				),
+			)
+		);
+	}
 
 	$orderby = $query->get( 'orderby' );
 
@@ -103,6 +131,67 @@ function bt_trip_admin_order( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'bt_trip_admin_order' );
+
+/**
+ * Adds an availability filter to the trip list table.
+ */
+function bt_trip_status_filter() {
+	global $typenow;
+
+	if ( 'trip' !== $typenow ) {
+		return;
+	}
+
+	$current = isset( $_GET['bt_status'] ) ? sanitize_key( wp_unslash( $_GET['bt_status'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	?>
+	<label class="screen-reader-text" for="bt_status"><?php esc_html_e( 'Filter by availability', 'broedertrouw' ); ?></label>
+	<select name="bt_status" id="bt_status">
+		<option value=""><?php esc_html_e( 'All availability', 'broedertrouw' ); ?></option>
+		<?php foreach ( bt_trip_statuses() as $key => $label ) : ?>
+			<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $current, $key ); ?>>
+				<?php echo esc_html( $label ); ?>
+			</option>
+		<?php endforeach; ?>
+	</select>
+	<?php
+}
+add_action( 'restrict_manage_posts', 'bt_trip_status_filter' );
+
+/**
+ * Styles the availability pills in the trip list table.
+ *
+ * The three colors are the darkened, AA-passing values the calendar block
+ * uses, so a status reads the same in the dashboard as on the front end.
+ */
+function bt_trip_admin_styles( $hook ) {
+	global $typenow;
+
+	if ( 'edit.php' !== $hook || 'trip' !== $typenow ) {
+		return;
+	}
+
+	$css = '
+		.bt-status-pill {
+			display: inline-block;
+			min-width: 104px;
+			padding: 3px 10px;
+			border-radius: 100px;
+			color: #fff;
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: .04em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.bt-status-pill--open { background: #1A5C8A; }
+		.bt-status-pill--request { background: #8A5A00; }
+		.bt-status-pill--booked { background: #B3382D; }
+		.column-trip_status { width: 140px; }
+	';
+
+	wp_add_inline_style( 'wp-admin', $css );
+}
+add_action( 'admin_enqueue_scripts', 'bt_trip_admin_styles' );
 
 /**
  * Orders the page list table by menu order, so it mirrors the menus.

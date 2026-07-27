@@ -35,6 +35,8 @@ function bt_icon_path( $name ) {
 		'chevron-left'  => '<path d="m15 18-6-6 6-6"/>',
 		// lucide: chevron-right
 		'chevron-right' => '<path d="m9 18 6-6-6-6"/>',
+		// lucide: sailboat — the breadcrumb root, standing in for the site name
+		'ship'          => '<path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4Z"/><path d="M21 14 10 2 3 14h18Z"/><path d="M10 2v16"/>',
 	);
 
 	return isset( $icons[ $name ] ) ? $icons[ $name ] : '';

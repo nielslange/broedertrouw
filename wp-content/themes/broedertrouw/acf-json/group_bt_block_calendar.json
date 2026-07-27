@@ -24,141 +24,26 @@
             "pll_default_value": 1
         },
         {
-            "key": "field_bt_cal_rows",
-            "label": "Rows",
-            "name": "rows",
+            "key": "field_bt_cal_show_past",
+            "label": "Include past trips",
+            "name": "show_past",
             "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": false,
+            "type": "true_false",
+            "instructions": "Off by default, so the calendar only lists trips that have not ended yet.",
+            "required": 0,
             "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "min": 1,
-            "layout": "block",
-            "button_label": "Add row",
-            "max": 0,
-            "rows_per_page": 20,
-            "collapsed": "",
-            "sub_fields": [
-                {
-                    "key": "field_bt_cal_row_month",
-                    "label": "Month heading",
-                    "name": "month",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Rows with the same month text are grouped, e.g. \"July 2026\".",
-                    "required": 1,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "pll_default_value": "",
-                    "parent_repeater": "field_bt_cal_rows"
-                },
-                {
-                    "key": "field_bt_cal_row_period",
-                    "label": "Period",
-                    "name": "period",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "pll_default_value": "",
-                    "parent_repeater": "field_bt_cal_rows"
-                },
-                {
-                    "key": "field_bt_cal_row_status",
-                    "label": "Status",
-                    "name": "status",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "booked": "Fully booked",
-                        "request": "On request",
-                        "open": "Open trip"
-                    },
-                    "default_value": "request",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0,
-                    "pll_default_value": "request",
-                    "parent_repeater": "field_bt_cal_rows"
-                },
-                {
-                    "key": "field_bt_cal_row_text",
-                    "label": "Text",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "pll_default_value": "",
-                    "parent_repeater": "field_bt_cal_rows"
-                },
-                {
-                    "key": "field_bt_cal_row_link",
-                    "label": "Button",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_bt_cal_rows"
-                }
-            ]
+            "translations": "sync",
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "pll_default_value": 0
         }
     ],
     "location": [
@@ -177,10 +62,10 @@
     "instruction_placement": "field",
     "hide_on_screen": [],
     "active": true,
-    "description": "",
+    "description": "Lists the published trips, grouped by month, with an availability pill.",
     "show_in_rest": 1,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1785095053
+    "modified": 1785107940
 }

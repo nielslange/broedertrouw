@@ -12,6 +12,28 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Returns the container class the single-trip hook output is wrapped in.
+ *
+ * Blocksy's single template emits `ct-container-full` and lets the `<article>`
+ * size itself from the `data-content` attribute. Its width CSS targets
+ * `[data-content] > article` only, so anything printed through the container
+ * hooks is a sibling of that article and gets no width at all — `.ct-container-full`
+ * sets nothing but `margin-inline`, which is what made the trip page run
+ * edge to edge.
+ *
+ * Mirroring Blocksy's own mapping keeps the Customizer in charge: the width
+ * still comes from Content > Trips > Page Structure, and picking a different
+ * structure there moves this output with it.
+ *
+ * @return string
+ */
+function bt_trip_container_class() {
+	$structure = function_exists( 'blocksy_get_page_structure' ) ? blocksy_get_page_structure() : 'narrow';
+
+	return 'narrow' === $structure ? 'ct-container-narrow' : 'ct-container';
+}
+
+/**
  * Outputs the summary card above a single trip's content.
  */
 function bt_trip_summary_card() {
@@ -73,18 +95,20 @@ function bt_trip_summary_card() {
 
 	$highlight = bt_field( 'highlight', $post_id );
 	?>
-	<div class="bt-trip-summary">
-		<?php foreach ( $rows as $row ) : ?>
-			<div class="bt-trip-summary__cell">
-				<p class="bt-trip-summary__label"><?php echo esc_html( $row['label'] ); ?></p>
-				<p class="bt-trip-summary__value"><?php echo esc_html( $row['value'] ); ?></p>
-			</div>
-		<?php endforeach; ?>
-	</div>
+	<div class="<?php echo esc_attr( bt_trip_container_class() ); ?>">
+		<div class="bt-trip-summary">
+			<?php foreach ( $rows as $row ) : ?>
+				<div class="bt-trip-summary__cell">
+					<p class="bt-trip-summary__label"><?php echo esc_html( $row['label'] ); ?></p>
+					<p class="bt-trip-summary__value"><?php echo esc_html( $row['value'] ); ?></p>
+				</div>
+			<?php endforeach; ?>
+		</div>
 
-	<?php if ( $highlight ) : ?>
-		<p class="bt-kicker"><?php echo esc_html( $highlight ); ?></p>
-	<?php endif; ?>
+		<?php if ( $highlight ) : ?>
+			<p class="bt-kicker"><?php echo esc_html( $highlight ); ?></p>
+		<?php endif; ?>
+	</div>
 	<?php
 }
 add_action( 'blocksy:single:container:top', 'bt_trip_summary_card' );
@@ -101,6 +125,8 @@ function bt_trip_details() {
 	$includes = bt_field( 'includes', $post_id );
 	$excludes = bt_field( 'excludes', $post_id );
 	$gallery  = bt_field( 'gallery', $post_id );
+
+	printf( '<div class="%s">', esc_attr( bt_trip_container_class() ) );
 
 	if ( $includes || $excludes ) :
 		?>
@@ -194,6 +220,8 @@ function bt_trip_details() {
 		</section>
 		<?php
 	endif;
+
+	echo '</div>';
 }
 add_action( 'blocksy:single:container:bottom', 'bt_trip_details' );
 

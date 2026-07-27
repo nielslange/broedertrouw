@@ -124,9 +124,13 @@ function bt_enquiry_url() {
  * @param array $args {
  *     Optional context to carry into the form.
  *
- *     @type string $trip   Trip name, printed into the message.
- *     @type string $period Date range for the preferred period field.
- *     @type int    $group  Group type index, 0 school class .. 3 club/other.
+ *     @type string $trip       Trip name, printed into the message.
+ *     @type string $period     Date range for the preferred period field.
+ *     @type int    $group      Group type index, 0 school class .. 3 club/other.
+ *     @type bool   $individual Whether the trip is booked per berth rather than
+ *                              by chartering the whole ship. Individual
+ *                              bookings hide the group questions, which a
+ *                              single visitor has no answer to.
  * }
  * @return string Attribute string, ready to echo inside a tag.
  */
@@ -137,6 +141,15 @@ function bt_enquiry_attrs( $args = array() ) {
 
 	if ( ! empty( $args['trip'] ) ) {
 		$attrs['data-bt-trip'] = $args['trip'];
+	}
+
+	/*
+	 * A charter row names a trip too ("Wochenende"), but there the group is
+	 * the whole point, so the flag is what distinguishes the two rather than
+	 * the presence of a trip name.
+	 */
+	if ( ! empty( $args['individual'] ) ) {
+		$attrs['data-bt-individual'] = '';
 	}
 
 	if ( ! empty( $args['period'] ) ) {
