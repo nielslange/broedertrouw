@@ -67,11 +67,21 @@
  * the banner's vertical space and lines the trail up with the page title
  * rather than centring it.
  */
-/* The hero holds only the trail, so Blocksy's own banner variables are set to
-   the room a single line needs instead of a 250px banner. */
+/*
+ * The hero holds only the trail, so Blocksy's banner variables are set to the
+ * room one line needs. The trail belongs to the title beneath it, not to the
+ * site header above it, so it keeps the page header's own 52px above and sits
+ * close underneath: the page header then supplies the small remaining gap.
+ */
 .hero-section[data-type="type-2"] > [class*="ct-container"] {
 	--min-height: 0;
-	--container-padding: 26px 0 0;
+	--container-padding: 52px 0 0;
+}
+
+/* The trail shares the page header's tint so the two read as one band with no
+   seam between them. */
+.hero-section[data-type="type-2"] {
+	background: var(--bt-tint);
 }
 
 /* The hero's own header centres its children inside a narrow container, so the

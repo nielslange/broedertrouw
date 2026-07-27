@@ -3,6 +3,18 @@
 	padding-block: 52px;
 }
 
+/*
+ * The breadcrumb hero sits directly above and shares this band's tint, so the
+ * header drops most of its top padding: the trail's own padding already opened
+ * the band, and the title needs only the short gap that ties it to the trail.
+ * The hero is not a sibling, so this is keyed off the body class Blocksy sets
+ * when the hero is present.
+ */
+.hero-section ~ * .bt-page-header:first-child,
+.ct-container-full .entry-content > .bt-page-header:first-child {
+	padding-top: 12px;
+}
+
 .bt-page-header__inner {
 	max-width: var(--bt-content-width);
 	margin-inline: auto;
